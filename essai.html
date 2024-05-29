@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link href="style.css" rel="stylesheet">
+        <title>Poly</title>
+        <style>
+            /*general*/
+
+              *{margin: 0px;padding: 0px }
+              body{font-family: Arial,sans-serif;font-size: 15px;}
+              h1{font-family: serif;
+                font-size: 45px;
+                color: #444;}
+              .orange{color: #ff7a00;}
+               ul{list-style: none;}
+               a{text-decoration: none;color: #444;}
+               h2 {
+                color: #87ac04;
+                font-size: 50px;
+               }
+               h3{font-size: 30px;
+                  color: #444;}
+               h4{
+                font-size: 24px;
+                color: #444;
+               }
+               p{
+                line-height: 20px;
+                color: #777;
+               }
+               .clear{
+                clear: both;
+               }
+               small{
+                font-size: 17px;
+                font-style: italic;
+               }
+
+            /*header*/
+
+               header{height: 120px;}
+               header h1{float: left;
+                         margin-top: 32px;}
+               header nav{float: right;
+                          margin-top: 50px;}
+               header nav ul li{display: inline-block;
+                                float: left;}
+               header nav ul li a{text-transform: uppercase;
+                                   font-weight: bold;
+                                   margin-right: 20px;}
+            /*main image */
+                .section
+                {height: 500px;
+                background: url('ar.jpg') ;
+                margin: 0 auto;
+                padding: 0 10px;}
+                .section h2{
+                    font-weight: normal;
+                    text-transform: uppercase;
+                    text-align: center;
+                    padding: 150px 0px 40px 0px;
+                    margin-bottom: 20px;
+                }
+                .button{
+                    display: block;
+                    width: 110px;
+                    height: 45px;
+                    background: #ff7a00 ;
+                    color: #fff;
+                    font-size: 20px;
+                    margin: 0 auto;
+                    line-height: 45px;
+                    text-align: center;
+                    border-radius: 6px;
+                }
+                .button:hover{
+                    background: rgb(73, 73, 212);
+                }
+            /*STEP*/
+                .contener2 ul{
+                    position: relative;
+                    left: 400px;
+                }
+                .contener2 ul li{
+                    width: 300px;
+                    float: left;
+                }
+                .contener2 h4{
+                    text-transform: uppercase;
+                    margin-bottom: 20px;
+                }
+                .image{margin: 40px 0;
+                       padding: 0 auto;
+                       position: relative;
+                         left: 400px;}
+            /*choix*/
+                .choix{  
+                    height: 400px;
+                    margin: 40px 0;
+                     background-color: #efefef;
+                    padding: 60px 0;}
+                .choix article{
+                    width: 460px;
+                    height: 270px;
+                    float: left;
+                    border-radius: 10px;
+                    margin-right: 80px;
+                    position: relative;
+                    left: 330px;
+                }
+                .choix article:first-child{
+                    margin-right: 80px;
+                }
+                .overlay{
+                      background: rgba(255,255,255,0.90);
+                      height: 270px;
+                      width: 260px;
+                      padding: 20px;
+                      border-radius: 10px 0 0 10px;
+                      text-align: center;
+                }
+                .overlay h4{
+                    border-bottom: 1px solid #ddd;
+                    padding-bottom: 20px;
+                    text-transform: uppercase;
+                    margin-bottom: 20px;
+                    text-align: center;
+                }
+                .choix p{
+                    text-align: center;
+                    margin-bottom: 20px;
+                }
+                .button1{
+                    color: #fff;
+                    background-color: #ff7a00;
+                    padding: 10px 20px;
+                    border-radius: 5px;
+                }
+                .button1:hover{
+                    color: #fff;
+                    background-color: #5957ce;
+                    
+                }
+                /*contact*/
+                 .contact{
+                    padding: 60px 0;
+                    text-align: center;
+                 }
+                 .contact h3{
+                    width: 400px;
+                    text-transform: uppercase;
+                    margin:0 auto 20px auto;
+                    border-bottom: 1px solid  #02b8dd;
+                    padding-bottom: 20px;
+                 }
+                 form{
+                    margin: 60px 0 20px 0 ;
+                 }
+                label{
+                    font-weight: bold;
+                    font-size: 20px;
+                    margin-right: 10px ;
+                    color: #777;
+                }
+                input[type="text"]{
+                    padding: 10px;
+                    font-size: 20px;
+                    margin-right: 20px;
+                    border: 2px solid #ddd;
+                    border-radius: 7px;
+                }
+                input[type="number"]{
+                    padding: 10px;
+                    font-size: 20px;
+                    margin-right: 20px;
+                    border: 2px solid #ddd;
+                    border-radius: 7px;
+                }
+                .button2{
+                    color: #fff;
+                    font-size: 20px;
+                    margin-right: 20px;
+                    padding: 10px;
+                    font-weight: bold;
+                    background-color: #02b8dd;
+                    border-radius: 7px;
+                }
+                .button2:hover{
+                    color: #fff;
+                    background-color: #444;
+                   
+                }
+                /*footer*/
+                footer{
+                    height: 200px;
+                    background-color: #444;
+                }
+                footer h1{
+                    color: #fff;
+                    text-align: center;
+                    padding-top: 80px;
+                }
+                .Copyright{
+                    font-weight: bold;
+                    padding-top: 30px;
+                    text-align: center;
+                    color: #777;
+                }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="contener">
+                <h1>PolyHP Service<span class="orange">.</span></h1>
+                <img src="logopoly.png" style="border-radius: 300px; width: 300px;height: 300px;">
+                <nav>
+                    <ul>
+                        <li><a href="af1.jpg">Accueil</a></li>
+                        <li><a href="af2.jpg">Promotions</a></li>
+                        <li><a href="ts.jpg">Exemplaires</a></li>
+                        <li><a href="tx.jpg">Tasses</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+            <div class="section">
+                 <h2>GRAPHISME-SERIGRAPIE <br><strong>Impression sur tous supports</strong></h2>
+                 <a href="page2.html" class="button">Mon CV</a>
+            </div>
+            <div class="image">
+                <img src="lg1.jpg" alt="logo" width="200px" height="200px" style="border-radius: 100px;">
+                <img src="ts.jpg" alt="tee-shirt" width="200px" height="200px" style="margin: 0 0 0 80px;border-radius: 100px;">
+                <img src="ma.jpg" alt="maillot" width="200px" height="200px" style="margin: 0 0 0 80px;border-radius: 100px;">
+            </div>
+            <div class="contener2">
+                <ul>
+                    <li>
+                        <h4>Graphisme</h4>
+                        <p>Conception d'affiche publicitaire,création de logo, carte de visite , carte d'invitation, etc. </p>
+                    </li>
+                    <li id="step2">
+                        <h4>Sérigraphie</h4>
+                        <p>Impression sur tee-shirt, lacoste, tasste, coussin ,bonnet , flocage sur maillot,tableau, etc. </p>
+                    </li>
+                    <li id="step3">
+                        <h4>Imprimerie</h4>
+                        <p>Fex,autocollant, vinyl, one way, DTF,bâche, etc. </p>
+                    </li>
+                    <div class="clear"></div>
+                </ul>
+
+            </div>
+            <div class="choix">
+                <article style="background-image: url(px.jpg);">
+                    <div class="overlay">
+                        <h4>Commandez vos tableaux</h4>
+                        <p><small>Tableaux sur plexiglass et photo cadre </small></p>
+                        <a href="af3.jpg" class="button1">Un exemplaire</a>
+                    </div>
+                </article>
+                <article style="background-image: url(ma.jpg);">
+                    <div class="overlay">
+                        <h4>Personnalisez vos maillots</h4>
+                        <p><small>Flocage derrière vos maillots avec vos noms et votre numero de choix </small></p>
+                        <a href="mo.jpg" class="button1">Un exemplaire</a>
+                    </div>
+                </article>
+            </div>
+            <div class="contact">
+                <h3>Contactez-nous</h3>
+                <p>Nous sommes disponible 24h/24 et la livraison est possible dans toutes les zones de Cotonou et de Calavi </p>
+                <form>
+                    <label for="name">Nom:</label>
+                    <input type="text" id="name" placeholder="Votre nom">
+                    <label for="number">Numéro:</label>
+                    <input type="number" id="number" placeholder="Votre numéro">
+                    <input type="button" value="ok" class="button2">
+                </form>
+
+            </div>
+        <footer>
+               <h1>PolyHP Service <span class="orange">.</span></h1>
+               <div class="Copyright">Copyright © 2024 Tous droits réservés</div>
+        </footer>
+    </body>
+</html>
