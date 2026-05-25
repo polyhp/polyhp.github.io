@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Polycarpe H.</title>
+    <title>Polycarpe H. | Portfolio Pro</title>
     <!-- Google Fonts Premium -->
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <!-- Font Awesome 6 Pro (style moderne) -->
+    <!-- Font Awesome 6 Pro -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- Bootstrap 5 minimal pour grille -->
+    <!-- Bootstrap 5 -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- AOS animation (effet wow pro) -->
+    <!-- AOS animation -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         * {
@@ -27,7 +27,7 @@
             overflow-x: hidden;
         }
 
-        /* Glass morphism & modern gradient background */
+        /* Background */
         .gradient-bg {
             position: fixed;
             top: 0;
@@ -50,181 +50,271 @@
             background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
         }
 
-        /* navbar ultra moderne */
+        /* Navbar */
         .navbar {
-            background: rgba(5, 14, 26, 0.85);
+            background: rgba(5, 14, 26, 0.95);
             backdrop-filter: blur(16px);
-            border-bottom: 1px solid rgba(72, 187, 255, 0.2);
-            padding: 0.9rem 0;
+            border-bottom: 1px solid rgba(59,130,246,0.2);
+            padding: 0.8rem 0;
             transition: all 0.3s;
         }
-        .navbar .container {
-            max-width: 1400px;
-        }
-        .nav-link {
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin: 0 0.5rem;
-            color: #cbd5ff !important;
-            letter-spacing: 0.3px;
-            transition: 0.2s;
-            position: relative;
-        }
-        .nav-link:hover, .nav-link.active {
-            color: #3b82f6 !important;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #3b82f6, #a855f7);
-            transition: width 0.25s;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
+        
         .navbar-brand {
             font-weight: 800;
-            font-size: 1.6rem;
+            font-size: 1.4rem;
             background: linear-gradient(135deg, #ffffff, #60a5fa);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
+        
+        .navbar-toggler {
+            border: 1px solid rgba(59,130,246,0.3);
+            background: rgba(59,130,246,0.1);
+        }
+        
+        .navbar-toggler-icon {
+            filter: invert(1);
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin: 0 0.3rem;
+            color: #cbd5ff !important;
+            transition: 0.2s;
+            position: relative;
+        }
+        
+        @media (max-width: 991px) {
+            .navbar-collapse {
+                background: rgba(5, 14, 26, 0.98);
+                backdrop-filter: blur(20px);
+                border-radius: 20px;
+                padding: 20px;
+                margin-top: 15px;
+                border: 1px solid rgba(59,130,246,0.2);
+            }
+            .nav-link {
+                padding: 12px 15px;
+                text-align: center;
+            }
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: #3b82f6 !important;
+        }
 
-        /* HERO section - ATTRACTIF */
+        /* Hero section */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
-            padding: 120px 5% 80px;
+            padding: 100px 5% 60px;
             position: relative;
         }
+        
         .hero-badge {
             background: rgba(59,130,246,0.15);
             backdrop-filter: blur(4px);
             border: 1px solid rgba(59,130,246,0.4);
             border-radius: 100px;
             padding: 6px 16px;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: 500;
             display: inline-block;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.2rem;
             color: #90cdf4;
         }
+        
         .hero h1 {
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: 800;
             line-height: 1.2;
-            background: linear-gradient(to right, #f0f9ff, #60a5fa, #c084fc);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
         }
+        
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 3.8rem;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .hero h1 {
+                font-size: 4.5rem;
+            }
+        }
+        
         .hero .highlight {
             color: #3b82f6;
             background: none;
-            -webkit-background-clip: unset;
-            background-clip: unset;
         }
+        
         .hero-text {
-            font-size: 1.2rem;
+            font-size: 1rem;
             color: #b9c7e0;
             max-width: 550px;
             border-left: 3px solid #3b82f6;
-            padding-left: 1.5rem;
+            padding-left: 1.2rem;
         }
+        
+        @media (min-width: 768px) {
+            .hero-text {
+                font-size: 1.15rem;
+            }
+        }
+        
         .btn-primary-glow {
             background: linear-gradient(105deg, #2563eb, #7c3aed);
             border: none;
-            padding: 14px 38px;
+            padding: 12px 28px;
             border-radius: 50px;
             font-weight: 700;
+            font-size: 0.9rem;
             transition: all 0.3s;
             box-shadow: 0 8px 20px -5px #3b82f670;
             color: white;
+            display: inline-block;
         }
+        
+        @media (min-width: 768px) {
+            .btn-primary-glow {
+                padding: 14px 38px;
+                font-size: 1rem;
+            }
+        }
+        
         .btn-primary-glow:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 30px -8px #2563eb;
-            background: linear-gradient(105deg, #3b82f6, #8b5cf6);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px -8px #2563eb;
         }
+        
         .hero-img {
-            border-radius: 40px;
+            border-radius: 30px;
             background: linear-gradient(145deg, #1e293b, #0f172a);
-            padding: 10px;
+            padding: 8px;
             box-shadow: 0 30px 40px -20px black;
             border: 1px solid rgba(59,130,246,0.3);
         }
+        
         .hero-img img {
-            border-radius: 32px;
+            border-radius: 25px;
             width: 100%;
             object-fit: cover;
         }
 
-        /* Sections communes */
+        /* Sections */
         section {
-            padding: 100px 5%;
+            padding: 60px 5%;
             position: relative;
         }
-        .section-title {
-            font-size: 2.8rem;
-            font-weight: 800;
-            margin-bottom: 3rem;
-            text-align: center;
-            letter-spacing: -0.02em;
+        
+        @media (min-width: 768px) {
+            section {
+                padding: 80px 5%;
+            }
         }
+        
+        @media (min-width: 1200px) {
+            section {
+                padding: 100px 5%;
+            }
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        @media (min-width: 768px) {
+            .section-title {
+                font-size: 2.5rem;
+                margin-bottom: 2.5rem;
+            }
+        }
+        
+        @media (min-width: 1200px) {
+            .section-title {
+                font-size: 2.8rem;
+                margin-bottom: 3rem;
+            }
+        }
+        
         .section-title span {
             background: linear-gradient(135deg, #fff, #60a5fa);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
+        
         .divider-glow {
-            width: 100px;
-            height: 4px;
+            width: 80px;
+            height: 3px;
             background: linear-gradient(90deg, #2563eb, #a855f7, #ec489a);
-            margin: 1rem auto 2rem;
-            border-radius: 4px;
+            margin: 0.8rem auto 1.5rem;
+            border-radius: 3px;
+        }
+        
+        @media (min-width: 768px) {
+            .divider-glow {
+                width: 100px;
+                height: 4px;
+                margin: 1rem auto 2rem;
+            }
         }
 
-        /* Skills cards modern */
+        /* Skills cards */
         .skill-card {
             background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(10px);
-            border-radius: 28px;
-            padding: 1.8rem;
+            border-radius: 24px;
+            padding: 1.5rem;
             border: 1px solid rgba(59,130,246,0.2);
             transition: all 0.35s;
             height: 100%;
         }
+        
+        @media (min-width: 768px) {
+            .skill-card {
+                padding: 1.8rem;
+                border-radius: 28px;
+            }
+        }
+        
         .skill-card:hover {
             border-color: #3b82f6;
-            transform: translateY(-8px);
-            background: rgba(30, 41, 59, 0.7);
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.5);
+            transform: translateY(-5px);
         }
+        
         .skill-icon {
-            font-size: 2.5rem;
+            font-size: 2rem;
             background: linear-gradient(145deg, #2563eb, #a855f7);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
-            margin-bottom: 1rem;
+            margin-bottom: 0.8rem;
         }
+        
         .skill-title {
             font-weight: 700;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
         }
+        
+        .skill-card p {
+            font-size: 0.85rem;
+            color: #cbd5e0;
+        }
+        
         .skill-bar-bg {
             background: #1e293b;
-            height: 8px;
+            height: 6px;
             border-radius: 20px;
             overflow: hidden;
         }
+        
         .skill-bar-fill {
             width: 0%;
             height: 100%;
@@ -233,154 +323,177 @@
             transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1);
         }
 
-        /* Expérience professionnelle détaillée */
+        /* Expérience cards */
         .exp-detail-card {
             background: rgba(10, 20, 35, 0.7);
             backdrop-filter: blur(12px);
-            border-radius: 32px;
+            border-radius: 24px;
             border: 1px solid rgba(59,130,246,0.25);
-            padding: 2rem;
+            padding: 1.3rem;
             transition: 0.3s;
             height: 100%;
             position: relative;
             overflow: hidden;
         }
+        
+        @media (min-width: 768px) {
+            .exp-detail-card {
+                padding: 1.8rem;
+                border-radius: 28px;
+            }
+        }
+        
         .exp-detail-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
-            width: 4px;
+            width: 3px;
             height: 100%;
             background: linear-gradient(180deg, #3b82f6, #a855f7);
         }
-        .exp-detail-card:hover {
-            transform: translateX(8px);
-            border-color: #3b82f6;
-        }
-        .exp-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
+        
         .exp-title {
-            font-size: 1.4rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #60a5fa;
         }
+        
+        @media (min-width: 768px) {
+            .exp-title {
+                font-size: 1.3rem;
+            }
+        }
+        
         .exp-date {
             background: rgba(59,130,246,0.2);
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 50px;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             color: #90cdf4;
         }
-        .exp-company {
-            color: #a855f7;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            display: inline-block;
-        }
+        
         .exp-description {
             color: #cbd5e0;
-            line-height: 1.6;
-            margin-top: 1rem;
+            line-height: 1.5;
+            font-size: 0.85rem;
+            margin-top: 0.8rem;
         }
+        
         .exp-tech {
             display: flex;
             flex-wrap: wrap;
-            gap: 8px;
-            margin-top: 1rem;
+            gap: 6px;
+            margin-top: 0.8rem;
         }
+        
         .exp-tech span {
             background: rgba(59,130,246,0.15);
-            padding: 4px 12px;
+            padding: 3px 10px;
             border-radius: 50px;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #93c5fd;
         }
 
-        /* Projets réalisés cards */
+        /* Project cards */
         .project-card {
             background: linear-gradient(135deg, rgba(15, 23, 42, 0.8), rgba(5, 14, 26, 0.9));
             backdrop-filter: blur(10px);
-            border-radius: 28px;
+            border-radius: 24px;
             overflow: hidden;
             transition: all 0.4s;
             border: 1px solid rgba(59,130,246,0.2);
             height: 100%;
         }
-        .project-card:hover {
-            transform: translateY(-10px);
-            border-color: #3b82f6;
-            box-shadow: 0 20px 40px -15px rgba(59,130,246,0.3);
-        }
+        
         .project-img {
-            height: 200px;
+            height: 160px;
             overflow: hidden;
         }
+        
+        @media (min-width: 768px) {
+            .project-img {
+                height: 200px;
+            }
+        }
+        
         .project-img img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             transition: transform 0.5s;
         }
+        
         .project-card:hover .project-img img {
             transform: scale(1.1);
         }
+        
         .project-content {
-            padding: 1.5rem;
+            padding: 1.2rem;
         }
+        
+        @media (min-width: 768px) {
+            .project-content {
+                padding: 1.5rem;
+            }
+        }
+        
         .project-title {
-            font-size: 1.3rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.4rem;
         }
+        
         .project-category {
             color: #3b82f6;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 1rem;
+            margin-bottom: 0.6rem;
         }
+        
         .project-description {
             color: #cbd5e0;
-            font-size: 0.9rem;
-            line-height: 1.6;
+            font-size: 0.8rem;
+            line-height: 1.5;
         }
+        
         .project-link {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            margin-top: 1rem;
+            gap: 6px;
+            margin-top: 0.8rem;
             color: #60a5fa;
             text-decoration: none;
             font-weight: 600;
+            font-size: 0.85rem;
             transition: gap 0.3s;
         }
-        .project-link:hover {
-            gap: 12px;
-            color: #3b82f6;
-        }
 
-        /* Portfolio masonry style */
+        /* Portfolio */
         .portfolio-card {
             position: relative;
-            border-radius: 28px;
+            border-radius: 20px;
             overflow: hidden;
             cursor: pointer;
             transition: 0.4s;
             display: block;
             text-decoration: none;
         }
+        
         .portfolio-card img {
             width: 100%;
-            height: 260px;
+            height: 200px;
             object-fit: cover;
             transition: transform 0.6s;
         }
+        
+        @media (min-width: 768px) {
+            .portfolio-card img {
+                height: 240px;
+            }
+        }
+        
         .portfolio-overlay {
             position: absolute;
             inset: 0;
@@ -390,85 +503,142 @@
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            padding: 1.5rem;
+            padding: 1rem;
             text-align: center;
         }
+        
         .portfolio-overlay h5 {
             color: white;
             font-weight: 700;
+            font-size: 0.9rem;
             margin: 0;
             transform: translateY(20px);
             transition: transform 0.3s;
         }
-        .portfolio-card:hover img {
-            transform: scale(1.08);
-        }
+        
         .portfolio-card:hover .portfolio-overlay {
             opacity: 1;
         }
+        
         .portfolio-card:hover .portfolio-overlay h5 {
             transform: translateY(0);
         }
-        .portfolio-card::after {
-            content: '\f0c1';
-            font-family: 'Font Awesome 6 Free';
-            font-weight: 900;
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #3b82f6;
-            color: white;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s;
-            z-index: 2;
-        }
-        .portfolio-card:hover::after {
-            opacity: 1;
-        }
 
-        /* Carousel modern */
+        /* Carousel */
         .carousel-modern {
             background: rgba(15, 25, 45, 0.6);
             backdrop-filter: blur(12px);
-            border-radius: 48px;
-            padding: 2rem;
+            border-radius: 30px;
+            padding: 1.5rem;
+        }
+        
+        @media (min-width: 768px) {
+            .carousel-modern {
+                border-radius: 48px;
+                padding: 2rem;
+            }
+        }
+        
+        .carousel-item h3 {
+            font-size: 1.1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .carousel-item h3 {
+                font-size: 1.5rem;
+            }
         }
 
-        /* Stats section */
+        /* Stats */
         .stat-card {
             text-align: center;
-            padding: 2rem;
+            padding: 1.2rem;
             background: rgba(15, 23, 42, 0.5);
-            border-radius: 28px;
+            border-radius: 20px;
             border: 1px solid rgba(59,130,246,0.2);
         }
+        
         .stat-number {
-            font-size: 3rem;
+            font-size: 2rem;
             font-weight: 800;
             background: linear-gradient(135deg, #60a5fa, #a855f7);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
+        
+        @media (min-width: 768px) {
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
 
+        /* Footer */
         footer {
             background: #020617;
             border-top: 1px solid #1e293b;
-            padding: 3rem;
+            padding: 2rem 1rem;
             text-align: center;
         }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.4rem; }
-            .section-title { font-size: 2rem; }
-            .hero-img { margin-top: 2rem; }
+        
+        footer p {
+            font-size: 0.8rem;
         }
+        
+        /* Ajustements responsives */
+        @media (max-width: 576px) {
+            .hero {
+                padding: 90px 4% 40px;
+            }
+            
+            .btn-primary-glow {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+            
+            .btn-outline-light {
+                padding: 10px 20px;
+                font-size: 0.8rem;
+            }
+            
+            .d-flex.gap-4 {
+                gap: 1rem !important;
+            }
+            
+            .d-flex.gap-4 div i {
+                font-size: 1.5rem !important;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .row.g-4 {
+                --bs-gutter-y: 1rem;
+            }
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .skill-card, .exp-detail-card, .project-card, .portfolio-card {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .skill-card:nth-child(1) { animation-delay: 0.1s; }
+        .skill-card:nth-child(2) { animation-delay: 0.2s; }
+        .skill-card:nth-child(3) { animation-delay: 0.3s; }
+        .skill-card:nth-child(4) { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
@@ -480,7 +650,7 @@
     <div class="container">
         <a class="navbar-brand" href="#">HP<span style="color:#3b82f6;">services</span></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
@@ -499,16 +669,16 @@
 <!-- Hero section -->
 <section id="hero" class="hero">
     <div class="container">
-        <div class="row align-items-center g-5">
+        <div class="row align-items-center g-4">
             <div class="col-lg-7" data-aos="fade-right" data-aos-duration="1000">
                 <div class="hero-badge"><i class="fas fa-code me-2"></i> Créativité & tech</div>
                 <h1>Polycarpe <span class="highlight">HOUNTOGAN</span><br>Développeur web & administrateur réseaux</h1>
-                <p class="hero-text mt-4">Spécialiste en développement web, maintenance, admin réseaux, graphisme et sérigraphie. J'allie performance technique et design impactant.</p>
+                <p class="hero-text mt-3">Spécialiste en développement web, maintenance, admin réseaux, graphisme et sérigraphie. J'allie performance technique et design impactant.</p>
                 <div class="mt-4 d-flex gap-3 flex-wrap">
-                    <a href="cv.pdf" target="_blank" class="btn btn-primary-glow"><i class="fas fa-file-pdf me-2"></i>Télécharger CV pro</a>
-                    <a href="#projets" class="btn btn-outline-light rounded-pill px-4">Voir mes projets <i class="fas fa-arrow-right ms-2"></i></a>
+                    <a href="cv.pdf" target="_blank" class="btn btn-primary-glow"><i class="fas fa-file-pdf me-2"></i>Télécharger CV</a>
+                    <a href="#projets" class="btn btn-outline-light rounded-pill px-4">Voir projets <i class="fas fa-arrow-right ms-2"></i></a>
                 </div>
-                <div class="mt-5 d-flex gap-4">
+                <div class="mt-4 d-flex gap-4 flex-wrap">
                     <div><i class="fab fa-laravel fs-3 text-info"></i></div>
                     <div><i class="fab fa-js fs-3 text-warning"></i></div>
                     <div><i class="fab fa-linux fs-3 text-light"></i></div>
@@ -517,7 +687,7 @@
             </div>
             <div class="col-lg-5" data-aos="fade-left" data-aos-duration="1000">
                 <div class="hero-img">
-                    <img src="hp.jpeg" alt="Polycarpe" class="img-fluid" onerror="this.src='https://placehold.co/500x500?text=Polycarpe+Photo'">
+                    <img src="hp.jpeg" alt="Polycarpe" class="img-fluid" onerror="this.src='https://placehold.co/500x500?text=Photo'">
                 </div>
             </div>
         </div>
@@ -529,12 +699,12 @@
     <div class="container">
         <div class="section-title"><span>Compétences</span> <i class="fas fa-cogs ms-2"></i></div>
         <div class="divider-glow"></div>
-        <div class="row g-4">
+        <div class="row g-3 g-md-4">
             <div class="col-md-6" data-aos="fade-up">
                 <div class="skill-card">
                     <div class="skill-icon"><i class="fab fa-html5"></i> / <i class="fab fa-css3-alt"></i></div>
                     <h4 class="skill-title">HTML5 / CSS3 / Bootstrap</h4>
-                    <p>Conception, développement et déploiement de sites et applications web</p>
+                    <p>Conception, développement et déploiement de sites web</p>
                     <div class="skill-bar-bg"><div class="skill-bar-fill" data-progress="85"></div></div>
                     <div class="mt-3"><i class="fab fa-php"></i> PHP / Laravel <span class="float-end">70%</span><div class="skill-bar-bg mt-1"><div class="skill-bar-fill" data-progress="70"></div></div></div>
                 </div>
@@ -545,15 +715,13 @@
                     <h4 class="skill-title">JavaScript / Python</h4>
                     <div class="skill-bar-bg"><div class="skill-bar-fill" data-progress="55"></div></div>
                     <div class="mt-3"><i class="fas fa-network-wired"></i> Administration Réseaux <span class="float-end">75%</span><div class="skill-bar-bg mt-1"><div class="skill-bar-fill" data-progress="75"></div></div></div>
-                    <div class="mt-3"><i class="fas fa-network-wired"></i> Conception, mise en place, déploiement et maintenance des infrastructures réseaux <span class="float-end">75%</span><div class="skill-bar-bg mt-1"><div class="skill-bar-fill" data-progress="75"></div></div></div>
-                    <div class="mt-3"><i class="fas fa-wifi"></i> Mise en place des wifi-zones <span class="float-end">75%</span><div class="skill-bar-bg mt-1"><div class="skill-bar-fill" data-progress="75"></div></div></div>
                     <div class="mt-3"><i class="fab fa-linux"></i> Administration Linux & Windows <span class="float-end">75%</span><div class="skill-bar-bg mt-1"><div class="skill-bar-fill" data-progress="75"></div></div></div>
                 </div>
             </div>
             <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
                 <div class="skill-card">
                     <div class="skill-icon"><i class="fas fa-paintbrush-fine"></i> Graphisme & Sérigraphie</div>
-                    <h4 class="skill-title">Photoshop · Illustrator · Création visuelle</h4>
+                    <h4 class="skill-title">Photoshop · Création visuelle</h4>
                     <div class="skill-bar-bg"><div class="skill-bar-fill" data-progress="88"></div></div>
                     <p class="mt-2">Identité visuelle, affiches, cartes, impression tous supports.</p>
                 </div>
@@ -569,141 +737,109 @@
     </div>
 </section>
 
-<!-- Expériences professionnelles détaillée -->
+<!-- Expériences -->
 <section id="experience-pro">
     <div class="container">
-        <div class="section-title"><span>Expériences Professionnelles</span> <i class="fas fa-briefcase ms-2"></i></div>
+        <div class="section-title"><span>Expériences</span> <i class="fas fa-briefcase ms-2"></i></div>
         <div class="divider-glow"></div>
-        
-
-        <div class="row g-4">
+        <div class="row g-3 g-md-4">
             <div class="col-lg-6" data-aos="fade-right">
                 <div class="exp-detail-card">
-                    <div class="exp-header">
+                    <div class="exp-header d-flex justify-content-between flex-wrap">
                         <span class="exp-title">Développeur web</span>
                         <span class="exp-date">2024 - Présent</span>
                     </div>
                     <div class="exp-company"><i class="fas fa-building me-2"></i>PolyHP Services</div>
-                    <div class="exp-description">
-                        Applications web, sites vitrines et dynamique
-                    </div>
+                    <div class="exp-description">Applications web, sites vitrines et dynamiques</div>
                     <div class="exp-tech">
-                        <span>Laravel</span>
-                        <span>PHP</span>
-                        <span>MySQL</span>
-                        <span>Bootstrap</span>
-                        <span>JavaScript</span>
+                        <span>Laravel</span><span>PHP</span><span>MySQL</span><span>Bootstrap</span><span>JS</span>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6" data-aos="fade-left">
                 <div class="exp-detail-card">
-                    <div class="exp-header">
-                        <span class="exp-title">Administrateur Réseaux & Systèmes</span>
+                    <div class="exp-header d-flex justify-content-between flex-wrap">
+                        <span class="exp-title">Administrateur Réseaux</span>
                         <span class="exp-date">2023 - Présent</span>
                     </div>
                     <div class="exp-company"><i class="fas fa-building me-2"></i>ENEAM / UAC</div>
-                    <div class="exp-description">
-                        Administration des infrastructures réseau, configuration des équipements Cisco, 
-                        mise en place de solutions de sécurité, gestion des serveurs Linux et Windows, 
-                        déploiement de wifi-zones.
-                    </div>
-                    <div class="exp-description">
-                        Stage académique de 3 mois aux services informatiques de l'UAC
-                    </div>
+                    <div class="exp-description">Administration des infrastructures réseau, configuration Cisco, sécurité, serveurs Linux/Windows, déploiement wifi-zones.</div>
+                    <div class="exp-description mt-1">Stage académique aux services informatiques de l'UAC</div>
                     <div class="exp-tech">
-                        <span>Linux</span>
-                        <span>Ubuntu Server</span>
-                        <span>Cisco</span>
-                        <span>Virtualisation</span>
-                        <span>Firewall</span>
+                        <span>Linux</span><span>Ubuntu</span><span>Cisco</span><span>Virtualisation</span><span>Firewall</span>
                     </div>
                 </div>
             </div>
             <div class="col-lg-6" data-aos="fade-right" data-aos-delay="100">
                 <div class="exp-detail-card">
-                    <div class="exp-header">
+                    <div class="exp-header d-flex justify-content-between flex-wrap">
                         <span class="exp-title">Graphiste & Sérigraphe</span>
                         <span class="exp-date">2023 - Présent</span>
                     </div>
+                    <div class="exp-company"><i class="fas fa-building me-2"></i>Action Vitale / PolyHP</div>
+                    <div class="exp-description">Création logos, affiches, impressions sur tee-shirts, tasses, maillots.</div>
+                    <div class="exp-tech"><span>Photoshop</span><span>Illustrator</span><span>Sérigraphie</span><span>DTF</span></div>
                 </div>
             </div>
             <div class="col-lg-6" data-aos="fade-left" data-aos-delay="100">
                 <div class="exp-detail-card">
-                    <div class="exp-header">
-                        <span class="exp-title">Technicien Maintenance Informatique</span>
+                    <div class="exp-header d-flex justify-content-between flex-wrap">
+                        <span class="exp-title">Technicien Maintenance</span>
                         <span class="exp-date">2024 - présent</span>
                     </div>
-                    <div class="exp-company"><i class="fas fa-building me-2"></i>Services Informatiques (Freelance)</div>
-                    <div class="exp-description">
-                        Diagnostic et réparation de matériels informatiques, installation et configuration de logiciels et système d'exploitation, 
-                        sauvegarde et restauration de données.
-                    </div>
-                    <div class="exp-tech">
-                        <span>Hardware</span>
-                        <span>Windows</span>
-                        <span>Linux</span>
-                        <span>Réseaux</span>
-                        <span>Virtualisation</span>
-                    </div>
+                    <div class="exp-company"><i class="fas fa-building me-2"></i>Freelance</div>
+                    <div class="exp-description">Diagnostic, réparation matériels, installation logiciels, sauvegarde données.</div>
+                    <div class="exp-tech"><span>Hardware</span><span>Windows</span><span>Linux</span><span>Réseaux</span></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Projets réalisés -->
+<!-- Projets -->
 <section id="projets">
     <div class="container">
         <div class="section-title"><span>Projets Réalisés</span> <i class="fas fa-code-branch ms-2"></i></div>
         <div class="divider-glow"></div>
-        <div class="row g-4">
+        <div class="row g-3 g-md-4">
             <div class="col-md-6 col-lg-4" data-aos="flip-left">
                 <div class="project-card">
-                    <div class="project-img">
-                        <img src="projet/projet1.jpg" alt="E-commerce" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Site+E-commerce'">
-                    </div>
+                    <div class="project-img"><img src="projet/projet1.jpg" alt="Formation" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Formation'"></div>
                     <div class="project-content">
-                        <div class="project-category"><i class="fas fa-shopping-cart me-1"></i> Formation en ligne</div>
+                        <div class="project-category"><i class="fas fa-graduation-cap me-1"></i> Formation</div>
                         <h4 class="project-title">Plateforme de formation en ligne</h4>
-                        <p class="project-description">Site de formation en ligne (Opti-Learning), paiement sécurisé et tableau de bord admin. Développé avec Laravel et MySQL.</p>
+                        <p class="project-description">Site Opti-Learning, paiement sécurisé, dashboard admin. Laravel & MySQL.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="100">
                 <div class="project-card">
-                    <div class="project-img">
-                        <img src="projet/projet2.jpg" alt="Application Gestion" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Gestion+Stock'">
-                    </div>
+                    <div class="project-img"><img src="projet/projet2.jpg" alt="Gestion" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Gestion'"></div>
                     <div class="project-content">
-                        <div class="project-category"><i class="fas fa-chart-line me-1"></i> Gestion</div>
+                        <div class="project-category"><i class="fas fa-school me-1"></i> Gestion</div>
                         <h4 class="project-title">Système de gestion d'école</h4>
-                        <p class="project-description">Application web pour la gestion des écoles, suivi des apprenants et génération de rapports. Interface intuitive et responsive.</p>
+                        <p class="project-description">Gestion des écoles, suivi apprenants, génération rapports.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="300">
+                <div class="project-card">
+                    <div class="project-img"><img src="projet/projet5.jpg" alt="Dashboard" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Dashboard'"></div>
+                    <div class="project-content">
+                        <div class="project-category"><i class="fas fa-chart-line me-1"></i> Dashboard</div>
+                        <h4 class="project-title">Tableau de bord admin</h4>
+                        <p class="project-description">Analytics, graphiques dynamiques, gestion utilisateurs.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="400">
                 <div class="project-card">
-                    <div class="project-img">
-                        <img src="projet/projet5.jpg" alt="Dashboard Admin" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Dashboard+Admin'">
-                    </div>
-                    <div class="project-content">
-                        <div class="project-category"><i class="fas fa-tachometer-alt me-1"></i> Dashboard</div>
-                        <h4 class="project-title">Tableau de bord administrateur</h4>
-                        <p class="project-description">Dashboard analytics avec graphiques dynamiques, gestion des utilisateurs et statistiques en temps réel.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-4" data-aos="flip-left" data-aos-delay="500">
-                <div class="project-card">
-                    <div class="project-img">
-                        <img src="projet/projet6.jpg" alt="Site Vitrine" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Site+Vitrine'">
-                    </div>
+                    <div class="project-img"><img src="projet/projet6.jpg" alt="Vitrine" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Vitrine'"></div>
                     <div class="project-content">
                         <div class="project-category"><i class="fas fa-building me-1"></i> Vitrine</div>
-                        <h4 class="project-title">Site vitrine pour entreprise</h4>
-                        <p class="project-description">Site vitrine moderne pour une PME avec formulaire de contact, galerie et optimisation SEO.</p>
-                        <a href="action_vitale/vital.html" class="project-link">Voir le projet <i class="fas fa-arrow-right"></i></a>
+                        <h4 class="project-title">Site vitrine entreprise</h4>
+                        <p class="project-description">Site moderne, formulaire contact, galerie, SEO.</p>
+                        <a href="action_vitale/vital.html" class="project-link">Voir <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -711,22 +847,21 @@
     </div>
 </section>
 
-<!-- Éducation -->
+<!-- Formation -->
 <section id="education">
     <div class="container">
-        <div class="section-title"><span>Parcours académique</span> <i class="fas fa-graduation-cap"></i></div>
+        <div class="section-title"><span>Formation</span> <i class="fas fa-graduation-cap"></i></div>
         <div class="divider-glow"></div>
-        <div class="row g-4">
+        <div class="row g-3 g-md-4">
             <div class="col-lg-6" data-aos="zoom-in-right">
                 <div class="exp-detail-card">
                     <i class="fas fa-university fa-2x text-primary mb-3"></i>
                     <h3>ENEAM / UAC</h3>
-                    <h5 class="text-info">BAC + 3 en Informatique de Gestion | 2023-2026</h5>
+                    <h5 class="text-info" style="font-size: 0.9rem;">BAC+3 Informatique de Gestion | 2023-2026</h5>
                     <ul class="list-unstyled mt-3">
                         <li><i class="fas fa-check-circle text-success me-2"></i> Maintenance & Réseaux</li>
                         <li><i class="fas fa-check-circle text-success me-2"></i> Développement web</li>
                         <li><i class="fas fa-check-circle text-success me-2"></i> Base de données</li>
-                        <li><i class="fas fa-check-circle text-success me-2"></i> Administration systèmes</li>
                     </ul>
                 </div>
             </div>
@@ -734,13 +869,9 @@
                 <div class="exp-detail-card">
                     <i class="fas fa-certificate fa-2x text-primary mb-3"></i>
                     <h3>Formations complémentaires</h3>
-                    <p><strong><i class="fab fa-html5 me-1"></i> Développeur Web</strong> – Apprendre-a-coder.com (2024)</p>
-                    <p><strong><i class="fas fa-palette me-1"></i> Graphisme & Sérigraphie</strong> – Centre Action Vitale (2023)</p>
-                    <p><strong><i class="fab fa-linux me-1"></i> Administration Linux</strong> – Auto-formation (2024)</p>
-                    <div class="mt-2">
-                        <span class="badge bg-primary px-3">HTML/CSS/JS</span>
-                        <span class="badge bg-info px-3">Linux</span>
-                    </div>
+                    <p><strong><i class="fab fa-html5 me-1"></i> Développeur Web</strong> – 2024</p>
+                    <p><strong><i class="fas fa-palette me-1"></i> Graphisme & Sérigraphie</strong> – 2023</p>
+                    <p><strong><i class="fab fa-linux me-1"></i> Administration Linux</strong> – 2024</p>
                 </div>
             </div>
         </div>
@@ -750,89 +881,89 @@
 <!-- Portfolio -->
 <section id="portfolio">
     <div class="container">
-        <div class="section-title"><span>Galerie Réalisations</span> <i class="fas fa-star-of-life"></i></div>
+        <div class="section-title"><span>Galerie</span> <i class="fas fa-star-of-life"></i></div>
         <div class="divider-glow"></div>
-        <div class="row g-4">
-            <div class="col-md-4 col-sm-6" data-aos="fade-up">
+        <div class="row g-3 g-md-4">
+            <div class="col-6 col-md-4" data-aos="fade-up">
                 <a href="dat_auto/auto.html" target="_blank" class="portfolio-card">
-                    <img src="projet/pro1.jpg" alt="projet web" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Projet+Web'">
-                    <div class="portfolio-overlay"><h5>Vente de voiture<i class="fas fa-external-link-alt ms-2"></i></h5></div>
+                    <img src="projet/pro1.jpg" alt="Vente auto" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Auto'">
+                    <div class="portfolio-overlay"><h5>Vente voitures</h5></div>
                 </a>
             </div>
-            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="100">
                 <a href="eneam/ENEAM.html" target="_blank" class="portfolio-card">
-                    <img src="eneam/tt.jpg" alt="ENEAM project" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=ENEAM+Solution'">
-                    <div class="portfolio-overlay"><h5>Plateforme académique <i class="fas fa-external-link-alt ms-2"></i></h5></div>
+                    <img src="eneam/tt.jpg" alt="ENEAM" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=ENEAM'">
+                    <div class="portfolio-overlay"><h5>Plateforme académique</h5></div>
                 </a>
             </div>
-            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="200">
                 <a href="projet polyhp/essai.html" target="_blank" class="portfolio-card">
-                    <img src="hp1.jfif" alt="jeu js" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Jeu+JavaScript'">
-                    <div class="portfolio-overlay"><h5><i class="fas fa-external-link-alt ms-2"></i></h5></div>
+                    <img src="hp1.jfif" alt="Jeu" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Jeu'">
+                    <div class="portfolio-overlay"><h5>Jeu interactif</h5></div>
                 </a>
             </div>
-            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="300">
+            <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="300">
                 <a href="projet info/projet2.html" target="_blank" class="portfolio-card">
-                    <img src="projet%20info/inf.jpg" alt="infrastructure" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=IT+Solution'">
-                    <div class="portfolio-overlay"><h5> <i class="fas fa-external-link-alt ms-2"></i></h5></div>
+                    <img src="projet%20info/inf.jpg" alt="IT" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=IT'">
+                    <div class="portfolio-overlay"><h5>Projet IT</h5></div>
                 </a>
             </div>
-            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="400">
+            <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="400">
                 <a href="projet/projet.html" target="_blank" class="portfolio-card">
-                    <img src="polyhp%20services/hp.jpg" alt="services" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Polyhp+Services'">
-                    <div class="portfolio-overlay"><h5>Design graphique / Print <i class="fas fa-external-link-alt ms-2"></i></h5></div>
+                    <img src="polyhp%20services/hp.jpg" alt="Design" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Design'">
+                    <div class="portfolio-overlay"><h5>Design graphique</h5></div>
                 </a>
             </div>
-            <div class="col-md-4 col-sm-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="col-6 col-md-4" data-aos="fade-up" data-aos-delay="500">
                 <a href="polyhp services/tpg.html" target="_blank" class="portfolio-card">
-                    <img src="projet%20polyhp/press.jpg" alt="presse" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Sérigraphie+Art'">
-                    <div class="portfolio-overlay"><h5>Sérigraphie & branding <i class="fas fa-external-link-alt ms-2"></i></h5></div>
+                    <img src="projet%20polyhp/press.jpg" alt="Sérigraphie" onerror="this.src='https://placehold.co/600x400/1e293b/3b82f6?text=Sérigraphie'">
+                    <div class="portfolio-overlay"><h5>Sérigraphie</h5></div>
                 </a>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Parcours avec carousel -->
+<!-- Parcours -->
 <section id="parcours">
     <div class="container">
-        <div class="section-title"><span>Parcours Scolaire</span> <i class="fas fa-chart-line"></i></div>
+        <div class="section-title"><span>Parcours scolaire</span> <i class="fas fa-timeline"></i></div>
         <div class="divider-glow"></div>
         <div id="parcoursCarousel" class="carousel slide carousel-modern" data-bs-ride="carousel" data-aos="fade-up">
-            <div class="carousel-inner text-center py-4">
+            <div class="carousel-inner text-center py-3 py-md-4">
                 <div class="carousel-item active">
-                    <i class="fas fa-scroll fa-3x text-primary mb-3"></i>
-                    <h3>📖 BEPC – CEG HOUEGBO</h3>
-                    <h5 class="text-light-50">Session 2018-2019</h5>
+                    <i class="fas fa-scroll fa-2x fa-md-3x text-primary mb-2 mb-md-3"></i>
+                    <h3 style="font-size: 1rem; font-size: 1.2rem;">📖 BEPC – CEG HOUEGBO</h3>
+                    <h5 style="font-size: 0.8rem;">Session 2018-2019</h5>
                 </div>
                 <div class="carousel-item">
-                    <i class="fas fa-diploma fa-3x text-primary mb-3"></i>
-                    <h3>🎓 Baccalauréat série D</h3>
-                    <h5>CEG1 ALLADA | 2022-2023</h5>
+                    <i class="fas fa-diploma fa-2x fa-md-3x text-primary mb-2 mb-md-3"></i>
+                    <h3 style="font-size: 1rem;">🎓 Baccalauréat série D</h3>
+                    <h5 style="font-size: 0.8rem;">CEG1 ALLADA | 2022-2023</h5>
                 </div>
                 <div class="carousel-item">
-                    <i class="fas fa-microchip fa-3x text-primary mb-3"></i>
-                    <h3>ENEAM/UAC – Licence 1,2,3 en cours</h3>
-                    <p class="px-3">2023-2026 • Spécialisation développement web, réseaux et management des systèmes d'information.</p>
+                    <i class="fas fa-microchip fa-2x fa-md-3x text-primary mb-2 mb-md-3"></i>
+                    <h3 style="font-size: 0.9rem;">ENEAM/UAC – Licence en cours</h3>
+                    <p style="font-size: 0.75rem;">2023-2026 • Développement web, réseaux</p>
                 </div>
             </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#parcoursCarousel" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" style="background-color:#2563eb; border-radius:50%;"></span>
+                <span class="carousel-control-prev-icon" style="background-color:#2563eb; border-radius:50%; width:30px; height:30px; background-size:60%;"></span>
             </button>
             <button class="carousel-control-next" type="button" data-bs-target="#parcoursCarousel" data-bs-slide="next">
-                <span class="carousel-control-next-icon" style="background-color:#2563eb; border-radius:50%;"></span>
+                <span class="carousel-control-next-icon" style="background-color:#2563eb; border-radius:50%; width:30px; height:30px; background-size:60%;"></span>
             </button>
         </div>
     </div>
 </section>
 
 <footer>
-    <a href="#hero" class="btn btn-outline-light rounded-circle p-3" style="width: 55px; height: 55px;"><i class="fas fa-arrow-up"></i></a>
-    <p class="mt-4 mb-0">© 2025 Polycarpe S. HOUNTOGAN - HPservices - Design moderne & performance. Tous droits réservés.</p>
-    <div class="mt-3">
-        <i class="fab fa-linkedin me-3"></i>
-        <i class="fab fa-github me-3"></i>
-        <i class="fab fa-twitter me-3"></i>
+    <a href="#hero" class="btn btn-outline-light rounded-circle" style="width: 45px; height: 45px; line-height: 45px; padding: 0;"><i class="fas fa-arrow-up"></i></a>
+    <p class="mt-3 mb-0" style="font-size: 0.75rem;">© 2025 Polycarpe S. HOUNTOGAN - HPservices</p>
+    <div class="mt-2">
+        <i class="fab fa-linkedin me-2"></i>
+        <i class="fab fa-github me-2"></i>
+        <i class="fab fa-twitter me-2"></i>
         <i class="fas fa-envelope"></i>
     </div>
 </footer>
@@ -840,9 +971,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
-    AOS.init({ once: true, offset: 100, duration: 800 });
+    AOS.init({ once: true, offset: 80, duration: 800 });
     
-    // Progress bars animation
     const fillBars = document.querySelectorAll('.skill-bar-fill');
     function animateSkillsBars() {
         fillBars.forEach(bar => {
@@ -851,10 +981,7 @@
             if (isVisible && !bar.classList.contains('filled')) {
                 const progress = bar.getAttribute('data-progress');
                 if (progress) bar.style.width = progress + '%';
-                else if (bar.parentElement.parentElement.querySelector('.float-end')) {
-                    let percent = bar.parentElement.parentElement.querySelector('.float-end')?.innerText.replace('%','');
-                    if(percent) bar.style.width = percent + '%';
-                } else bar.style.width = '70%';
+                else bar.style.width = '70%';
                 bar.classList.add('filled');
             }
         });
@@ -863,15 +990,6 @@
     window.addEventListener('scroll', animateSkillsBars);
     window.addEventListener('load', animateSkillsBars);
     
-    // Fallback images
-    document.querySelectorAll('img').forEach(img => {
-        img.addEventListener('error', () => { 
-            if(!img.src.includes('placehold')) 
-                img.src = 'https://placehold.co/600x400/1e293b/3b82f6?text=Image+non+disponible'; 
-        });
-    });
-    
-    // Smooth scroll links
     document.querySelectorAll('.navbar-nav a, footer a[href^="#"]').forEach(link => {
         link.addEventListener('click', function(e) {
             let hash = this.getAttribute('href');
@@ -879,6 +997,7 @@
                 e.preventDefault();
                 let target = document.querySelector(hash);
                 if(target) target.scrollIntoView({ behavior: 'smooth' });
+                document.querySelector('.navbar-collapse')?.classList.remove('show');
             }
         });
     });
