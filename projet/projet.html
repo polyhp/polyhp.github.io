@@ -1,38 +1,668 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style5.css">
-    <title>graphisme</title>
+    <title>Graphisme & Design Web | Création Visuelle Moderne</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Section Header */
+        .header {
+            min-height: 100vh;
+            position: relative;
+            background: radial-gradient(circle at 20% 30%, rgba(100, 50, 150, 0.15), rgba(0, 0, 0, 0.85));
+            overflow: hidden;
+        }
+
+        /* Menu Burger */
+        .menu {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            cursor: pointer;
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .menu:hover {
+            background: rgba(139, 92, 246, 0.3);
+            transform: scale(1.05);
+        }
+
+        .menu span {
+            width: 25px;
+            height: 2px;
+            background: white;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .menu.show span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        .menu.show span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu.show span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 350px;
+            height: 100vh;
+            background: rgba(10, 10, 20, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 50px;
+            transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-left: 1px solid rgba(139, 92, 246, 0.3);
+        }
+
+        .nav.show {
+            right: 0;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+            display: inline-block;
+        }
+
+        .links a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #8b5cf6, #ec489a);
+            transition: width 0.3s;
+        }
+
+        .links a:hover {
+            background: linear-gradient(135deg, #8b5cf6, #ec489a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            transform: translateX(10px);
+        }
+
+        .links a:hover::before {
+            width: 100%;
+        }
+
+        .image {
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .image img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #8b5cf6;
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.3);
+        }
+
+        /* Text Content */
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 10%;
+            transform: translateY(-50%);
+            max-width: 600px;
+            z-index: 2;
+        }
+
+        .text h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff, #8b5cf6, #ec489a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+        }
+
+        .text p {
+            font-size: 1.2rem;
+            color: #cbd5e1;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn_style {
+            display: inline-block;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, #8b5cf6, #ec489a);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(139, 92, 246, 0.4);
+        }
+
+        .btn_style:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.6);
+        }
+
+        /* Floating shapes */
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        /* Section Applications */
+        .applications {
+            padding: 100px 10%;
+            background: linear-gradient(180deg, #0a0a0a, #0f0f1a);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .section-title span {
+            background: linear-gradient(135deg, #8b5cf6, #ec489a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #94a3b8;
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 30px;
+            transition: all 0.3s;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: #8b5cf6;
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.2);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #cbd5e1;
+            line-height: 1.6;
+        }
+
+        /* Gallery IA Images */
+        .gallery {
+            padding: 100px 10%;
+            background: #0f0f1a;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,0.8), transparent);
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            font-size: 1rem;
+            margin-bottom: 5px;
+        }
+
+        .gallery-overlay p {
+            font-size: 0.8rem;
+            color: #cbd5e1;
+        }
+
+        /* Tools Section */
+        .tools {
+            padding: 100px 10%;
+            background: linear-gradient(135deg, #0f0f1a, #0a0a0a);
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 40px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .tool-item {
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
+
+        .tool-item:hover {
+            background: rgba(139, 92, 246, 0.1);
+            transform: scale(1.05);
+        }
+
+        .tool-item i {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+
+        .tool-item .fa-figma { color: #f24e1e; }
+        .tool-item .fa-photoshop { color: #31a8ff; }
+        .tool-item .fa-illustrator { color: #ff9a00; }
+        .tool-item .fa-palette { color: #8b5cf6; }
+        .tool-item .fa-code { color: #ec489a; }
+        .tool-item .fa-mobile-alt { color: #10b981; }
+
+        .tool-item h4 {
+            font-size: 1.1rem;
+            margin-top: 10px;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 10%;
+            background: linear-gradient(135deg, #8b5cf6, #ec489a);
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .contact-form {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .contact-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .contact-form button {
+            padding: 15px 30px;
+            background: #1a1a2e;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .contact-form button:hover {
+            transform: scale(1.05);
+            background: #0a0a0a;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px;
+            text-align: center;
+            background: #0a0a0a;
+            border-top: 1px solid rgba(139, 92, 246, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .text h1 {
+                font-size: 2.5rem;
+            }
+            .text {
+                left: 5%;
+                right: 5%;
+            }
+            .nav {
+                width: 100%;
+                right: -100%;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .contact-form {
+                flex-direction: column;
+            }
+        }
+
+        /* Animation scroll */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card, .gallery-item, .tool-item {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .card:nth-child(1) { animation-delay: 0.1s; }
+        .card:nth-child(2) { animation-delay: 0.2s; }
+        .card:nth-child(3) { animation-delay: 0.3s; }
+        .card:nth-child(4) { animation-delay: 0.4s; }
+    </style>
 </head>
 <body>
-    <!--header-->
+    <!-- Header -->
     <section class="header">
-       <div class="menu"></div>
+        <div class="menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <div class="text">
-            <h1>graphisme</h1>
-            <a href="#" class="btn_style">Savoir plus sur nous</a>
+            <h1>Graphisme<br>Design Web</h1>
+            <p>Le graphisme est l'art de communiquer visuellement. Dans le développement web, il transforme une interface fonctionnelle en une expérience utilisateur mémorable et engageante.</p>
+            <a href="#" class="btn_style">Découvrir nos services</a>
         </div>
         <div class="nav">
             <div class="links">
-                <a href="#">Model</a>
-                <a href="#">Commencer</a>
-                <a href="#">contact</a>
+                <a href="#">Accueil</a>
+                <a href="#">Applications</a>
+                <a href="#">Galerie IA</a>
+                <a href="#">Outils</a>
+                <a href="#">Contact</a>
             </div>
             <div class="image">
-                <img src="hp2.jpg">
+                <img src="https://placehold.co/400x400/8b5cf6/ffffff?text=AI+Avatar" alt="Avatar">
             </div>
         </div>
     </section>
 
+    <!-- Applications du graphisme dans le web -->
+    <section class="applications">
+        <h2 class="section-title">Le Graphisme dans le <span>Développement Web</span></h2>
+        <p class="section-subtitle">Comment le design visuel transforme l'expérience utilisateur et la performance des sites</p>
+        
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-icon">🎨</div>
+                <h3>UI/UX Design</h3>
+                <p>Création d'interfaces intuitives et esthétiques qui guident l'utilisateur naturellement. Le design thinking au service de l'expérience utilisateur.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">📱</div>
+                <h3>Responsive Design</h3>
+                <p>Adaptation graphique à tous les écrans. Une expérience fluide du mobile au desktop grâce à des maquettes adaptatives.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <h3>Performance Visuelle</h3>
+                <p>Optimisation des images et des assets graphiques pour un chargement rapide sans compromis sur la qualité visuelle.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🎯</div>
+                <h3>Identité de Marque</h3>
+                <p>Création d'une charte graphique cohérente qui renforce la reconnaissance et la crédibilité de votre marque en ligne.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie d'images IA -->
+    <section class="gallery">
+        <h2 class="section-title">Inspirations <span>IA Générative</span></h2>
+        <p class="section-subtitle">Des visuels créés par intelligence artificielle pour illustrer le potentiel du graphisme moderne</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x600/8b5cf6/ffffff?text=AI+Design+1" alt="Design IA">
+                <div class="gallery-overlay">
+                    <h4>Design UI Moderne</h4>
+                    <p>Interface glassmorphisme générée par IA</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x600/ec489a/ffffff?text=AI+Design+2" alt="Design IA">
+                <div class="gallery-overlay">
+                    <h4>Typographie Créative</h4>
+                    <p>Lettering original et dynamique</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x600/10b981/ffffff?text=AI+Design+3" alt="Design IA">
+                <div class="gallery-overlay">
+                    <h4>Palette Chromatique</h4>
+                    <p>Harmonies de couleurs générées</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x600/f59e0b/ffffff?text=AI+Design+4" alt="Design IA">
+                <div class="gallery-overlay">
+                    <h4>Illustration Vectorielle</h4>
+                    <p>Style isométrique moderne</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x600/3b82f6/ffffff?text=AI+Design+5" alt="Design IA">
+                <div class="gallery-overlay">
+                    <h4>Motion Design</h4>
+                    <p>Animations graphiques fluides</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://placehold.co/600x600/ef4444/ffffff?text=AI+Design+6" alt="Design IA">
+                <div class="gallery-overlay">
+                    <h4>Branding IA</h4>
+                    <p>Identités visuelles uniques</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Outils de graphisme -->
+    <section class="tools">
+        <h2 class="section-title">Outils <span>Indispensables</span></h2>
+        <p class="section-subtitle">Les logiciels et technologies au service du graphiste web moderne</p>
+        
+        <div class="tools-grid">
+            <div class="tool-item">
+                <i class="fab fa-figma"></i>
+                <h4>Figma</h4>
+                <p>Design collaboratif</p>
+            </div>
+            <div class="tool-item">
+                <i class="fab fa-adobe"></i>
+                <h4>Photoshop</h4>
+                <p>Retouche d'images</p>
+            </div>
+            <div class="tool-item">
+                <i class="fab fa-adobe"></i>
+                <h4>Illustrator</h4>
+                <p>Vectoriel & logos</p>
+            </div>
+            <div class="tool-item">
+                <i class="fas fa-palette"></i>
+                <h4>Procreate</h4>
+                <p>Illustration numérique</p>
+            </div>
+            <div class="tool-item">
+                <i class="fas fa-code"></i>
+                <h4>Tailwind CSS</h4>
+                <p>Framework CSS</p>
+            </div>
+            <div class="tool-item">
+                <i class="fas fa-mobile-alt"></i>
+                <h4>Webflow</h4>
+                <p>No-code design</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact">
+        <h2>Prêt à transformer votre présence en ligne ?</h2>
+        <p>Contactez-nous pour discuter de votre projet graphique et web</p>
+        <form class="contact-form">
+            <input type="email" placeholder="Votre email">
+            <button type="submit">Envoyer <i class="fas fa-arrow-right"></i></button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Graphisme & Design Web. Tous droits réservés.</p>
+        <p style="margin-top: 15px; font-size: 0.8rem;">Illustrations générées par intelligence artificielle</p>
+    </footer>
+
     <script>
+        // Menu burger toggle
         var menu = document.querySelector('.menu');
         var nav = document.querySelector('.nav');
-        menu.onclick = function(){
+        
+        menu.onclick = function() {
             menu.classList.toggle('show');
             nav.classList.toggle('show');
         }
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.remove('show');
+                nav.classList.remove('show');
+            });
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
     </script>
 </body>
 </html>
