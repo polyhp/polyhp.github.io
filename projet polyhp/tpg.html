@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tarif</title>
+    <link rel="stylesheet" href="style4.css">
+</head>
+<body>
+    <!--header-->
+    <header>
+        <!--menu responsive-->
+
+
+        <div class="tgl">
+            <span></span>
+        </div>
+
+        <div class="logo">
+                <p><span>Polyhp</span>Services</p>
+        </div>
+        <ul class="menu">
+            <li><a href="#home">Accueil</a></li>
+            <li><a href="#detail">Détails</a></li>
+            <li><a href="#exemple"> Œuvres</a></li>
+            <li><a href="#contact"> Contact</a></li>
+        </ul>
+        <button class="login">LOGIN</button>
+    </header>
+    <!--section accueil--> 
+    <section id="home">
+        <div class="left">
+            <h1>Choisissez <span>Vos formations</span>Chez nous!!</h1>
+            <p>Pénétrez le marché de l'emploie en vous faisant former dans le domaine du 
+                numerique avec un niveau de 
+                 dominant celui de la théorie. Choisissez chez nous une 
+                formation adaptée pour vous et devenez expert dans le domaine.</p>
+            <a href="#">Plus d'informations</a>
+        </div>
+        <div class="right">
+            <img src="hp.jpg">
+        </div>
+    </section>
+    
+    <!--section details--> 
+
+    <section id="detail">
+        <h1 class="titre"> Nos formations</h1>
+        <div class="images">
+            <ul>
+                <li class="forms">
+                    <div>
+                      <img src="plx.jpg">
+                    </div>
+                    <span>Photo cadre et photo sur plexiglass</span>
+                    <span class="prix">50 000Fcfa (6 mois)</span>
+                    <a href="#">Postuler maintenant</a>
+                </li>
+                <li class="forms">
+                    <div>
+                      <img src="gaphic.jpg">
+                    </div>
+                    <span>graphisme PAO</span>
+                    <span class="prix">50 000Fcfa (6 mois)</span>
+                    <a href="#">Postuler maintenant</a>
+                </li>
+                <li class="forms">
+                    <div>
+                      <img src="press.jpg">
+                    </div>
+                    <span>Sérigraphie</span>
+                    <span class="prix">80 000Fcfa (8 mois)</span>
+                    <a href="#">Postuler maintenant</a>
+                </li>
+                <li class="forms">
+                    <div>
+                      <img src="presstass.webp">
+                    </div>
+                    <span>Impression (Tasse)</span>
+                    <span class="prix">60 000Fcfa ( 6 mois)</span>
+                    <a href="#">Postuler maintenant</a>
+                </li>
+                <li class="forms">
+                    <div>
+                      <img src="imprime.jpg">
+                    </div>
+                    <span>Imprimerie</span>
+                    <span class="prix">70 000Fcfa(7 mois)</span>
+                    <a href="#">Postuler maintenant</a>
+                </li>
+                <li class="forms">
+                    <div>
+                      <img src="poly design.png">
+                    </div>
+                    <span>graphisme, Sérigraphie et Impression </span>
+                    <span class="prix">250 000Fcfa (1 an 6 mois)</span>
+                    <a href="#">Postuler maintenant</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <!--section exemplaires-->
+    <section id="exemple">
+        <h1 class="titre">Nos œuvres</h1>
+        <div class="list_promo">
+            <div class="oeuvre">
+                 <img src="px1.jpg">
+                 <h3>Photo</h3>
+                 <p>Impression de photo sur plexiglas manuellemant</p>
+                 <a href="#" class="lire">Voir plus</a>
+            </div>
+            <div class="oeuvre">
+                 <img src="bh.jpg">
+                 <h3>Bâche</h3>
+                 <p>Impression sur des bâche grand ou petit format quelque soit la dimenssion </p>
+                 <a href="#" class="lire">Voir plus</a>
+            </div>
+            <div class="oeuvre">
+                 <img src="ts.jpg">
+                 <h3>Tee-shirt</h3>
+                 <p>Impression sur les tee-shirt pour les occasions d'anniversaire ou autres </p>
+                 <a href="#" class="lire">Voir plus</a>
+            </div>
+            <div class="oeuvre">
+                 <img src="mg1.jpg">
+                 <h3>Flocage</h3>
+                 <p>Flocage sur maillot avec personalisation de nom et de numéro</p>
+                 <a href="#" class="lire">Voir plus</a>
+            </div>
+            <div class="oeuvre">
+                 <img src="tx.jpg">
+                 <h3>Tasse</h3>
+                 <p>Impression sur tasse avec personnalisation d'informations </p>
+                 <a href="#" class="lire">Voir plus</a>
+            </div>    
+        </div>
+    </section>
+
+
+        <!--section contact-->
+
+        <section id="contact">
+            <h1 class="titre">Contact et Localisation</h1>
+            <div class="localisation_contact_div">
+                <div class="localisation">
+                    <h1>Siège:</h1>
+                    <p><br>Abomey-calavi quartier Zogbadjè derrière le campus</p>
+                </div>
+                <div class="form_contact">
+                <h3>Envoyer une message </h3>
+                <form action="#">
+                    <input type="text" placeholder="Nom">
+                    <input type="email" placeholder="Adesse mail">
+                    <input type="text" placeholder="Objet">
+                    <textarea name="" id="" cols="30" rows="10" placeholder="Message"></textarea>
+                    <input type="submit" value="Envoyer">
+                </form>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>PolyhpDev site copyright ©2024</p>
+        </footer>
+        <script>
+            //responsive code js
+           var tgl = document.querySelector('.tgl');
+           var menu = document.querySelector('.menu');
+           var tgl_span = document.querySelector('.tgl span')
+           tgl.onclick = function(){
+            tgl.classList.toggle('active')
+            tgl_span.classList.toggle('active')
+            menu.classList.toggle('responsive')
+           }
+        </script>
+</body>
+</html>

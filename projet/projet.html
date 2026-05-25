@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style5.css">
+    <title>graphisme</title>
+</head>
+<body>
+    <!--header-->
+    <section class="header">
+       <div class="menu"></div>
+        <div class="text">
+            <h1>graphisme</h1>
+            <a href="#" class="btn_style">Savoir plus sur nous</a>
+        </div>
+        <div class="nav">
+            <div class="links">
+                <a href="#">Model</a>
+                <a href="#">Commencer</a>
+                <a href="#">contact</a>
+            </div>
+            <div class="image">
+                <img src="hp2.jpg">
+            </div>
+        </div>
+    </section>
+
+    <script>
+        var menu = document.querySelector('.menu');
+        var nav = document.querySelector('.nav');
+        menu.onclick = function(){
+            menu.classList.toggle('show');
+            nav.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

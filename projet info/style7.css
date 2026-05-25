@@ -1,0 +1,477 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+} 
+html{
+     font-size: 62.5%;
+}
+::-webkit-scrollbar{
+    width: 8%;
+}
+::-webkit-scrollbar-thumb{
+    background-color: #999;
+    border-radius: 6px;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 10%;
+}
+header .logo span{
+    color: #f46a06;
+}
+.menu_number{
+    display: flex;
+    align-items: center;
+}
+.menu_number .number{
+    margin-left: 90px;
+}
+.menu{
+    display: flex;
+}
+.menu li{
+    margin-left: 25px;
+    list-style: none;
+}
+.menu li a{
+    font-size: 12px;
+    text-decoration: none;
+    color: #f46a06;
+    text-transform: capitalize;
+}
+.number{
+    background-color: #f46a06;
+    padding: 7px 30px;
+    color: #fff;
+}
+/*home css*/
+#home{
+    padding: 0 10%;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+}
+.site_desc{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.site_desc .left{
+    width:40% ;
+}
+.site_desc .left h1{
+    font-size: 30px;
+}
+.site_desc .left p{
+   color: #999;
+   margin-top: 10px;
+}
+.left_button{
+    display: flex;
+    margin-top: ;
+}
+.left_button a {
+    padding: 10px 20px;
+    align-items: center;
+    font-size: 12px;
+
+}
+a{
+    display: flex;
+    text-decoration: 0;
+}
+a img{
+    width: 20px;
+    margin-left: 5px
+}
+.left_button a:first-child{
+    margin-top: 20px;
+    background-color: #f46a06;
+    color: #fff;
+}
+.left_button a:last-child{
+    margin-top: 20px;
+    margin-left: 25px;
+    background-color: #fff;
+    color: #000;
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.2) ;
+}
+.site_desc .right{
+    width:50% ;
+    height: 350px;
+}
+.site_desc .right img{
+    height:100% ;
+    width:100% ;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.2) ;
+
+}
+ /*statistics*/
+
+ #branches{
+    background-color: #f46a06;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 50px 15% ;
+ }
+ #branches .box{
+    text-align: center;
+ }
+ #branches .box p{
+    color: #fff;
+    font-size: 20px;
+ }
+ #branches .box h1{
+    font-size: 25px;
+ }
+ .metier{
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode';
+    font-weight: 400;
+    margin: 20px;
+    position: relative;
+    font-size: 10px;
+ }
+ .metier h1::after{
+    position: absolute;
+    top: 20px;
+    left: 200px;
+    bottom: -3px;
+    content: "";
+    background-color: #f46a06;
+    width: 40%;
+    height: 5px;
+    border-radius: 6px;
+ }
+ .metier h1::before{
+    position: absolute;
+    top: -10px;
+    left: 250px;
+    bottom: -3px;
+    content: "";
+    background-color: #f46a06;
+    width: 40%;
+    height: 5px;
+    border-radius: 6px;
+ }
+
+ /*a propos*/
+
+ #about{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 50px 10%;
+ }
+ #about .left{
+    width: 50%;
+ }
+ #about .left img{
+    height: 350px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+ }
+ #about .right{
+    width:40% ;
+ }
+ #about .right h2{
+    font-size: 25px;
+ }
+ #about .right p{
+    margin: 10px 0;
+    color: #999;
+ }
+ #about .right button{
+    padding: 8px 20px ;
+    background-color: #f46a06;
+    border: 0;
+    color: #fff;
+ }
+ #about .right button a{
+    color: #fff;
+    display: flex;
+    align-items: center;
+ }
+ 
+
+
+/*interet*/
+#interet{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 10%;
+}
+#interet p{
+    font-size: 13px;
+    color: #555555;
+}
+#interet .left{
+     display: flex;
+     flex-direction: column;
+     width:40% ;
+}
+.text{
+    padding: 10px 0;
+}
+#interet .left h2{
+    font-size: 25px;
+}
+#interet .left .service{
+    display: flex;
+    align-items: center;
+}
+#interet .left .service img{
+    width: 25px;
+}
+#interet .left button{
+    margin-top: 20px;
+    width: fit-content;
+    padding: 10px 25px ;
+    background-color: #f46a06;
+    border: 0;
+}
+#interet .left button a{
+    color: #fff;
+    display: flex;
+    align-items: center;
+}
+#interet .left .service p{
+    margin-left: 10px;
+}
+#interet .right{
+    width: 55%;
+    height: 500px;
+}
+#interet .right img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 1px solid #f46a06;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+ /*banner css*/
+ .banner{
+    text-align: center;
+    margin: 50px 0 ;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(bi.jpg);
+    background-position: center;
+    background-size: cover;
+    padding: 100px;
+ }
+ .banner h1{
+    color: #f46a06;
+    font-size: 30px;
+ }
+ .banner p{
+    font-size: 15px;
+    padding: 5px 0;
+    color: #fff;
+ }
+  /*liste css*/
+  .meal{
+    margin: 100px 0;
+  }
+  .meal .top{
+    text-align: center;
+  }
+  .meal .top h1{
+    font-size: 30px;
+    padding: 15px 0;
+  }
+  .meal .top p{
+    color:#555555 ;
+    font-size: 15px;
+    padding: 5px 0;
+  }
+  .meal .bottom{
+    margin: 60px 12%;
+    display: flex;
+    gap: 20px;
+  }
+  .meal .bottom .box{
+    text-align: center;
+    width: 30%;
+  }
+  .meal .bottom .box img{
+    width:100% ;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+  }
+  .meal .bottom .box h4{
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  .meal .bottom .box p{
+    margin: 5px 0;
+    font-size: 12px;
+    color: #999;
+  }
+  .meal .bottom .box span{
+    font-size: 25px;
+    color: #f46a06;
+  }
+  .meal .bottom .box button a img{
+    width: 20px;
+    height: 20px;
+    width: fit-content;
+  }
+  .meal .bottom .box button{
+    background-color: #f46a06;
+    border: 0;
+    margin-top: 10px;
+    width:100% ;
+    text-align: center;
+    padding: 5px 0;
+    display: flex;
+  }
+  .meal .bottom .box button a{
+    color: #fff;
+    text-align: center;
+    
+    align-items: center;
+    margin: 0 auto ;
+  }
+  footer{
+    background-color: #f46a06;
+    color: #fff;
+    padding: 10px 0 ;
+    text-align: center;
+    font-size: 12px;
+  }
+  /*responsive*/
+  @media (max-width:739px){
+    header{
+        padding: 10px 20px ;
+    }
+    header .menu{
+        display: none;
+    }
+    .number{
+        display: none;
+    }
+    #home{
+        margin: 50px 0;
+        padding: 0 20px;
+    }
+    #home .site_desc{
+        flex-direction: column-reverse;
+    }
+    #home .site_desc .left{
+        width:100% ;
+        margin-top: 50px;
+    }
+    #home .site_desc .right{
+        width:100% ;
+    }
+    .metier{
+        width:100% ;
+        font-size: 7px;
+    }
+    .metier h1::after{
+        width:70% ;
+        position: absolute;
+        top: 20px;
+        left: 30px;
+        bottom: -3px;
+    }
+    .metier h1::before{
+        width:70% ;
+        position: absolute;
+        top: -10px;
+        left: 60px;
+    }
+    #branches{
+        flex-direction: column-reverse;
+    }
+    #about{
+        flex-direction: column-reverse;
+        padding: 50px 20px ;
+    }
+    #about .left{
+        margin-top: 50px;
+    }
+    #about .right , #about .left{
+        width:100% ;
+    }
+    #interet{
+        padding: 0 20px;
+        position: relative;
+        width:100% ;
+        margin: 100px 0;
+        background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(rb.jpg);
+        background-position: center;
+        background-size: cover;
+        min-height: 70vh;
+    }
+    #interet .right{
+        display: none;
+    }
+    #interet h2{
+        color: #f46a06;
+    }
+    #interet p{
+        color: #fff;
+    }
+    #interet .left{
+        width:100% ;
+    }
+    .banner{
+        padding: 100px 20px;
+    }
+    .banner h1{
+        font-size: 10px;
+    }
+    .banner p{
+        font-size: 12px;
+    }
+    .meal .top h1{
+        font-size: 20px ;
+    }
+    .meal .top p{
+        display: none ;
+    }
+  }
+  /*responsive menu */
+   .menu_togle {
+      height: 50px;
+      width: 50px;
+      background-color: red
+      position: fixed;
+      right: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 1000;
+      border-radius: 6px;
+   }
+
+  /*responsive box meal */ 
+  @media (max-width:634px){
+    .meal .bottom{
+        flex-direction: column;
+    }
+    .meal .bottom .box{
+        width:100% ;
+        margin-bottom: 20px ;
+    }
+  }
+
+
+
+ 
+
+

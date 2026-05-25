@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DAT Autohus - Galerie multiple d'images</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            background-color: #1a1a2e;
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            margin-right: 15px;
+            border-radius: 8px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #e63946, #c1121f);
+        }
+        
+        .logo-img svg {
+            width: 50px;
+            filter: brightness(0) invert(1);
+        }
+        
+        .logo-text {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .logo-text span {
+            color: #e63946;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+        
+        nav li {
+            margin-left: 30px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #e63946;
+        }
+
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1592198084033-aade902d1aae?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: #e63946;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: 2px solid #e63946;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: #e63946;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: #1a1a2e;
+        }
+
+        /* Admin Panel */
+        .admin-panel {
+            padding: 40px 0;
+            background-color: #f1f3f5;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .admin-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .admin-badge {
+            background-color: #e63946;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .admin-form {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .admin-form h3 {
+            color: #1a1a2e;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        
+        /* Zone d'upload multiple */
+        .image-upload-area {
+            border: 2px dashed #ccc;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            background-color: #fafafa;
+        }
+        
+        .image-upload-area:hover {
+            border-color: #e63946;
+            background-color: #fff5f5;
+        }
+        
+        .image-upload-area i {
+            font-size: 48px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        .image-upload-area p {
+            color: #666;
+            margin-bottom: 10px;
+        }
+        
+        /* Galerie d'aperçu */
+        .gallery-preview {
+            margin-top: 20px;
+            display: none;
+        }
+        
+        .gallery-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #1a1a2e;
+        }
+        
+        .gallery-thumbnails {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        
+        .thumbnail-item {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 2px solid #ddd;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .thumbnail-item:hover {
+            transform: scale(1.05);
+            border-color: #e63946;
+        }
+        
+        .thumbnail-item.active {
+            border-color: #e63946;
+            box-shadow: 0 0 0 2px #e63946;
+        }
+        
+        .thumbnail-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .remove-img-btn {
+            position: absolute;
+            top: 2px;
+            right: 2px;
+            background: rgba(220, 53, 69, 0.9);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .remove-img-btn:hover {
+            background: #dc3545;
+        }
+        
+        /* Visualisation principale */
+        .main-visualization {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .main-image {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .nav-buttons button {
+            background: #1a1a2e;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .nav-buttons button:hover {
+            background: #e63946;
+        }
+        
+        .image-counter {
+            margin-top: 10px;
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .btn-submit {
+            background-color: #e63946;
+            border: none;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .btn-logout {
+            background-color: #6c757d;
+            border: none;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* Modal mot de passe */
+        .password-modal {
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .password-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        
+        /* Catalogue */
+        .catalogue {
+            padding: 80px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 36px;
+            color: #1a1a2e;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: #e63946;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .car-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .car-card:hover {
+            transform: translateY(-8px);
+        }
+        
+        .car-image-gallery {
+            position: relative;
+            height: 250px;
+            background: #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .car-image-gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .gallery-nav {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+        }
+        
+        .gallery-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .gallery-dot.active {
+            background: #e63946;
+            width: 20px;
+            border-radius: 4px;
+        }
+        
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.5);
+            color: white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+        
+        .nav-arrow:hover {
+            background: #e63946;
+        }
+        
+        .nav-arrow.prev {
+            left: 10px;
+        }
+        
+        .nav-arrow.next {
+            right: 10px;
+        }
+        
+        .car-info {
+            padding: 20px;
+        }
+        
+        .car-title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #1a1a2e;
+        }
+        
+        .car-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e63946;
+            margin: 10px 0;
+        }
+        
+        .car-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+        
+        .car-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        
+        .btn-edit, .btn-delete {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .btn-edit { background-color: #ffc107; color: #333; }
+        .btn-delete { background-color: #dc3545; color: white; }
+        
+        .services {
+            padding: 80px 0;
+            background-color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background-color: #f8f9fa;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background-color: #1a1a2e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 24px;
+        }
+        
+        footer {
+            background-color: #1a1a2e;
+            color: white;
+            padding: 50px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 { color: #e63946; margin-bottom: 20px; }
+        .footer-column a, .footer-column p { color: #b8b8b8; margin-bottom: 10px; display: block; text-decoration: none; }
+        .social-icons { display: flex; gap: 15px; margin-top: 20px; }
+        .social-icons a { width: 40px; height: 40px; background-color: #333; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .social-icons a:hover { background-color: #e63946; }
+        .copyright { text-align: center; padding-top: 30px; border-top: 1px solid #333; }
+
+        @media (max-width: 768px) {
+            .header-content { flex-direction: column; text-align: center; }
+            .form-row { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-img"><svg viewBox="0 0 100 100"><rect x="10" y="10" width="80" height="80" rx="10" fill="white"/><text x="50" y="42" text-anchor="middle" font-family="Arial" font-size="24" font-weight="bold" fill="#e63946">DAT</text><text x="50" y="65" text-anchor="middle" font-family="Arial" font-size="12" fill="#1a1a2e">AUTOHUS</text></svg></div>
+                    <div class="logo-text">DAT <span>Autohus</span></div>
+                </div>
+                <nav><ul><li><a href="#">Accueil</a></li><li><a href="#catalogue">Nos véhicules</a></li><li><a href="#services">Services</a></li><li><a href="#admin" id="adminLink">Admin</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Votre partenaire en import/export de véhicules</h1>
+            <p>DAT Autohus vous offre une gamme complète de services pour l'importation et l'exportation de véhicules de qualité.</p>
+            <a href="#catalogue" class="btn">Découvrir nos véhicules</a>
+            <a href="#contact" class="btn btn-outline">Nous contacter</a>
+        </div>
+    </section>
+
+    <section id="admin" class="admin-panel">
+        <div class="container">
+            <div class="admin-header"><h2 class="section-title" style="margin-bottom:0;">Panneau Admin</h2><div id="adminStatus"></div></div>
+            <div id="adminContent" style="display: none;">
+                <div class="admin-form">
+                    <h3><i class="fas fa-plus-circle"></i> Ajouter un véhicule</h3>
+                    <form id="carForm">
+                        <div class="form-group"><input type="text" id="carName" placeholder="Modèle du véhicule" required></div>
+                        <div class="form-group"><input type="text" id="carPrice" placeholder="Prix (ex: 25 000 €)" required></div>
+                        <div class="form-group"><textarea id="carDescription" placeholder="Description complète..." required></textarea></div>
+                        
+                        <!-- Upload multiple -->
+                        <div class="form-group">
+                            <label style="font-weight: 600;">Images du véhicule (plusieurs possibles) :</label>
+                            <div class="image-upload-area" id="imageUploadArea">
+                                <i class="fas fa-cloud-upload-alt"></i>
+                                <p>Cliquez ou glissez-déposez plusieurs images</p>
+                                <small>Formats : JPG, PNG, GIF, WEBP | Multiple sélection possible</small>
+                                <input type="file" id="imageFileInput" accept="image/*" multiple style="display: none;">
+                            </div>
+                            
+                            <!-- Galerie d'aperçu -->
+                            <div id="galleryPreview" class="gallery-preview">
+                                <div class="gallery-title"><i class="fas fa-images"></i> Galerie des images</div>
+                                <div class="gallery-thumbnails" id="thumbnailsContainer"></div>
+                                <div class="main-visualization">
+                                    <img id="mainDisplayImage" class="main-image" src="" alt="Aperçu principal">
+                                    <div class="nav-buttons">
+                                        <button id="prevImageBtn"><i class="fas fa-chevron-left"></i> Précédent</button>
+                                        <button id="nextImageBtn">Suivant <i class="fas fa-chevron-right"></i></button>
+                                    </div>
+                                    <div class="image-counter" id="imageCounter">0 / 0</div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-submit"><i class="fas fa-save"></i> Ajouter le véhicule</button>
+                    </form>
+                </div>
+            </div>
+            <div id="adminBlocked" style="display: none; text-align: center; padding: 40px; background: white; border-radius: 15px;">
+                <i class="fas fa-lock fa-3x" style="color:#e63946;"></i><h3>Accès restreint</h3>
+                <button id="unlockBtn" class="btn"><i class="fas fa-key"></i> S'authentifier</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="catalogue" class="catalogue">
+        <div class="container"><h2 class="section-title">Nos véhicules en stock</h2><div id="carsContainer" class="cars-grid"></div></div>
+    </section>
+
+    <section id="services" class="services"><div class="container"><h2 class="section-title">Nos services</h2><div class="services-grid"><div class="service-card"><div class="service-icon"><i class="fas fa-car"></i></div><h3>Importation</h3><p>Import depuis Europe, Asie, Amérique</p></div><div class="service-card"><div class="service-icon"><i class="fas fa-shipping-fast"></i></div><h3>Exportation</h3><p>Expédition mondiale</p></div><div class="service-card"><div class="service-icon"><i class="fas fa-tools"></i></div><h3>Certification</h3><p>Adaptations techniques</p></div></div></div></section>
+
+    <footer id="contact"><div class="container"><div class="footer-content"><div class="footer-column"><h3>DAT Autohus</h3><p>Votre partenaire de confiance</p><div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div><div class="footer-column"><h3>Contact</h3><p><i class="fas fa-map-marker-alt"></i> 123 Avenue de l'Automobile, Paris</p><p><i class="fas fa-phone"></i> +33 1 23 45 67 89</p></div></div><div class="copyright">&copy; 2025 DAT Autohus</div></div></footer>
+
+    <script>
+        const ADMIN_PASSWORD = "admin123";
+        let isAdminLoggedIn = false;
+        let currentImages = []; // Stocke les images en base64 pour le formulaire
+        let currentIndex = 0;
+
+        let cars = [
+            { id: 1, name: "Tesla Model 3", price: "42 900 €", images: ["https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800"], description: "Berline électrique haute performance" },
+            { id: 2, name: "Mercedes Classe C", price: "38 500 €", images: ["https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800"], description: "Luxe et confort" }
+        ];
+
+        function renderCars() {
+            const container = document.getElementById('carsContainer');
+            if (!container) return;
+            if (cars.length === 0) { container.innerHTML = '<div class="empty-message"><i class="fas fa-car-side fa-3x"></i><p>Aucun véhicule</p></div>'; return; }
+            
+            container.innerHTML = cars.map(car => {
+                const images = car.images || [];
+                const mainImage = images[0] || 'https://placehold.co/600x400?text=Image';
+                return `
+                <div class="car-card" data-id="${car.id}">
+                    <div class="car-image-gallery" id="gallery-${car.id}">
+                        <img src="${mainImage}" alt="${escapeHtml(car.name)}" class="gallery-main-img" id="mainImg-${car.id}">
+                        ${images.length > 1 ? `<button class="nav-arrow prev" onclick="changeCarImage(${car.id}, -1)">‹</button><button class="nav-arrow next" onclick="changeCarImage(${car.id}, 1)">›</button>` : ''}
+                        <div class="gallery-nav">${images.map((_, idx) => `<div class="gallery-dot ${idx === 0 ? 'active' : ''}" onclick="setCarImage(${car.id}, ${idx})"></div>`).join('')}</div>
+                    </div>
+                    <div class="car-info">
+                        <div class="car-title">${escapeHtml(car.name)}</div>
+                        <div class="car-price">${escapeHtml(car.price)}</div>
+                        <div class="car-description">${escapeHtml(car.description)}</div>
+                        ${isAdminLoggedIn ? `<div class="car-actions"><button class="btn-edit" onclick="editCar(${car.id})">Modifier</button><button class="btn-delete" onclick="deleteCar(${car.id})">Supprimer</button></div>` : ''}
+                    </div>
+                </div>`;
+            }).join('');
+            
+            cars.forEach(car => { if (car.currentImageIndex === undefined) car.currentImageIndex = 0; });
+        }
+        
+        window.changeCarImage = function(carId, delta) {
+            const car = cars.find(c => c.id === carId);
+            if (!car || !car.images || car.images.length <= 1) return;
+            let newIndex = (car.currentImageIndex || 0) + delta;
+            if (newIndex < 0) newIndex = car.images.length - 1;
+            if (newIndex >= car.images.length) newIndex = 0;
+            car.currentImageIndex = newIndex;
+            const mainImg = document.getElementById(`mainImg-${carId}`);
+            if (mainImg) mainImg.src = car.images[newIndex];
+            const dots = document.querySelectorAll(`#gallery-${carId} .gallery-dot`);
+            dots.forEach((dot, idx) => { if (idx === newIndex) dot.classList.add('active'); else dot.classList.remove('active'); });
+        };
+        
+        window.setCarImage = function(carId, index) {
+            const car = cars.find(c => c.id === carId);
+            if (!car || !car.images) return;
+            car.currentImageIndex = index;
+            const mainImg = document.getElementById(`mainImg-${carId}`);
+            if (mainImg) mainImg.src = car.images[index];
+            const dots = document.querySelectorAll(`#gallery-${carId} .gallery-dot`);
+            dots.forEach((dot, idx) => { if (idx === index) dot.classList.add('active'); else dot.classList.remove('active'); });
+        };
+
+        function escapeHtml(str) { if (!str) return ''; return str.replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m])); }
+
+        // Gestion upload multiple
+        function setupMultipleUpload() {
+            const uploadArea = document.getElementById('imageUploadArea');
+            const fileInput = document.getElementById('imageFileInput');
+            
+            uploadArea.addEventListener('click', () => fileInput.click());
+            uploadArea.addEventListener('dragover', (e) => { e.preventDefault(); uploadArea.style.borderColor = '#e63946'; });
+            uploadArea.addEventListener('dragleave', () => uploadArea.style.borderColor = '#ccc');
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.style.borderColor = '#ccc';
+                const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+                if (files.length) processImages(files);
+            });
+            fileInput.addEventListener('change', (e) => { if (e.target.files.length) processImages(Array.from(e.target.files)); });
+        }
+        
+        function processImages(files) {
+            files.forEach(file => {
+                if (file.size > 5 * 1024 * 1024) { alert(`Image ${file.name} dépasse 5Mo`); return; }
+                const reader = new FileReader();
+                reader.onload = (e) => { currentImages.push(e.target.result); updateGalleryDisplay(); };
+                reader.readAsDataURL(file);
+            });
+        }
+        
+        function updateGalleryDisplay() {
+            const galleryDiv = document.getElementById('galleryPreview');
+            const thumbContainer = document.getElementById('thumbnailsContainer');
+            const mainImg = document.getElementById('mainDisplayImage');
+            const counter = document.getElementById('imageCounter');
+            
+            if (currentImages.length === 0) { galleryDiv.style.display = 'none'; return; }
+            galleryDiv.style.display = 'block';
+            
+            thumbContainer.innerHTML = currentImages.map((img, idx) => `
+                <div class="thumbnail-item ${idx === currentIndex ? 'active' : ''}" onclick="selectImage(${idx})">
+                    <img src="${img}" alt="Miniature">
+                    <button class="remove-img-btn" onclick="event.stopPropagation(); removeImage(${idx})">×</button>
+                </div>
+            `).join('');
+            
+            if (currentImages.length > 0) mainImg.src = currentImages[currentIndex];
+            counter.innerText = `${currentIndex + 1} / ${currentImages.length}`;
+        }
+        
+        window.selectImage = function(idx) { currentIndex = idx; updateGalleryDisplay(); };
+        window.removeImage = function(idx) { currentImages.splice(idx, 1); if (currentIndex >= currentImages.length) currentIndex = Math.max(0, currentImages.length - 1); updateGalleryDisplay(); };
+        
+        document.getElementById('prevImageBtn')?.addEventListener('click', () => { if (currentImages.length) { currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length; updateGalleryDisplay(); } });
+        document.getElementById('nextImageBtn')?.addEventListener('click', () => { if (currentImages.length) { currentIndex = (currentIndex + 1) % currentImages.length; updateGalleryDisplay(); } });
+        
+        function addCar(name, price, description, images) { 
+            const newId = cars.length ? Math.max(...cars.map(c=>c.id)) + 1 : 1;
+            cars.push({ id: newId, name: name.trim(), price: price.trim(), description: description.trim(), images: images.length ? images : ['https://placehold.co/600x400?text=Voiture'], currentImageIndex: 0 });
+            renderCars(); saveToLocalStorage();
+        }
+        
+        function updateCar(id, name, price, description, images) {
+            const car = cars.find(c=>c.id===id);
+            if(car) { car.name=name; car.price=price; car.description=description; if(images && images.length) car.images=images; renderCars(); saveToLocalStorage(); }
+        }
+        
+        window.editCar = function(id) {
+            if(!isAdminLoggedIn) return;
+            const car = cars.find(c=>c.id===id);
+            const newName = prompt("Modèle:", car.name); if(!newName) return;
+            const newPrice = prompt("Prix:", car.price); if(!newPrice) return;
+            const newDesc = prompt("Description:", car.description); if(!newDesc) return;
+            const changeImages = confirm("Voulez-vous changer les images ? (OK pour importer de nouvelles images)");
+            if(changeImages) {
+                const input = document.createElement('input'); input.type='file'; input.multiple=true; input.accept='image/*';
+                input.onchange = (e) => {
+                    const files = Array.from(e.target.files);
+                    if(files.length) {
+                        Promise.all(files.map(f => new Promise((resolve) => { const r=new FileReader(); r.onload=()=>resolve(r.result); r.readAsDataURL(f); }))).then(imgs => { updateCar(id, newName, newPrice, newDesc, imgs); alert("Modifié!"); });
+                    } else updateCar(id, newName, newPrice, newDesc, null);
+                };
+                input.click();
+            } else updateCar(id, newName, newPrice, newDesc, null);
+        };
+        
+        window.deleteCar = function(id) { if(confirm("Supprimer ?")) { cars = cars.filter(c=>c.id!==id); renderCars(); saveToLocalStorage(); } };
+        
+        function saveToLocalStorage() { localStorage.setItem('datAutohusCars', JSON.stringify(cars)); }
+        function loadFromLocalStorage() { const stored = localStorage.getItem('datAutohusCars'); if(stored) { try { const p=JSON.parse(stored); if(Array.isArray(p)) cars=p; } catch(e){} } renderCars(); }
+        
+        function updateAdminUI() {
+            const adminContent = document.getElementById('adminContent'), adminBlocked = document.getElementById('adminBlocked'), adminStatus = document.getElementById('adminStatus');
+            if(isAdminLoggedIn) {
+                adminContent.style.display='block'; adminBlocked.style.display='none';
+                adminStatus.innerHTML='<span class="admin-badge"><i class="fas fa-user-shield"></i> Mode Admin <button id="logoutAdminBtn" class="btn-logout">Déconnexion</button></span>';
+                document.getElementById('logoutAdminBtn')?.addEventListener('click', logoutAdmin);
+            } else { adminContent.style.display='none'; adminBlocked.style.display='block'; adminStatus.innerHTML='<span class="admin-badge" style="background:#6c757d;"><i class="fas fa-lock"></i> Accès restreint</span>'; }
+            renderCars();
+        }
+        
+        function showPasswordModal() {
+            const modal = document.createElement('div'); modal.className='password-modal';
+            modal.innerHTML=`<div class="password-card"><i class="fas fa-key fa-3x" style="color:#e63946;"></i><h2>Admin</h2><input type="password" id="adminPass" placeholder="Mot de passe"><button id="submitPass" class="btn">Se connecter</button><div id="err" class="error-msg"></div><button id="closeModal" style="margin-top:10px;">Fermer</button></div>`;
+            document.body.appendChild(modal);
+            document.getElementById('submitPass').onclick = () => { if(document.getElementById('adminPass').value===ADMIN_PASSWORD) { isAdminLoggedIn=true; localStorage.setItem('adminLoggedIn','true'); updateAdminUI(); document.body.removeChild(modal); } else document.getElementById('err').innerText='Mot de passe incorrect'; };
+            document.getElementById('closeModal').onclick = () => document.body.removeChild(modal);
+        }
+        
+        function logoutAdmin() { isAdminLoggedIn=false; localStorage.removeItem('adminLoggedIn'); updateAdminUI(); alert("Déconnecté"); }
+        function checkAdminSession() { if(localStorage.getItem('adminLoggedIn')==='true') isAdminLoggedIn=true; updateAdminUI(); }
+        
+        document.getElementById('carForm')?.addEventListener('submit', (e) => {
+            e.preventDefault();
+            if(!isAdminLoggedIn) { alert("Authentifiez-vous"); showPasswordModal(); return; }
+            const name=document.getElementById('carName').value, price=document.getElementById('carPrice').value, desc=document.getElementById('carDescription').value;
+            if(!name||!price||!desc) { alert("Remplissez tous les champs"); return; }
+            if(!currentImages.length) { alert("Ajoutez au moins une image"); return; }
+            addCar(name, price, desc, [...currentImages]);
+            document.getElementById('carForm').reset(); currentImages=[]; currentIndex=0; updateGalleryDisplay(); alert("Véhicule ajouté !");
+        });
+        
+        document.getElementById('adminLink')?.addEventListener('click', (e) => { e.preventDefault(); if(!isAdminLoggedIn) showPasswordModal(); else document.getElementById('admin').scrollIntoView({behavior:'smooth'}); });
+        document.getElementById('unlockBtn')?.addEventListener('click', showPasswordModal);
+        
+        loadFromLocalStorage(); checkAdminSession(); setupMultipleUpload();
+    </script>
+</body>
+</html>

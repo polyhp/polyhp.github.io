@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENEAM</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+<body>
+    <header>
+        <div class="tgl">
+            <span></span>
+        </div>
+         <div class="logo"><span>E</span>neam</div>
+             <ul class="menu">
+                 <a href="#">Fillières</a>
+                 <a href="#">Spécialités</a>
+                 <a href="#">Actualités</a>
+                 <a href="#">Contacts</a>
+             </ul>
+   </header>
+<section class="home">
+    <div class="home-infos">
+        <h1>Personnel</h1>
+        <p>Le personnel de l'ENEAM vous souaite les bienvenues sur le site de notre école</p>
+        <a href="#">Visiter</a>
+    </div>
+</section>
+<section class="services">
+    <h1 class="titre">NOS VISIONS</h1>
+    <p class="sous-titre">L'ENEAM à pour vision la formation et la mise sur le marché de l'empoi des des futures cadres et professionnels dans des domaines spécifique afin de contribuer au développement du pays </p>
+    <div class="liste-services">
+        <div class="box">
+            
+               <h1>Formation serreée et surveuillée</h1>
+               <p>Chaque étudient inscrit en à l'ENEAM est suivit et encadré jusqu'à la fin de sa formation en suivant une bonne discipline .</p>
+        </div>
+        <div class="box">
+            
+            <h1>Date de démarrage des cours</h1>
+            <p>Les cours à l'ENEAM commencent en septembre pour les filières de deuxième et troisième année contrairement aux filières de première année qui commencent en novembre.</p>
+     </div>
+     <div class="box">
+            
+        <h1>Bourses et secours</h1>
+        <p>L'ENEAM offre chaque année des bourses d'études aux étudiants ayant bien travaillé en maths, PCT et Anglais ainsi que des demi-bourses aux étudiants ayant mérité .</p>
+ </div>
+ <div class="box">
+            
+    <h1>Dérulement des composition </h1>
+    <p>Contrairement aux autres écoles et facultés universitaires, l'ENEAM programme les composition une semaine après la fin de chaque matières .</p>
+</div>
+
+    </div>
+
+</section>
+<section class="banner">
+    
+</section>
+<section class="descript">
+    <div class="left">
+         <span>Nos spécialités</span>
+         <h1>QUELQUES SPECIALITES DE <br>FORMATION DE L'ENEAM </h1>
+         <a href="#">Visiter</a>
+    </div>
+    <div class="right">
+        <p>Il faut noter que l'ENEAM (Ecole Nationale d'Economie Appliquée et de Management) <br>est une entiter de l'UAC et orffre des formations dans le domaine de la gestion </p>
+        <p>Vous serez plus éclairé en visitant de les spécialités de l'ENEAM </p>
+    </div>
+</section>
+<footer>
+    <h1 class="title">Contactez nous</h1>
+    <div class="contact">
+        <div class="forme">
+            <h2>POUR AVOIR PLUS D'INFORMATIONS</h2>
+            <h4>DISPONIBLE 24/24 !</h4>)
+            <form action="">
+                <input type="text" placeholder="Entrez votre nom">
+                <input type="email" placeholder="Entrez votre email valide">
+                <textarea placeholder="Entrez votre message" cols="30" rows="8"></textarea>
+                <button>SOUMETTRE</button>
+            </form>
+        </div>
+        <div class="adress">
+            <h2 class="ecrit">L'école se trouve à Cotonou plus précisement à Gbégamey à <br>quelques mettres du CS Clé de la réussite </h2>
+            <a href="#" class="liens">Géo-localisation</a>
+        </div>      
+    </div>
+</footer>
+<div class="end">
+    <p>Réaliser par @PolyHP</p>
+</div>
+<script>
+    //responsive code js
+   var tgl = document.querySelector('.tgl');
+   var menu = document.querySelector('.menu');
+   var tgl_span = document.querySelector('.tgl span')
+   tgl.onclick = function(){
+    tgl.classList.toggle('active')
+    tgl_span.classList.toggle('active')
+    menu.classList.toggle('responsive')
+   }
+</script>
+</body>
+</html>

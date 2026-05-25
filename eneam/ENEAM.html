@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, initial-scale=1.0">
+    <title>ENEAM | École Nationale d'Économie Appliquée et de Management</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+        }
+
+        body {
+            background: #fefefe;
+            color: #1f2e3a;
+            scroll-behavior: smooth;
+        }
+
+        /* HEADER simple & épuré */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: #ffffff;
+            border-bottom: 1px solid #e9edf2;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #1e466e;
+        }
+        .logo span {
+            background: #1e466e;
+            color: white;
+            display: inline-block;
+            width: 38px;
+            height: 38px;
+            line-height: 38px;
+            text-align: center;
+            border-radius: 12px;
+            margin-right: 6px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .menu {
+            display: flex;
+            gap: 2.2rem;
+            list-style: none;
+        }
+        .menu a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #2c3e4e;
+            font-size: 1rem;
+            transition: 0.2s;
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+        }
+        .menu a:hover {
+            color: #1e6f5c;
+            border-bottom-color: #1e6f5c;
+        }
+
+        /* bouton toggle mobile (hamburger) */
+        .tgl {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            gap: 6px;
+        }
+        .tgl span {
+            width: 26px;
+            height: 2px;
+            background-color: #1e466e;
+            border-radius: 4px;
+            transition: 0.2s;
+        }
+        .tgl span::before,
+        .tgl span::after {
+            content: '';
+            position: absolute;
+            width: 26px;
+            height: 2px;
+            background-color: #1e466e;
+            border-radius: 4px;
+            transition: 0.2s;
+        }
+        .tgl span {
+            position: relative;
+        }
+        .tgl span::before {
+            top: -8px;
+        }
+        .tgl span::after {
+            top: 8px;
+        }
+        /* on simplifie: pour l'animation exacte, on réécrit proprement */
+        .tgl span {
+            background: #1e466e;
+        }
+        .tgl.active span {
+            background: transparent;
+        }
+        .tgl.active span::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+        .tgl.active span::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+
+        /* HERO / HOME */
+        .home {
+            background: linear-gradient(105deg, #f8fafc 0%, #f0f4f9 100%);
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            padding: 2rem 3rem;
+        }
+        .home-infos {
+            max-width: 650px;
+        }
+        .home-infos h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #1e466e;
+            letter-spacing: -1px;
+            line-height: 1.2;
+        }
+        .home-infos p {
+            font-size: 1.2rem;
+            margin: 1.5rem 0 2rem;
+            color: #2c4b6c;
+            line-height: 1.5;
+        }
+        .home-infos a {
+            background: #1e6f5c;
+            color: white;
+            text-decoration: none;
+            padding: 0.9rem 2rem;
+            border-radius: 40px;
+            font-weight: 500;
+            display: inline-block;
+            transition: 0.2s;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+        .home-infos a:hover {
+            background: #0f5a49;
+            transform: translateY(-2px);
+        }
+
+        /* SECTION services (nos visions) */
+        .services {
+            padding: 5rem 2rem;
+            background: #ffffff;
+        }
+        .titre {
+            text-align: center;
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            color: #1f3b4c;
+            margin-bottom: 1rem;
+        }
+        .sous-titre {
+            text-align: center;
+            max-width: 780px;
+            margin: 0 auto 3rem auto;
+            color: #4a627a;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        .liste-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .box {
+            background: #f9fbfd;
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            transition: all 0.2s ease;
+            border: 1px solid #eef2f8;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.02);
+        }
+        .box:hover {
+            border-color: #cbdde9;
+            background: white;
+            box-shadow: 0 12px 22px rgba(0,0,0,0.04);
+        }
+        .box h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e466e;
+            margin-bottom: 1rem;
+        }
+        .box p {
+            color: #2c506e;
+            line-height: 1.5;
+            font-size: 0.95rem;
+        }
+
+        /* BANNER simple illustration */
+        .banner {
+            background: linear-gradient(120deg, #d9e2ec 0%, #cddae6 100%);
+            height: 320px;
+            width: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23365e7e" width="48px" height="48px"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>');
+            background-repeat: repeat;
+            background-size: 42px;
+            background-blend-mode: overlay;
+            opacity: 0.5;
+            margin: 0;
+        }
+
+        /* SECTION descript (specialités) */
+        .descript {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 2rem;
+            padding: 5rem 3rem;
+            background: #fefefe;
+            border-top: 1px solid #ecf3f9;
+        }
+        .left {
+            flex: 1.2;
+        }
+        .left span {
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #1e6f5c;
+            font-weight: 500;
+        }
+        .left h1 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin: 0.8rem 0 1.5rem 0;
+            line-height: 1.3;
+            color: #1f3b4c;
+        }
+        .left a {
+            background: transparent;
+            border: 1.5px solid #1e6f5c;
+            padding: 0.7rem 2rem;
+            border-radius: 32px;
+            text-decoration: none;
+            font-weight: 500;
+            color: #1e6f5c;
+            transition: 0.2s;
+            display: inline-block;
+        }
+        .left a:hover {
+            background: #1e6f5c;
+            color: white;
+        }
+        .right {
+            flex: 1;
+            background: #f4f8fe;
+            padding: 2rem;
+            border-radius: 28px;
+            border-left: 5px solid #1e6f5c;
+        }
+        .right p {
+            margin-bottom: 1rem;
+            color: #2c4b6c;
+            line-height: 1.5;
+        }
+
+        /* FOOTER avec formulaire simple */
+        footer {
+            background: #ffffff;
+            padding: 3rem 2rem 2rem 2rem;
+            border-top: 1px solid #e9edf2;
+        }
+        .title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            color: #1e466e;
+        }
+        .contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+        .forme {
+            flex: 1.5;
+            background: #fafcff;
+            padding: 2rem;
+            border-radius: 28px;
+            border: 1px solid #e2edf7;
+        }
+        .forme h2 {
+            font-size: 1.3rem;
+            color: #1f3b4c;
+            margin-bottom: 0.5rem;
+        }
+        .forme h4 {
+            font-weight: 400;
+            color: #1e6f5c;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        .forme form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .forme input, .forme textarea {
+            padding: 0.9rem 1rem;
+            border: 1px solid #cfdfed;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            background: white;
+            transition: 0.2s;
+            outline: none;
+        }
+        .forme input:focus, .forme textarea:focus {
+            border-color: #1e6f5c;
+            box-shadow: 0 0 0 2px rgba(30,111,92,0.1);
+        }
+        .forme button {
+            background: #1e466e;
+            color: white;
+            border: none;
+            padding: 0.9rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+        .forme button:hover {
+            background: #0e3552;
+        }
+        .adress {
+            flex: 1;
+            background: #f1f6fc;
+            border-radius: 28px;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .adress .ecrit {
+            font-weight: 500;
+            font-size: 1.2rem;
+            line-height: 1.5;
+            color: #1f3b4c;
+            margin-bottom: 1.8rem;
+        }
+        .liens {
+            background: #ffffff;
+            color: #1e6f5c;
+            text-decoration: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 32px;
+            text-align: center;
+            border: 1px solid #c2d6e8;
+            font-weight: 500;
+            display: inline-block;
+            width: fit-content;
+            transition: 0.2s;
+        }
+        .liens:hover {
+            background: #1e6f5c;
+            color: white;
+            border-color: #1e6f5c;
+        }
+        .end {
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.8rem;
+            background: #f1f5f9;
+            color: #537a9a;
+            border-top: 1px solid #e2eaf1;
+        }
+
+        /* RESPONSIVE design simple */
+        @media (max-width: 850px) {
+            header {
+                padding: 1rem 1.5rem;
+            }
+            .tgl {
+                display: flex;
+            }
+            .menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                background: white;
+                width: 75%;
+                height: calc(100vh - 70px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: 0.3s;
+                box-shadow: 4px 0 20px rgba(0,0,0,0.05);
+                z-index: 99;
+                border-right: 1px solid #eef2f8;
+            }
+            .menu.responsive {
+                left: 0;
+            }
+            .home {
+                padding: 2rem 1.5rem;
+            }
+            .home-infos h1 {
+                font-size: 2.8rem;
+            }
+            .descript {
+                padding: 3rem 1.5rem;
+                flex-direction: column;
+            }
+            .left h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .liste-services {
+                grid-template-columns: 1fr;
+            }
+            .contact {
+                flex-direction: column;
+            }
+            .home-infos h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        /* petite correction pour l'affichage du toggle span */
+        .tgl span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: #1e466e;
+            position: relative;
+        }
+        .tgl span::before,
+        .tgl span::after {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 2px;
+            background: #1e466e;
+            left: 0;
+            transition: 0.25s;
+        }
+        .tgl span::before {
+            top: -8px;
+        }
+        .tgl span::after {
+            top: 8px;
+        }
+        .tgl.active span {
+            background: transparent;
+        }
+        .tgl.active span::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+        .tgl.active span::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="tgl">
+            <span></span>
+        </div>
+        <div class="logo"><span>E</span>neam</div>
+        <ul class="menu">
+            <li><a href="#">Fillières</a></li>
+            <li><a href="#">Spécialités</a></li>
+            <li><a href="#">Actualités</a></li>
+            <li><a href="#">Contacts</a></li>
+        </ul>
+    </header>
+
+    <section class="home">
+        <div class="home-infos">
+            <h1>Personnel</h1>
+            <p>Le personnel de l'ENEAM vous souhaite la bienvenue sur le site de notre école. Découvrez un cadre d'excellence et d'accompagnement.</p>
+            <a href="#">Visiter</a>
+        </div>
+    </section>
+
+    <section class="services">
+        <h1 class="titre">NOS VISIONS</h1>
+        <p class="sous-titre">L'ENEAM a pour vision la formation et la mise sur le marché de l'emploi des futurs cadres et professionnels dans des domaines spécifiques afin de contribuer au développement du pays.</p>
+        <div class="liste-services">
+            <div class="box">
+                <h1>Formation serrée et surveillée</h1>
+                <p>Chaque étudiant inscrit à l'ENEAM est suivi et encadré jusqu'à la fin de sa formation en suivant une bonne discipline.</p>
+            </div>
+            <div class="box">
+                <h1>Date de démarrage des cours</h1>
+                <p>Les cours à l'ENEAM commencent en septembre pour les filières de deuxième et troisième année, contrairement aux filières de première année qui commencent en novembre.</p>
+            </div>
+            <div class="box">
+                <h1>Bourses et secours</h1>
+                <p>L'ENEAM offre chaque année des bourses d'études aux étudiants ayant bien travaillé en maths, PCT et Anglais, ainsi que des demi-bourses aux étudiants méritants.</p>
+            </div>
+            <div class="box">
+                <h1>Déroulement des compositions</h1>
+                <p>Contrairement aux autres écoles et facultés universitaires, l'ENEAM programme les compositions une semaine après la fin de chaque matière.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="banner"></section>
+
+    <section class="descript">
+        <div class="left">
+            <span>Nos spécialités</span>
+            <h1>QUELQUES SPÉCIALITÉS DE <br>FORMATION DE L'ENEAM</h1>
+            <a href="#">Visiter</a>
+        </div>
+        <div class="right">
+            <p>Il faut noter que l'ENEAM (École Nationale d'Économie Appliquée et de Management) est une entité de l'UAC et offre des formations dans le domaine de la gestion.</p>
+            <p>Vous serez plus éclairé en visitant les spécialités de l'ENEAM. Marketing, finance, audit, management public : des parcours d'excellence.</p>
+        </div>
+    </section>
+
+    <footer>
+        <h1 class="title">Contactez nous</h1>
+        <div class="contact">
+            <div class="forme">
+                <h2>POUR AVOIR PLUS D'INFORMATIONS</h2>
+                <h4>DISPONIBLE 24/24 !</h4>
+                <form action="#" method="post">
+                    <input type="text" placeholder="Entrez votre nom" required>
+                    <input type="email" placeholder="Entrez votre email valide" required>
+                    <textarea placeholder="Entrez votre message" cols="30" rows="5"></textarea>
+                    <button type="submit">SOUMETTRE</button>
+                </form>
+            </div>
+            <div class="adress">
+                <h2 class="ecrit">L'école se trouve à Cotonou plus précisément à Gbégamey à quelques mètres du CS Clé de la réussite.</h2>
+                <a href="#" class="liens">Géo-localisation</a>
+            </div>
+        </div>
+    </footer>
+    <div class="end">
+        <p>Réalisé par @PolyHP</p>
+    </div>
+
+    <script>
+        // responsive menu toggle simple & efficace
+        var tgl = document.querySelector('.tgl');
+        var menu = document.querySelector('.menu');
+        tgl.onclick = function(e) {
+            e.stopPropagation();
+            tgl.classList.toggle('active');
+            menu.classList.toggle('responsive');
+        }
+
+        // fermer le menu si un lien est cliqué (optionnel mais plus propre)
+        var menuLinks = document.querySelectorAll('.menu a');
+        menuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (menu.classList.contains('responsive')) {
+                    menu.classList.remove('responsive');
+                    tgl.classList.remove('active');
+                }
+            });
+        });
+
+        // petite souplesse: si clic en dehors du menu sur mobile, le fermer
+        document.addEventListener('click', function(event) {
+            const isClickInsideMenu = menu.contains(event.target);
+            const isClickOnTgl = tgl.contains(event.target);
+            if (!isClickInsideMenu && !isClickOnTgl && window.innerWidth <= 850) {
+                if (menu.classList.contains('responsive')) {
+                    menu.classList.remove('responsive');
+                    tgl.classList.remove('active');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

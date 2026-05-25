@@ -1,0 +1,1396 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie - Action Vitale</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables et reset */
+        :root {
+            --primary: #e74c3c;
+            --primary-dark: #c0392b;
+            --secondary: #2c3e50;
+            --secondary-light: #34495e;
+            --accent: #3498db;
+            --success: #27ae60;
+            --light: #f9f9f9;
+            --dark: #333;
+            --gray: #777;
+            --light-gray: #f5f5f5;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ed 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: var(--transition);
+        }
+        
+        .btn:hover:before {
+            left: 100%;
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.4);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 42px;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 18px;
+            line-height: 1.8;
+        }
+        
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-placeholder {
+            width: 70px;
+            height: 70px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border: 3px solid white;
+        }
+        
+        .logo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        nav ul li a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            bottom: 0;
+            left: 0;
+            transition: var(--transition);
+            border-radius: 10px;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a:hover:after,
+        nav ul li a.active:after {
+            width: 100%;
+        }
+        
+        nav ul li a.active {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--secondary);
+        }
+        
+        /* Hero Section */
+        .page-hero {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.85) 0%, rgba(52, 73, 94, 0.9) 100%), url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .page-hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="1000,100 1000,0 0,100"></polygon></svg>');
+            background-size: cover;
+        }
+        
+        .page-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .page-hero h1 {
+            font-size: 56px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 10px rgba(0,0,0,0.3);
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #e8f4f8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .page-hero p {
+            font-size: 22px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+        
+        /* Gallery Filters */
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 50px;
+        }
+        
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--light-gray);
+            padding: 12px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            color: var(--gray);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        .filter-btn:hover {
+            .filter-btn.active {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+        
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            border-color: var(--primary);
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.3);
+        }
+        
+        /* Gallery Grid */
+        .gallery-container {
+            position: relative;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+            aspect-ratio: 1 / 1;
+            background: white;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-12px) scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.9) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 25px;
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+        
+        .gallery-category {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 12px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            align-self: flex-start;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-title {
+            color: white;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        
+        .gallery-date {
+            color: rgba(255,255,255,0.8);
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .gallery-date:before {
+            content: '📅';
+            font-size: 12px;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 1001;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+        
+        .modal-content img {
+            max-width: 100%;
+            max-height: 90vh;
+            object-fit: contain;
+            display: block;
+        }
+        
+        .modal-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.9));
+            color: white;
+            padding: 30px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            transition: var(--transition);
+            border: 2px solid rgba(255,255,255,0.3);
+            z-index: 2;
+        }
+        
+        .modal-close:hover {
+            background: var(--primary);
+            transform: rotate(90deg);
+        }
+        
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.7);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 24px;
+            transition: var(--transition);
+            border: 2px solid rgba(255,255,255,0.3);
+            z-index: 2;
+        }
+        
+        .modal-nav:hover {
+            background: var(--primary);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .modal-prev {
+            left: 30px;
+        }
+        
+        .modal-next {
+            right: 30px;
+        }
+        
+        /* Stats Section */
+        .stats-section {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
+            color: white;
+            padding: 100px 0;
+            margin-top: 100px;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stats-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.05"><polygon points="0,0 1000,100 1000,0"></polygon></svg>');
+            background-size: cover;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .stat-item {
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: var(--transition);
+        }
+        
+        .stat-item:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .stat-number {
+            font-size: 56px;
+            font-weight: 800;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--primary), #f1c40f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-label {
+            font-size: 18px;
+            opacity: 0.9;
+            font-weight: 600;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-light) 100%);
+            color: white;
+            padding: 70px 0 30px;
+            margin-top: 100px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-column h3 {
+            font-size: 22px;
+            margin-bottom: 25px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .footer-column p, .footer-column a {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 12px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+            line-height: 1.6;
+        }
+        
+        .footer-column a:hover {
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            width: 45px;
+            height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(231, 76, 60, 0.4);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            color: rgba(255,255,255,0.7);
+            font-size: 15px;
+        }
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
+        }
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+        
+        .whatsapp-float:hover .whatsapp-tooltip
+         {
+            opacity: 1;
+        }
+        /* Animation d'entrée */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .gallery-item {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+        
+        .gallery-item:nth-child(1) { animation-delay: 0.1s; }
+        .gallery-item:nth-child(2) { animation-delay: 0.2s; }
+        .gallery-item:nth-child(3) { animation-delay: 0.3s; }
+        .gallery-item:nth-child(4) { animation-delay: 0.4s; }
+        .gallery-item:nth-child(5) { animation-delay: 0.5s; }
+        .gallery-item:nth-child(6) { animation-delay: 0.6s; }
+        .gallery-item:nth-child(7) { animation-delay: 0.7s; }
+        .gallery-item:nth-child(8) { animation-delay: 0.8s; }
+        .gallery-item:nth-child(9) { animation-delay: 0.9s; }
+        .gallery-item:nth-child(10) { animation-delay: 1s; }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            
+            .logo-container {
+                margin-bottom: 0;
+            }
+            
+            nav ul {
+                gap: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .page-hero h1 {
+                font-size: 40px;
+            }
+            
+            .page-hero p {
+                font-size: 18px;
+            }
+            
+            .mobile-menu {
+                display: block;
+                position: absolute;
+                top: 25px;
+                right: 20px;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 20px;
+            }
+            
+            .section-title h2 {
+                font-size: 36px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .stat-number {
+                font-size: 42px;
+            }
+            
+            .modal-nav {
+                width: 50px;
+                height: 50px;
+                font-size: 20px;
+            }
+            
+            .modal-prev {
+                left: 15px;
+            }
+            
+            .modal-next {
+                right: 15px;
+            }
+            
+            .modal-close {
+                width: 45px;
+                height: 45px;
+                font-size: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-hero {
+                height: 50vh;
+            }
+            
+            .page-hero h1 {
+                font-size: 32px;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+        }
+        @media (max-width: 480px) {
+            .whatsapp-tooltip {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo-placeholder">
+                        <img src="lg.png" alt="Logo Action Vitale">
+                    </div>
+                    <div class="logo-text">CFP Action Vitale</div>
+                </div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="formations.html">Formations</a></li>
+                        <li><a href="galerie.html" class="active">Galerie</a></li>
+                        <li><a href="propos.html">À propos</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bannière de page -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1>Notre Galerie</h1>
+                <p>Découvrez les moments forts, les réalisations et l'ambiance de notre centre de formation</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Galerie -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Mémoires Visuelles</h2>
+                <p>Explorez nos événements, ateliers et réalisations à travers nos photos</p>
+            </div>
+            
+            <!-- Filtres -->
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">Tout voir</button>
+                <button class="filter-btn" data-filter="evenements">Formations</button>
+                <button class="filter-btn" data-filter="ateliers">Ateliers</button>
+                <button class="filter-btn" data-filter="realisations">Réalisations</button>
+                <button class="filter-btn" data-filter="portes-ouvertes">Portes ouvertes</button>
+                <button class="filter-btn" data-filter="diplomes">Remise de diplômes</button>
+            </div>
+            
+            <!-- Grille Galerie -->
+            <div class="gallery-container">
+                <div class="gallery-grid">
+                    <!-- Formations -->
+                    <div class="gallery-item" data-category="evenements">
+                        <img src="g1.jpg" alt="Nos nouvelles formations">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Formations</span>
+                            <h3 class="gallery-title">Nos nouvelles formations en 2025</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Ateliers -->
+                    <div class="gallery-item" data-category="ateliers">
+                        <img src="ph2.jpg" alt="Atelier sérigraphie">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Ateliers</span>
+                            <h3 class="gallery-title">Atelier Sérigraphie</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Réalisations -->
+                    <div class="gallery-item" data-category="realisations">
+                        <img src="ph11.jpg" alt="Pratiques étudiantes">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Réalisations</span>
+                            <h3 class="gallery-title">Les pratiques de nos étudiants</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Diplômes -->
+                    <div class="gallery-item" data-category="diplomes">
+                        <img src="ph7.jpg" alt="Remise des diplômes">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Diplômes</span>
+                            <h3 class="gallery-title">Cérémonie de Remise des Diplômes</h3>
+                            <span class="gallery-date">Septembre 2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Diplômes -->
+                    <div class="gallery-item" data-category="diplomes">
+                        <img src="g20.jpg" alt="Remise des diplômes">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Diplômes</span>
+                            <h3 class="gallery-title">Cérémonie de Remise des Diplômes</h3>
+                            <span class="gallery-date">Septembre 2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Diplômes -->
+                    <div class="gallery-item" data-category="diplomes">
+                        <img src="g21.jpg" alt="Remise des diplômes">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Diplômes</span>
+                            <h3 class="gallery-title">Cérémonie de Remise des Diplômes</h3>
+                            <span class="gallery-date">Septembre 2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Ateliers -->
+                    <div class="gallery-item" data-category="ateliers">
+                        <img src="g6.jpg" alt="Atelier ébénisterie">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Ateliers</span>
+                            <h3 class="gallery-title">Atelier Ebénisterie</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Ateliers -->
+                    <div class="gallery-item" data-category="ateliers">
+                        <img src="ph8.jpg" alt="Atelier ébénisterie">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Ateliers</span>
+                            <h3 class="gallery-title">Atelier Ebénisterie</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Formations -->
+                    <div class="gallery-item" data-category="evenements">
+                        <img src="g2.jpg" alt="Nouvelles formations">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Formations</span>
+                            <h3 class="gallery-title">Nos nouvelles formations en 2025</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Réalisations -->
+                    <div class="gallery-item" data-category="realisations">
+                        <img src="g9.jpg" alt="Pratiques étudiantes">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Réalisations</span>
+                            <h3 class="gallery-title">Les pratiques de nos étudiants</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Portes ouvertes -->
+                    <div class="gallery-item" data-category="portes-ouvertes">
+                        <img src="g16.jpg" alt="Affiches publicitaires">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Portes ouvertes</span>
+                            <h3 class="gallery-title">Affiches publicitaires</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Portes ouvertes -->
+                    <div class="gallery-item" data-category="portes-ouvertes">
+                        <img src="g19.jpg" alt="Affiches publicitaires">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Portes ouvertes</span>
+                            <h3 class="gallery-title">Affiches publicitaires</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Portes ouvertes -->
+                    <div class="gallery-item" data-category="portes-ouvertes">
+                        <img src="g18.jpg" alt="Affiches publicitaires">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Portes ouvertes</span>
+                            <h3 class="gallery-title">Affiches publicitaires</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Portes ouvertes -->
+                    <div class="gallery-item" data-category="portes-ouvertes">
+                        <img src="g17.jpg" alt="Affiches publicitaires">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Portes ouvertes</span>
+                            <h3 class="gallery-title">Affiches publicitaires</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Ateliers -->
+                    <div class="gallery-item" data-category="ateliers">
+                        <img src="ph1.jpg" alt="Atelier photographie">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Ateliers</span>
+                            <h3 class="gallery-title">Atelier Photographie</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Ateliers -->
+                    <div class="gallery-item" data-category="ateliers">
+                        <img src="g8.jpg" alt="Atelier photographie">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Ateliers</span>
+                            <h3 class="gallery-title">Atelier Photographie</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Ateliers -->
+                    <div class="gallery-item" data-category="ateliers">
+                        <img src="ph23.jpg" alt="Atelier peinture">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Ateliers</span>
+                            <h3 class="gallery-title">Atelier Peinture et Staff</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Ateliers -->
+                    <div class="gallery-item" data-category="ateliers">
+                        <img src="g5.jpg" alt="Atelier couture">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Ateliers</span>
+                            <h3 class="gallery-title">Atelier Couture</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Ateliers -->
+                    <div class="gallery-item" data-category="ateliers">
+                        <img src="g7.jpg" alt="Atelier couture">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Ateliers</span>
+                            <h3 class="gallery-title">Atelier Couture</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Diplômes -->
+                    <div class="gallery-item" data-category="diplomes">
+                        <img src="ph4.jpg" alt="Promotion 2025">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Diplômes</span>
+                            <h3 class="gallery-title">Promotion 2025 - Fierté et Succès</h3>
+                            <span class="gallery-date">Septembre 2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Formations -->
+                    <div class="gallery-item" data-category="evenements">
+                        <img src="g4.jpg" alt="Nouvelles formations">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Formations</span>
+                            <h3 class="gallery-title">Nos nouvelles formations en 2025</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Formations -->
+                    <div class="gallery-item" data-category="evenements">
+                        <img src="g3.jpg" alt="Nouvelles formations">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Formations</span>
+                            <h3 class="gallery-title">Nos nouvelles formations en 2025</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Réalisations -->
+                    <div class="gallery-item" data-category="realisations">
+                        <img src="ph9.jpg" alt="Pratiques étudiantes">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Réalisations</span>
+                            <h3 class="gallery-title">Les pratiques de nos étudiants</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Réalisations -->
+                    <div class="gallery-item" data-category="realisations">
+                        <img src="g12.jpg" alt="Pratiques étudiantes">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Réalisations</span>
+                            <h3 class="gallery-title">Les pratiques de nos étudiants</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Réalisations -->
+                    <div class="gallery-item" data-category="realisations">
+                        <img src="g10.jpg" alt="Pratiques étudiantes">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Réalisations</span>
+                            <h3 class="gallery-title">Les pratiques de nos étudiants</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Réalisations -->
+                    <div class="gallery-item" data-category="realisations">
+                        <img src="ph13.jpg" alt="Pratiques étudiantes">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Réalisations</span>
+                            <h3 class="gallery-title">Les pratiques de nos étudiants</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Réalisations -->
+                    <div class="gallery-item" data-category="realisations">
+                        <img src="ph2.jpg" alt="Pratiques étudiantes">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Réalisations</span>
+                            <h3 class="gallery-title">Les pratiques de nos étudiants</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Réalisations -->
+                    <div class="gallery-item" data-category="realisations">
+                        <img src="g11.jpg" alt="Pratiques étudiantes">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Réalisations</span>
+                            <h3 class="gallery-title">Les pratiques de nos étudiants</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Réalisations -->
+                    <div class="gallery-item" data-category="realisations">
+                        <img src="ph6.jpg" alt="Pratiques étudiantes">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Réalisations</span>
+                            <h3 class="gallery-title">Les pratiques de nos étudiants</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Réalisations -->
+                    <div class="gallery-item" data-category="realisations">
+                        <img src="g15.jpg" alt="Pratiques étudiantes">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Réalisations</span>
+                            <h3 class="gallery-title">Les pratiques de nos étudiants</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Réalisations -->
+                    <div class="gallery-item" data-category="realisations">
+                        <img src="g14.jpg" alt="Pratiques étudiantes">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Réalisations</span>
+                            <h3 class="gallery-title">Les pratiques de nos étudiants</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Réalisations -->
+                    <div class="gallery-item" data-category="realisations">
+                        <img src="g13.jpg" alt="Pratiques étudiantes">
+                        <div class="gallery-overlay">
+                            <span class="gallery-category">Réalisations</span>
+                            <h3 class="gallery-title">Les pratiques de nos étudiants</h3>
+                            <span class="gallery-date">2025</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Statistiques -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Étudiants Formés</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Événements Organisés</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Projets Réalisés</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">95%</div>
+                    <div class="stat-label">Taux de Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal -->
+    <div class="modal" id="imageModal">
+        <div class="modal-content">
+            <span class="modal-close" id="modalClose">&times;</span>
+            <button class="modal-nav modal-prev" id="modalPrev"><i class="fas fa-chevron-left"></i></button>
+            <button class="modal-nav modal-next" id="modalNext"><i class="fas fa-chevron-right"></i></button>
+            <img id="modalImage" src="" alt="">
+            <div class="modal-info">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDate"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CFP Action Vitale</h3>
+                    <p>Centre de formation spécialisé en graphisme, sérigraphie et autres métiers créatifs.</p>
+                    <div class="logo-container" style="margin-top: 15px;">
+                        <div class="logo-placeholder" style="width: 60px; height: 60px;">
+                            <img src="lg.png" alt="Logo Action Vitale">
+                        </div>
+                    </div>
+                </div>
+               
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Zinvié-Djadjo-Zogbadjè</p>
+                    <p><i class="fas fa-phone"></i> (0229) 0166932911 / 0144678500</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Suivez-nous</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 CFP Action Vitale - Polyhp Dev</p>
+            </div>
+        </div>
+    </footer>
+    <a href="https://wa.me/2290166932911?text=Bonjour%20Action%20Vitale%2C%20je%20suis%20intéressé(e)%20par%20vos%20formations" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <div class="whatsapp-tooltip">Contactez-nous sur WhatsApp</div>
+    </a>
+
+    <script>
+        // Menu mobile
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('active');
+        });
+        
+        // Filtrage de la galerie
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Animation de sortie
+                galleryItems.forEach(item => {
+                    item.style.opacity = '0';
+                    item.style.transform = 'translateY(20px)';
+                });
+                
+                // Retirer la classe active de tous les boutons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Ajouter la classe active au bouton cliqué
+                button.classList.add('active');
+                
+                const filterValue = button.getAttribute('data-filter');
+                
+                // Appliquer le filtre après un délai pour l'animation
+                setTimeout(() => {
+                    galleryItems.forEach(item => {
+                        if (filterValue === 'all' || item.getAttribute('data-category') === filterValue) {
+                            item.style.display = 'block';
+                            // Animation d'entrée
+                            setTimeout(() => {
+                                item.style.opacity = '1';
+                                item.style.transform = 'translateY(0)';
+                            }, 100);
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                }, 300);
+            });
+        });
+        
+        // Modal Gallery
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDate = document.getElementById('modalDate');
+        const modalClose = document.getElementById('modalClose');
+        const modalPrev = document.getElementById('modalPrev');
+        const modalNext = document.getElementById('modalNext');
+        
+        let currentImageIndex = 0;
+        const galleryImages = Array.from(galleryItems);
+        
+        // Ouvrir le modal
+        galleryItems.forEach((item, index) => {
+            item.addEventListener('click', () => {
+                currentImageIndex = index;
+                updateModal();
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        // Fermer le modal
+        modalClose.addEventListener('click', () => {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Navigation modal
+        modalPrev.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateModal();
+        });
+        
+        modalNext.addEventListener('click', () => {
+            currentImageIndex = (currentImageIndex + 1) % galleryImages.length;
+            updateModal();
+        });
+        
+        // Mettre à jour le contenu du modal
+        function updateModal() {
+            const currentItem = galleryImages[currentImageIndex];
+            const imgSrc = currentItem.querySelector('img').src;
+            const title = currentItem.querySelector('.gallery-title').textContent;
+            const date = currentItem.querySelector('.gallery-date').textContent;
+            
+            modalImage.src = imgSrc;
+            modalTitle.textContent = title;
+            modalDate.textContent = date;
+        }
+        
+        // Fermer le modal en cliquant à l'extérieur
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+        
+        // Navigation au clavier
+        document.addEventListener('keydown', (e) => {
+            if (modal.classList.contains('active')) {
+                if (e.key === 'Escape') {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                } else if (e.key === 'ArrowLeft') {
+                    modalPrev.click();
+                } else if (e.key === 'ArrowRight') {
+                    modalNext.click();
+                }
+            }
+        });
+        
+        // Animation au scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        // Observer les éléments de la galerie
+        galleryItems.forEach(item => {
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>

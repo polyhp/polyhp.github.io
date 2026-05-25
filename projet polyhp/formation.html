@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation en graphisme</title>
+    <link rel="stylesheet" href="style2.css">
+</head>
+<style>
+    a{
+        list-style: none;
+    }
+    .splt p{
+        text-align: center;
+        margin-top: 15px;
+        margin-bottom: 25px;
+    }
+    .special{
+        display: flex;
+        gap: 10px;
+        
+    }
+    .special img{
+        box-shadow: 0 0 9px rgba(0, 0, 0, 1);
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+    h3{
+        text-transform: uppercase;
+        font-size: 20px;
+    }
+    .special .box{
+        transition: 0.5s ease-out;
+        cursor: pointer;
+    }
+    .special .box:hover{
+        transform: scale(1.08);
+    }
+    .programme{
+        margin: 40px 0;
+        height: 500px;
+        width: 100%;
+        background: url(ar.jpg);
+        background-position: center;
+        background-size: cover;
+        padding: 20px 20%;
+        display: flex;
+        gap: 200px;
+        overflow: hidden;
+    }
+    .programme img{
+        border-radius: 20px;
+    }
+    .programme div{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .programme button{
+        margin-top: 25px;
+        background-color: rgb(253, 253, 249);
+        color:rgb(7, 7, 26);
+        
+    }
+    .programme .div1{
+        width: 300px;
+        margin-top: 25px;
+    }
+    .programme .div2{
+        width: 400px;
+        margin-top: 25px;
+    }
+    /*tarif*/
+    .tarif{
+        padding: 0 10%;
+    }
+    .tarif img{
+        width: 220px;
+        height: 220px;
+
+    }
+    .tarif_box{
+        margin: 50px 0;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        height: 280px;
+    }
+    .tarif_box .box{
+        background-color: #fbf5ee;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 1);
+        border-radius: 18px;
+        padding: 20px;
+        transition: 0.25s;
+    }
+    .tarif_box .box:hover{
+        transform: scale(0.9);
+    }
+    .nbr{
+        color: #fd0606;
+    }
+    /*footer*/
+    footer{
+        background-color: #000 ;
+        color: #fff;
+        margin-top: 30px;
+        padding: 25px 10%;
+    }
+    footer p{
+        font-size: 15px;
+    }
+    .icone_social{
+        margin: 25px 0;
+    }
+    .icone_social img{
+        margin-right: 20px;
+    }
+    .img img{
+        margin-top: 20px;
+        border: 1px solid #fde406;
+        height: 50px;
+        cursor: pointer;
+    }
+    .img img:last-child{
+        margin-left: 10px;
+    }
+    footer .div2{
+        display: flex;
+        justify-content: space-between;
+    }
+    footer .div2 h3{
+        margin-bottom: 10px;
+    }
+    footer .div2 ul{
+        display: flex;
+        flex-direction: column;
+    }
+    footer .div2 ul a{
+        font-size: 13px;
+        color: #fff;
+        text-decoration: 0;
+        margin-bottom: 5px;
+        transition: 0.5s;
+    }
+    footer .div2 ul a:hover{
+        letter-spacing: 0.5px;
+    }
+    footer .div3{
+        text-align: center;
+    }
+    footer .div3 p:first-child{
+        font-size: 13px;
+    }
+    footer .div3 p:last-child{
+        font-size: 12px;
+        color: #999;
+        margin-top: 10px;
+    }
+</style>
+<body>
+    <header>
+        <div class="menu">
+            <img src="icone.jpg" class="icone">
+            <ul>
+                <li><a href="#">Nos spécialités</a></li>
+                <li><a href="#">Nos actualités</a></li>
+            </ul>
+
+        </div>
+        <img src="logopoly.png" class="logo">
+        <div class="header-end">
+            <i class="fa-solid fa-location-dot"></i>
+            <i class="fa-solid fa-plus"></i>
+             <div class="login">
+                <button><span>Seconnecter</span></button>
+                <hr>
+                <p>Vous n'avez pas encore de compte?</p>
+                <a href="inscription.html"><button><span>Rejoignez nous</span></button> </a>
+             </div>
+            </i>
+            <button><span>Cliquer ici </span><img src="ena.jpg"></button>
+        </div>
+    </header>
+    <!--header-->
+    <!--home-->
+    <section class="home" style=" margin-top: 7px;
+    background: url('fond.webp');
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    height:calc(100vh - 200px);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px;">
+        <a href="tpg.html"><button><span>Découvrez !</span></button></a>
+    </section>
+    <!--home-->
+    <!--spécialités-->
+    <section class="splt" style=" margin: 50px 0;
+    padding: 0 60px;">
+        <h1 style="font-size: 40px;text-align: center;
+        text-transform: uppercase;font-family: sans-serif;">chaud bouillant !!!!!</h1>
+        <p>Découvrez nos actualités</p>
+        <div class="special">
+            <div class="box">
+                <img src="ma.jpg"width="300px" height="300px">
+                <h3>Flocage sur maillot</h3>
+            </div>
+            <div class="box">
+                <img src="cht.jpg" width="300px" height="300px">
+               <h3>Fabrication de cachet</h3>
+            </div>
+            <div class="box">
+                <img src="tx.jpg"width="300px" height="300px">
+                <h3>Impression sur tasse</h3>
+            </div>
+            <div class="box">
+                <img src="pl.jpg"width="300px" height="300px">
+                <h3>Photo sur plexiglass</h3>
+            </div>
+        </div>  
+    </section>
+
+    <!--spécialités-->
+    <!--programme-->
+    <section class="programme">
+        <div class="div1">
+            <img src="af1.jpg" width="400px" height="400px">
+            <button><span>Rejoindre</span></button>
+        </div>
+        <div class="div2">
+            <img src="af2.jpg" width="400px" height="400px">
+            <button><span>Esplorer</span></button>
+        </div>
+    </section>
+      <!--menu-->
+      <section class="tarif">
+        <h1>Envie de passer une commande??????</h1>
+        <div class="tarif_box">
+            <div class="box">
+                <h3>Vosflocages sur maillot à partir de <span class="nbr">3000!!!!</span></h3>
+                <img src="mo.jpg">
+            </div>
+            <div class="box">
+                <h3>Vos tableaux plexiglass à <span class="nbr">9000!!!!</span></h3>
+                <img src="px1.jpg">
+            </div>
+            <div class="box">
+                <h3>Vos impressions sur bâche à partir de <span class="nbr">1000!!!!</span></h3>
+                <img src="bh.jpg" >
+            </div>
+            <div class="box">
+                <h3>vos porte clés à <span class="nbr">200f l'unité!!!!</span></h3>
+                <img src="port.jpg">
+            </div>
+        </div>
+      </section>
+      <!--menu-->
+      <!--footer-->
+      <footer>
+        <div class="div1">
+            <p>Nous vous offrons une formation sûre et prometteuse</p>
+            <div class="icone_social">
+                <img src="lo.png" width="50px" height="30px">
+                <img src="logopoly.png" width="30px" height="30px">
+            </div>
+            <p>Lieu d'étude supérieur en informztique </p>
+            <div class="img">
+                <img src="th.jpg">
+                <img src="tt.jpg">
+            </div>
+        </div>
+        <hr>
+        <div class="div2">
+            <div>
+                <h3>produits</h3>
+                <ul>
+                    <a href="#">Nos produits</a>
+                    <a href="#">Nos offres</a>
+                    <a href="#">Nos rédutions </a>
+                </ul>
+            </div>
+            <div>
+                <h3>famille</h3>
+                <ul>
+                    <a href="#">Nos produits</a>
+                    <a href="#">Nos offres</a>
+                    <a href="#">Nos rédutions </a>
+                </ul>
+            </div>
+             <div>
+                <h3>Services connecté</h3>
+                <ul>
+                    <a href="#">Nos produits</a>
+                    <a href="#">Nos offres</a>
+                    <a href="#">Nos rédutions </a>
+                </ul>
+            </div>
+            <div>
+                <h3>Informations légales</h3>
+                <ul>
+                    <a href="#">Nos produits</a>
+                    <a href="#">Nos offres</a>
+                    <a href="#">Nos rédutions </a>
+                </ul>
+            </div>
+        </div>
+        <hr>
+        <div class="div3">
+            <p>nous sommes toujours prêt à vous atisfaire 7j/7   24h/24</p>
+            <p>©2024 polyhp</p>
+        </div>
+      </footer>
+      <!--footer-->
+
+      
+</body>
+</html>

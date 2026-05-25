@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nos Formations - Action Vitale</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Variables et reset */
+        :root {
+            --primary: #e74c3c;
+            --primary-dark: #c0392b;
+            --secondary: #2c3e50;
+            --secondary-light: #34495e;
+            --accent: #3498db;
+            --light: #f9f9f9;
+            --dark: #333;
+            --gray: #777;
+            --light-gray: #f5f5f5;
+            --shadow: 0 10px 30px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-padding {
+            padding: 80px 0;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background-color: var(--secondary-light);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            width: 70px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Header */
+        header {
+            background-color: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo-placeholder {
+            width: 100px;
+            height: 100px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            overflow: hidden;
+        }
+        .logo-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #c0392b;
+        }
+        
+        .logo-text span {
+            color: var(--primary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 25px;
+        }
+        
+        nav ul li a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        nav ul li a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: -5px;
+            left: 0;
+            transition: var(--transition);
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .page-hero {
+            background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(52, 73, 94, 0.9)), url('ph10.jpg') no-repeat center center/cover;
+            height: 50vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+        
+        .page-hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .page-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+        
+        .page-hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+        }
+        
+        /* Formations Section */
+        .formations-page {
+            background-color: var(--light-gray);
+        }
+        
+        .formations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .formation-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .formation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .formation-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+            z-index: 2;
+        }
+        
+        .formation-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .formation-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .formation-card:hover .formation-img img {
+            transform: scale(1.1);
+        }
+        
+        .formation-content {
+            padding: 25px;
+        }
+        
+        .formation-category {
+            display: inline-block;
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--accent);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .formation-title {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        .formation-description {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        
+        .formation-features {
+            margin-bottom: 25px;
+        }
+        
+        .formation-features li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            color: var(--gray);
+            font-size: 14px;
+        }
+        
+        .formation-features li i {
+            color: var(--primary);
+            margin-right: 10px;
+            font-size: 12px;
+        }
+        
+        .formation-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--light-gray);
+            padding-top: 20px;
+        }
+        
+        .formation-price {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary);
+        }
+        
+        .formation-price span {
+            font-size: 14px;
+            color: var(--gray);
+            font-weight: normal;
+        }
+        
+        /* Featured Formation */
+        .featured-formation {
+            grid-column: 1 / -1;
+            display: flex;
+            flex-direction: column;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+        
+        .featured-formation .formation-img {
+            height: 300px;
+        }
+        
+        .featured-content {
+            padding: 30px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .featured-formation .formation-title {
+            color: white;
+            font-size: 28px;
+        }
+        
+        .featured-formation .formation-description {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 18px;
+        }
+        
+        .featured-formation .formation-price {
+            color: white;
+            font-size: 32px;
+        }
+        
+        .featured-formation .btn {
+            background-color: white;
+            color: var(--secondary);
+        }
+        
+        .featured-formation .btn:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 80px 0;
+            border-radius: 15px;
+            margin-top: 50px;
+        }
+        
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-section .btn {
+            background-color: white;
+            color: var(--primary);
+            font-size: 18px;
+            padding: 15px 40px;
+        }
+        
+        .cta-section .btn:hover {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            padding: 50px 0 20px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .footer-column p, .footer-column a {
+            color: #bbb;
+            margin-bottom: 10px;
+            display: block;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        
+        .footer-column a:hover {
+            color: white;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--secondary-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid var(--secondary-light);
+            color: #bbb;
+            font-size: 14px;
+        }
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 25px;
+            right: 25px;
+            background-color: #25d366;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            animation: pulse 2s infinite;
+        }
+        
+        .whatsapp-float:hover {
+            background-color: #128c7e;
+            transform: scale(1.1);
+        }
+        .whatsapp-tooltip {
+            position: absolute;
+            right: 70px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 8px 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            white-space: nowrap;
+            opacity: 0;
+            transition: var(--transition);
+            pointer-events: none;
+        }
+        
+        .whatsapp-float:hover .whatsapp-tooltip
+         {
+            opacity: 1;
+        }
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .logo-container {
+                margin-bottom: 15px;
+            }
+            
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 5px 10px;
+            }
+            
+            .page-hero h1 {
+                font-size: 36px;
+            }
+            
+            .page-hero p {
+                font-size: 18px;
+            }
+            
+            .mobile-menu {
+                display: block;
+                position: absolute;
+                top: 20px;
+                right: 20px;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+            }
+            
+            nav ul li {
+                margin: 10px 0;
+            }
+            
+            .formations-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .featured-formation {
+                flex-direction: column;
+            }
+            
+            .featured-formation .formation-img {
+                height: 200px;
+            }
+            
+        }
+        @media (max-width: 480px) {
+            .whatsapp-tooltip {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- En-tête -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <div class="logo-placeholder">
+                        <img src="lg.png" alt="Logo Action Vitale">
+                    </div>
+                    <div class="logo-text">CFP Action <span>Vitale</span></div>
+                </div>
+                <div class="mobile-menu">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <nav id="main-nav">
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="formations.html" class="active">Formations</a></li>
+                        <li><a href="gallerie.html">Galerie</a></li>
+                        <li><a href="propos.html">À propos</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Bannière de page -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content">
+                <h1>Nos Formations</h1>
+                <p>Découvrez notre gamme complète de formations professionnelles adaptées à vos ambitions</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section formations -->
+    <section class="formations-page section-padding">
+        <div class="container">
+            <div class="section-title">
+                <h2>Formations Disponibles</h2>
+                <p>Choisissez la formation qui correspond à vos aspirations professionnelles</p>
+            </div>
+            
+            <div class="formations-grid">
+                <!-- Formation en vedette -->
+                <div class="formation-card featured-formation">
+                    <div class="formation-img">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Formation Complète Design Graphique">
+                    </div>
+                    <div class="featured-content">
+                        <div>
+                            <span class="formation-category">POPULAIRE</span>
+                            <h3 class="formation-title">Formation Complète Design Graphique</h3>
+                            <p class="formation-description">Maîtrisez tous les aspects du design graphique avec notre formation complète. De la conception à la réalisation, devenez un professionnel polyvalent.</p>
+                            <ul class="formation-features">
+                                <li><i class="fas fa-check"></i> Formation intensive</li>
+                                <li><i class="fas fa-check"></i> Certificat reconnu par l'État</li>
+                                <li><i class="fas fa-check"></i> Stage en entreprise inclus</li>
+                                <li><i class="fas fa-check"></i> Accès aux ressources</li>
+                            </ul>
+                        </div>
+                        <div class="formation-footer">
+                            <a href="https://wa.me/2290166932911?text=Bonjour%20Action%20Vitale%2C%20je%20suis%20intéressé(e)%20par%20la%20formation%20en graphisme" class="btn">S'inscrire maintenant</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Formation Graphisme -->
+                <div class="formation-card">
+                    <div class="formation-badge">Nouveau</div>
+                    <div class="formation-img">
+                        <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Formation Graphisme">
+                    </div>
+                    <div class="formation-content">
+                        <span class="formation-category">DESIGN</span>
+                        <h3 class="formation-title">Graphisme & Bureautique</h3>
+                        <p class="formation-description">Apprenez à créer des visuels percutants et des identités visibles fortes avec les outils professionnels du design.</p>
+                        
+                        <ul class="formation-features">
+                            <li><i class="fas fa-check"></i> Photoshop, Illustrator, InDesign</li>
+                            <li><i class="fas fa-check"></i> Création d'identité visuelle</li>
+                            <li><i class="fas fa-check"></i> Maquettage web et print</li>
+                            <li><i class="fas fa-check"></i> Projets pratiques réels</li>
+                            <li><i class="fas fa-check"></i> Word, Excel, Powerpoint</li>
+                        </ul>
+                        <p style="font-size: 13px;font-weight: bold;color: #333;">Bureautique (6mois + stage): <span style="font-size: 12px;font-weight: bold;color: #c0392b;">50.000FCFA</span> </p>
+                        <p style="font-size: 13px;font-weight: bold;color: #333;">Graphisme/PAO (6mois + stage): <span style="font-size: 12px;font-weight: bold;color: #c0392b;">100.000FCFA</span> </p>
+                        <div class="formation-footer">
+                            <a href="https://wa.me/2290166932911?text=Bonjour%20Action%20Vitale%2C%20je%20suis%20intéressé(e)%20par%20la%20formation%20en graphisme et bureautique" class="btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Formation Sérigraphie -->
+                <div class="formation-card">
+                    <div class="formation-img">
+                        <img src="ps.avif" alt="Formation Sérigraphie">
+                    </div>
+                    <div class="formation-content">
+                        <span class="formation-category">IMPRESSION</span>
+                        <h3 class="formation-title">Sérigraphie Professionnelle</h3>
+                        <p class="formation-description">Maîtrisez les techniques d'impression sur différents supports textiles et publicitaires.</p>
+                        <ul class="formation-features">
+                            <li><i class="fas fa-check"></i> Techniques d'impression manuelles</li>
+                            <li><i class="fas fa-check"></i> Préparation des écrans</li>
+                            <li><i class="fas fa-check"></i> Impression sur textiles et supports divers</li>
+                            <li><i class="fas fa-check"></i> Gestion des encres et couleurs</li>
+                        </ul>
+                        <p style="font-size: 13px;font-weight: bold;color: #333;">Sérigraphie (6mois + stage): <span style="font-size: 12px;font-weight: bold;color: #c0392b;">100.000FCFA</span> </p>
+                        
+                        <div class="formation-footer">
+                            <a href="https://wa.me/2290166932911?text=Bonjour%20Action%20Vitale%2C%20je%20suis%20intéressé(e)%20par%20la%20formation%20en sérigraphie" class="btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Formation Photographie -->
+                <div class="formation-card">
+                    <div class="formation-badge">LIMITÉ</div>
+                    <div class="formation-img">
+                        <img src="ph21.jpg" alt="Formation Photographie">
+                    </div>
+                    <div class="formation-content">
+                        <span class="formation-category">AUDIOVISUEL</span>
+                        <h3 class="formation-title">Photographie & Vidéographie</h3>
+                        <p class="formation-description">Devenez un professionnel de l'image, de la prise de vue au traitement et montage.</p>
+                        <ul class="formation-features">
+                            <li><i class="fas fa-check"></i> Techniques de prise de vue</li>
+                            <li><i class="fas fa-check"></i> Retouche photo avec Lightroom/Photoshop</li>
+                            <li><i class="fas fa-check"></i> Montage vidéo professionnel</li>
+                            <li><i class="fas fa-check"></i> Éclairage et composition</li>
+                        </ul>
+                        <p style="font-size: 13px;font-weight: bold;color: #333;">Photographie & traitement (6mois + stage): <span style="font-size: 12px;font-weight: bold;color: #c0392b;">100.000FCFA</span> </p>
+                        <p style="font-size: 13px;font-weight: bold;color: #333;">Vidéographie & Montage (6mois + stage): <span style="font-size: 12px;font-weight: bold;color: #c0392b;">100.000FCFA</span> </p>
+                        <div class="formation-footer">
+                            <a href="https://wa.me/2290166932911?text=Bonjour%20Action%20Vitale%2C%20je%20suis%20intéressé(e)%20par%20la%20formation%20en photographie %20 & vidéographie" class="btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Formation Stylisme -->
+                <div class="formation-card">
+                    <div class="formation-img">
+                        <img src="ph22.jpg" alt="Formation Stylisme">
+                    </div>
+                    <div class="formation-content">
+                        <span class="formation-category">MODE</span>
+                        <h3 class="formation-title">Haute couture, Stylisme & Modélisme</h3>
+                        <p class="formation-description">Apprenez à créer vos propres collections de vêtements, du croquis à la réalisation.</p>
+                        <ul class="formation-features">
+                            <li><i class="fas fa-check"></i> Création de croquis et planches tendance</li>
+                            <li><i class="fas fa-check"></i> Patronage et moulage</li>
+                            <li><i class="fas fa-check"></i> Techniques de confection</li>
+                            <li><i class="fas fa-check"></i> Développement de collection</li>
+                        </ul>
+                        <p style="font-size: 13px;font-weight: bold;color: #333;">Stylisme-Modélisme-IIC (24mois + stage): <span style="font-size: 12px;font-weight: bold;color: #c0392b;">350.000FCFA</span> </p>
+                        <p style="font-size: 13px;font-weight: bold;color: #333;">Stylisme-Modélisme-HC 1 an (cours accéléré): <span style="font-size: 12px;font-weight: bold;color: #c0392b;">250.000FCFA</span> </p>
+                        <p style="font-size: 13px;font-weight: bold;color: #333;">Couture industrielle (6mois + stage): <span style="font-size: 12px;font-weight: bold;color: #c0392b;">150.000FCFA</span> </p>
+                        <p style="font-size: 13px;font-weight: bold;color: #333;">Broderie (12mois + stage): <span style="font-size: 12px;font-weight: bold;color: #c0392b;">250.000FCFA</span> </p>
+                        <div class="formation-footer">
+                            <a href="https://wa.me/2290166932911?text=Bonjour%20Action%20Vitale%2C%20je%20suis%20intéressé(e)%20par%20la%20formation%20en stylisme" class="btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Formation Peinture -->
+                <div class="formation-card">
+                    <div class="formation-img">
+                        <img src="ph23.jpg" alt="Formation Peinture">
+                    </div>
+                    <div class="formation-content">
+                        <span class="formation-category">DÉCORATION</span>
+                        <h3 class="formation-title">Peinture & Staff</h3>
+                        <p class="formation-description">Maîtrisez les techniques de peinture décorative et de pose de staff pour la décoration intérieure.</p>
+                        <ul class="formation-features">
+                            <li><i class="fas fa-check"></i> Techniques de faux-finis</li>
+                            <li><i class="fas fa-check"></i> Pose et sculpture de staff</li>
+                            <li><i class="fas fa-check"></i> Peinture artistique sur mur</li>
+                            <li><i class="fas fa-check"></i> Réalisation de projets décoratifs</li>
+                        </ul>
+                        <p style="font-size: 13px;font-weight: bold;color: #333;">Peinture & staff (9mois + stage): <span style="font-size: 12px;font-weight: bold;color: #c0392b;">200.000FCFA</span> </p>
+                        
+                        <div class="formation-footer">
+                            <a href="https://wa.me/2290166932911?text=Bonjour%20Action%20Vitale%2C%20je%20suis%20intéressé(e)%20par%20la%20formation%20en peinture et staff" class="btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-img">
+                        <img src="el.webp" alt="Formation Peinture">
+                    </div>
+                    <div class="formation-content">
+                        <span class="formation-category">ÉNERGIE</span>
+                        <h3 class="formation-title">Electricité bâtiment & Panneaux solaires</h3>
+                        <p class="formation-description">Devenez expert dans le domaine énergétique</p>
+                        <ul class="formation-features">
+                            <li><i class="fas fa-check"></i> Techniques d'installation de Panneaux solaires'</li>
+                            <li><i class="fas fa-check"></i> Installation électrique</li>
+            
+                        </ul>
+                        <p style="font-size: 13px;font-weight: bold;color: #333;">Electricité bâtiment & Panneaux solaires (9mois + stage): <span style="font-size: 12px;font-weight: bold;color: #c0392b;">200.000FCFA</span> </p>
+                        <div class="formation-footer">
+                            <a href="https://wa.me/2290166932911?text=Bonjour%20Action%20Vitale%2C%20je%20suis%20intéressé(e)%20par%20la%20formation%20en électricité" class="btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-img">
+                        <img src="cs.jpg" alt="Formation Peinture">
+                    </div>
+                    <div class="formation-content">
+                        <span class="formation-category">CUISINE</span>
+                        <h3 class="formation-title">Hôtellerie & Restauration</h3>
+                        <p class="formation-description">Prenez possession des meuilleures recette en cuisine</p>
+                        <ul class="formation-features">
+                            <li><i class="fas fa-check"></i>Formation et accompagnement et restauration</li>
+                            <li><i class="fas fa-check"></i> Acquisition des bonnes pratiques en cuisine</li>
+            
+                        </ul>
+                        <p style="font-size: 13px;font-weight: bold;color: #333;">Hôtellerie et restauration (9mois + stage): <span style="font-size: 12px;font-weight: bold;color: #c0392b;">200.000FCFA</span> </p>
+                        
+                        <div class="formation-footer">
+                            <a href="https://wa.me/2290166932911?text=Bonjour%20Action%20Vitale%2C%20je%20suis%20intéressé(e)%20par%20la%20formation%20en hotellerie et restauration" class="btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-img">
+                        <img src="ph24.jpg" alt="Formation Peinture">
+                    </div>
+                    <div class="formation-content">
+                        <span class="formation-category">DÉCORATION</span>
+                        <h3 class="formation-title">Ebénisterie & Décoration intérieure</h3>
+                        <p class="formation-description">Apprenez à fabriquer des meubles de qualité</p>
+                        <ul class="formation-features">
+                            <li><i class="fas fa-check"></i>Formation 100% pratique</li>
+                            <li><i class="fas fa-check"></i> Architecture et confection</li>
+                            <li><i class="fas fa-check"></i> Bonnes pratiques en décorartion intérieure</li>
+            
+                        </ul>
+                        <p style="font-size: 13px;font-weight: bold;color: #333;">Ebénisterie & Déco. Intérieure (9mois + stage): <span style="font-size: 12px;font-weight: bold;color: #c0392b;">200.000FCFA</span> </p>
+            
+                        <div class="formation-footer">
+                            <a href="https://wa.me/2290166932911?text=Bonjour%20Action%20Vitale%2C%20je%20suis%20intéressé(e)%20par%20la%20formation%20en hotellerie et ébénisterie et décoration intérieure" class="btn">En savoir plus</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="formation-card">
+                    <div class="formation-img">
+                        <img src="fc.jpeg" alt="Formation Peinture">
+                    </div>
+                    <div class="formation-content">
+                    </div>
+                        <span class="formation-category">ÉNERGIE</span>
+                        <h3 class="formation-title">Froid & Climatisation</h3>
+                        <p class="formation-description">Devenez technicien en installation et configuration de climatiseur</p>
+                        <ul class="formation-features">
+                            <li><i class="fas fa-check"></i>Formation 100% pratique</li>
+        
+            
+                        </ul>
+                        <p style="font-size: 13px;font-weight: bold;color: #333;">Froid et climatisation (9mois + stage): <span style="font-size: 12px;font-weight: bold;color: #c0392b;">150.000FCFA</span> </p>
+                        
+                        <div class="formation-footer">
+                            <a href="https://wa.me/2290166932911?text=Bonjour%20Action%20Vitale%2C%20je%20suis%20intéressé(e)%20par%20la%20formation%20en froid et Climatisation" class="btn">En savoir plus</a>
+                        </div>
+                    </div>
+            </div>
+            
+            <!-- Section CTA -->
+            <div class="cta-section">
+                <h2>Prêt à transformer votre passion en carrière?</h2>
+                <p>Rejoignez nos centaines d'étudiants qui ont déjà transformé leur vie grâce à nos formations professionnelles.</p>
+                <p>À noté: Linscription au CFP ACTION VITALE est éffective au paiement des frais d'inscription s'élevant à 10.000FCFA (Non Remboursable) donnant droit à un lacoste de l'apprenant.</p>
+                <a href="https://wa.me/2290166932911?text=Bonjour%20Action%20Vitale%2C%20je%20suis%20intéressé(e)%20par%20vos%20formation" class="btn">Contactez-nous maintenant</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pied de page -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>CFP Action Vitale</h3>
+                    <p>Centre de formation spécialisé en graphisme, sérigraphie et autres métiers créatifs.</p>
+                    <div class="logo-container" style="margin-top: 15px;">
+                        <div class="logo-placeholder" style="width: 40px; height: 40px; font-size: 18px;">AV</div>
+                    </div>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Zinvié-Djadjo-Zogbadjè</p>
+                    <p><i class="fas fa-phone"></i> (0229) 0166932911 / 0144678500</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Suivez-nous</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 CFP Action Vitale - Polyhp Dev</p>
+            </div>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/2290166932911?text=Bonjour%20Action%20Vitale%2C%20je%20suis%20intéressé(e)%20par%20vos%20formations" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+        <div class="whatsapp-tooltip">Contactez-nous sur WhatsApp</div>
+    </a>
+
+    <script>
+        // Menu mobile
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            document.getElementById('main-nav').classList.toggle('active');
+        });
+        
+        // Animation au défilement
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+            } else {
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+</body>
+</html>
