@@ -10,33 +10,31 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', system-ui, 'Segoe UI', 'Poppins', sans-serif;
         }
 
         body {
-            background: #f0f2f8;
-            color: #111827;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f7fb;
+            color: #1a1a2e;
             line-height: 1.5;
         }
 
         .container {
             width: 90%;
-            max-width: 1400px;
+            max-width: 1280px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        /* Header Premium Responsive */
+        /* ========== HEADER ========== */
         header {
-            background: rgba(8, 12, 24, 0.98);
-            backdrop-filter: blur(12px);
+            background: #0a0e1a;
             color: white;
-            padding: 12px 0;
+            padding: 16px 0;
             position: sticky;
             top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            z-index: 100;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .header-content {
@@ -44,449 +42,346 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
-        .logo-img {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(145deg, #dc2626, #991b1b);
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: #dc2626;
             border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.25);
-        }
-
-        .logo-img svg {
-            width: 30px;
-            filter: brightness(0) invert(1);
+            font-weight: 800;
+            font-size: 20px;
+            color: white;
         }
 
         .logo-text {
-            font-size: 20px;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #fff, #cbd5e1);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .logo-text span {
-            background: linear-gradient(135deg, #f87171, #dc2626);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            font-size: 22px;
+            font-weight: 700;
         }
 
-        /* Menu Burger pour mobile */
+        .logo-text span {
+            color: #dc2626;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 32px;
+        }
+
+        nav a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s;
+            font-size: 15px;
+        }
+
+        nav a:hover {
+            color: #dc2626;
+        }
+
+        /* Menu mobile */
         .menu-toggle {
             display: none;
             flex-direction: column;
             cursor: pointer;
             gap: 5px;
-            padding: 10px;
         }
-        
+
         .menu-toggle span {
             width: 28px;
             height: 2px;
             background: white;
             border-radius: 2px;
-            transition: 0.3s;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 25px;
-            align-items: center;
-            transition: 0.3s;
         }
 
-        nav a {
-            color: #f1f5f9;
+        /* ========== HERO ========== */
+        .hero {
+            background: linear-gradient(135deg, #0f1228 0%, #1a1a3e 100%);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #dc2626;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #94a3b8;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #dc2626;
+            color: white;
+            padding: 12px 32px;
+            border-radius: 40px;
             text-decoration: none;
             font-weight: 600;
-            transition: 0.2s;
-            font-size: 0.9rem;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
         }
 
-        nav a:hover {
-            color: #f87171;
+        .btn:hover {
+            background: #b91c1c;
+            transform: translateY(-2px);
         }
 
-        /* Bouton admin caché (accessible par Ctrl+Alt+A) */
-        .secret-admin-btn {
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #dc2626;
+            color: #dc2626;
+        }
+
+        .btn-outline:hover {
+            background: #dc2626;
+            color: white;
+        }
+
+        /* ========== SECTION TITRE ========== */
+        .section-title {
+            font-size: 32px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 40px;
+            color: #1a1a2e;
+        }
+
+        .section-title span {
+            color: #dc2626;
+        }
+
+        /* ========== GRILLE VOITURES ========== */
+        .cars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .car-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .car-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .car-image {
+            height: 220px;
+            overflow: hidden;
+        }
+
+        .car-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .car-card:hover .car-image img {
+            transform: scale(1.05);
+        }
+
+        .car-info {
+            padding: 20px;
+        }
+
+        .car-name {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .car-price {
+            font-size: 24px;
+            font-weight: 800;
+            color: #dc2626;
+            margin: 8px 0;
+        }
+
+        .car-desc {
+            color: #64748b;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .btn-detail {
+            width: 100%;
+            padding: 10px;
+            background: transparent;
+            border: 1px solid #dc2626;
+            color: #dc2626;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-detail:hover {
+            background: #dc2626;
+            color: white;
+        }
+
+        /* ========== SERVICES ========== */
+        .services-grid {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            width: 280px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            border: 1px solid #e2e8f0;
+        }
+
+        .service-card i {
+            font-size: 48px;
+            color: #dc2626;
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: #64748b;
+            font-size: 14px;
+        }
+
+        /* ========== FOOTER ========== */
+        footer {
+            background: #0a0e1a;
+            color: #94a3b8;
+            padding: 50px 0 30px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .footer-col p {
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .footer-col i {
+            width: 25px;
+            color: #dc2626;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            font-size: 13px;
+        }
+
+        /* ========== MODAL ========== */
+        .modal {
             position: fixed;
-            bottom: 20px;
+            inset: 0;
+            background: rgba(0,0,0,0.85);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: white;
+            max-width: 900px;
+            width: 90%;
+            border-radius: 24px;
+            overflow: hidden;
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        .modal-gallery {
+            background: #0f1228;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-gallery img {
+            max-height: 350px;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
             right: 20px;
-            width: 45px;
-            height: 45px;
-            background: rgba(220, 38, 38, 0.85);
+            background: rgba(0,0,0,0.5);
+            width: 35px;
+            height: 35px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             cursor: pointer;
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.3s;
-            backdrop-filter: blur(5px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-        
-        .secret-admin-btn:hover {
-            opacity: 0.8 !important;
-        }
-        
-        /* Hero Section Responsive */
-        .hero {
-            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
-            position: relative;
-            padding: 60px 0;
-            text-align: center;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        @media (min-width: 768px) {
-            .hero { padding: 80px 0; }
-        }
-        
-        @media (min-width: 1024px) {
-            .hero { padding: 100px 0; }
-        }
-        
-        .hero::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: url('https://images.unsplash.com/photo-1592198084033-aade902d1aae?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat;
-            opacity: 0.12;
-            z-index: 0;
-        }
-        
-        .hero .container { position: relative; z-index: 2; }
-        
-        .hero h1 {
-            font-size: 32px;
-            background: linear-gradient(to right, #fff, #fca5a5);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 15px;
-        }
-        
-        @media (min-width: 768px) {
-            .hero h1 { font-size: 42px; margin-bottom: 20px; }
-        }
-        
-        @media (min-width: 1024px) {
-            .hero h1 { font-size: 54px; }
-        }
-        
-        .hero p {
-            font-size: 14px;
-            color: #cbd5e1;
-            max-width: 650px;
-            margin: 0 auto 25px;
-            padding: 0 15px;
-        }
-        
-        @media (min-width: 768px) {
-            .hero p { font-size: 16px; }
-        }
-        
-        @media (min-width: 1024px) {
-            .hero p { font-size: 20px; }
-        }
-        
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #dc2626;
-            color: white;
-            padding: 10px 24px;
-            border-radius: 40px;
-            font-weight: 600;
-            transition: all 0.25s;
-            border: 2px solid #dc2626;
-            cursor: pointer;
-            text-decoration: none;
-            font-size: 14px;
-        }
-        
-        @media (min-width: 768px) {
-            .btn { padding: 12px 32px; font-size: 16px; gap: 10px; }
-        }
-        
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 20px -10px rgba(220,38,54,0.4);
+            font-size: 20px;
         }
 
-        /* Admin Panel */
-        .admin-panel {
-            padding: 40px 0;
-            background: #ffffff;
-            border-radius: 30px 30px 0 0;
-            margin-top: -20px;
-            position: relative;
-            z-index: 4;
-        }
-        
-        @media (min-width: 768px) {
-            .admin-panel { padding: 60px 0; border-radius: 40px 40px 0 0; margin-top: -30px; }
-        }
-        
-        .admin-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-        
-        .section-title {
-            font-size: 24px;
-            font-weight: 800;
-            background: linear-gradient(135deg, #1e293b, #0f172a);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        @media (min-width: 768px) {
-            .section-title { font-size: 34px; }
-        }
-        
-        .admin-badge {
-            background: #dc2626;
-            padding: 5px 15px;
-            border-radius: 60px;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 600;
-            font-size: 12px;
-        }
-        
-        @media (min-width: 768px) {
-            .admin-badge { padding: 8px 18px; font-size: 14px; gap: 10px; }
-        }
-        
-        .admin-form {
-            background: #f8fafc;
-            padding: 20px;
-            border-radius: 24px;
-            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.05);
-            border: 1px solid #eef2f6;
-        }
-        
-        @media (min-width: 768px) {
-            .admin-form { padding: 32px; border-radius: 32px; }
-        }
-        
-        .image-upload-area {
-            border: 2px dashed #cbd5e1;
-            background: #fefefe;
-            border-radius: 20px;
-            transition: all 0.2s;
-            cursor: pointer;
-        }
-        
-        .image-upload-area:hover {
-            border-color: #dc2626;
-            background: #fff5f5;
-        }
-
-        /* Grille voitures responsive */
-        .cars-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 25px;
-            margin-top: 30px;
-        }
-        
-        @media (min-width: 640px) {
-            .cars-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
-        }
-        
-        @media (min-width: 1024px) {
-            .cars-grid { grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 40px; margin-top: 40px; }
-        }
-
-        /* Car Card */
-        .car-card {
-            background: #ffffff;
-            border-radius: 24px;
-            overflow: hidden;
-            transition: all 0.35s;
-            box-shadow: 0 10px 25px -10px rgba(0,0,0,0.1);
-            cursor: pointer;
-        }
-        
-        @media (min-width: 768px) {
-            .car-card { border-radius: 28px; }
-        }
-        
-        .car-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 25px 35px -12px rgba(0,0,0,0.2);
-        }
-        
-        .car-image-gallery {
-            position: relative;
-            height: 220px;
-            background: #eef2ff;
-            overflow: hidden;
-        }
-        
-        @media (min-width: 768px) {
-            .car-image-gallery { height: 260px; }
-        }
-        
-        .car-image-gallery img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .car-card:hover .car-image-gallery img {
-            transform: scale(1.03);
-        }
-        
-        .car-info {
-            padding: 18px;
-        }
-        
-        @media (min-width: 768px) {
-            .car-info { padding: 24px; }
-        }
-        
-        .car-title {
-            font-size: 1.3rem;
-            font-weight: 700;
-        }
-        
-        @media (min-width: 768px) {
-            .car-title { font-size: 1.7rem; }
-        }
-        
-        .car-price {
-            font-size: 22px;
-            font-weight: 800;
-            color: #dc2626;
-            margin: 6px 0;
-        }
-        
-        @media (min-width: 768px) {
-            .car-price { font-size: 28px; margin: 8px 0; }
-        }
-
-        /* Services responsive */
-        .services-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-        }
-        
-        @media (min-width: 640px) {
-            .services-grid { flex-direction: row; gap: 30px; flex-wrap: wrap; }
-        }
-        
-        .service-card {
-            background: #f8fafc;
-            border-radius: 24px;
-            padding: 24px;
-            text-align: center;
-            width: 100%;
-            max-width: 280px;
-        }
-        
-        @media (min-width: 768px) {
-            .service-card { padding: 32px; border-radius: 32px; }
-        }
-
-        /* Footer responsive */
-        .footer-content {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            text-align: center;
-        }
-        
-        @media (min-width: 768px) {
-            .footer-content { flex-direction: row; justify-content: space-between; text-align: left; }
-        }
-        
-        footer {
-            background: #0f172a;
-            color: white;
-            padding: 30px 0;
-        }
-        
-        @media (min-width: 768px) {
-            footer { padding: 40px 0; }
-        }
-
-        /* Modal responsive */
-        .modal-card {
-            background: #fff;
-            max-width: 95%;
-            width: 100%;
-            border-radius: 30px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            max-height: 90vh;
-            overflow-y: auto;
-        }
-        
-        @media (min-width: 768px) {
-            .modal-card { max-width: 90%; border-radius: 40px; }
-        }
-        
-        @media (min-width: 1024px) {
-            .modal-card { max-width: 1000px; }
-        }
-        
-        .modal-gallery {
-            background: #111;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 250px;
-        }
-        
-        @media (min-width: 768px) {
-            .modal-gallery { min-height: 400px; }
-        }
-        
-        .modal-main-img {
-            width: 100%;
-            max-height: 300px;
-            object-fit: contain;
-        }
-        
-        @media (min-width: 768px) {
-            .modal-main-img { max-height: 450px; }
-        }
-        
         .modal-thumbs {
             display: flex;
             gap: 10px;
@@ -494,703 +389,566 @@
             overflow-x: auto;
             background: #f1f5f9;
         }
-        
+
         .modal-thumb {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             border-radius: 12px;
             object-fit: cover;
             cursor: pointer;
             border: 2px solid transparent;
-            transition: 0.1s;
-        }
-        
-        @media (min-width: 768px) {
-            .modal-thumb { width: 80px; height: 80px; border-radius: 16px; }
-        }
-        
-        .modal-thumb.active-thumb {
-            border-color: #dc2626;
-            transform: scale(1.02);
-        }
-        
-        .modal-content-detail {
-            padding: 20px;
-        }
-        
-        @media (min-width: 768px) {
-            .modal-content-detail { padding: 32px; }
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: rgba(0,0,0,0.6);
-            width: 36px;
-            height: 36px;
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            backdrop-filter: blur(6px);
-        }
-        
-        @media (min-width: 768px) {
-            .close-modal { top: 20px; right: 28px; width: 44px; height: 44px; font-size: 24px; }
         }
 
-        /* Auth Modal */
+        .modal-thumb.active {
+            border-color: #dc2626;
+        }
+
+        .modal-info {
+            padding: 25px;
+        }
+
+        .modal-info h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+
+        .modal-info .price {
+            font-size: 22px;
+            color: #dc2626;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        /* ========== ADMIN PANEL (caché) ========== */
+        .admin-panel {
+            display: none;
+        }
+
+        /* Bouton admin secret en bas de page */
+        .secret-admin-trigger {
+            text-align: center;
+            padding: 10px 0;
+            opacity: 0.15;
+            transition: opacity 0.2s;
+        }
+
+        .secret-admin-trigger:hover {
+            opacity: 0.5;
+        }
+
+        .secret-admin-trigger button {
+            background: none;
+            border: none;
+            color: #475569;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        /* Modal Auth */
         .auth-modal {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.8);
             backdrop-filter: blur(8px);
-            z-index: 2100;
+            z-index: 1100;
             display: flex;
             align-items: center;
             justify-content: center;
         }
-        
+
         .auth-card {
-            background: #fff;
-            border-radius: 32px;
-            padding: 30px;
-            width: 90%;
-            max-width: 400px;
+            background: white;
+            border-radius: 24px;
+            padding: 35px;
+            width: 350px;
+            max-width: 90%;
             text-align: center;
-            box-shadow: 0 40px 60px -20px black;
         }
-        
-        @media (min-width: 768px) {
-            .auth-card { border-radius: 48px; padding: 40px; }
+
+        .auth-card h2 {
+            margin: 15px 0;
+            font-size: 22px;
         }
-        
+
         .auth-card input {
             width: 100%;
             padding: 12px;
-            margin: 12px 0;
-            border: 1px solid #ddd;
-            border-radius: 60px;
+            margin: 10px 0;
+            border: 1px solid #e2e8f0;
+            border-radius: 30px;
             font-size: 14px;
         }
-        
-        /* Gallery preview */
-        .gallery-preview {
-            background: #f1f5f9;
-            padding: 15px;
-            border-radius: 20px;
-            margin-top: 15px;
+
+        .auth-card .error {
+            color: #dc2626;
+            font-size: 13px;
+            margin: 5px 0;
         }
-        
-        .gallery-thumbnails {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .main-visualization img {
-            max-width: 100%;
-            border-radius: 16px;
-        }
-        
-        /* Navigation buttons */
-        .nav-buttons button {
-            background: #dc2626;
-            color: white;
-            border: none;
-            padding: 6px 15px;
-            margin: 0 5px;
-            border-radius: 30px;
-            cursor: pointer;
-        }
-        
-        /* Responsive menu */
+
+        /* ========== RESPONSIVE ========== */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: flex;
             }
-            
+
             nav {
                 position: fixed;
                 top: 70px;
                 left: -100%;
-                width: 80%;
+                width: 70%;
                 height: calc(100vh - 70px);
-                background: rgba(8, 12, 24, 0.98);
-                backdrop-filter: blur(20px);
-                transition: left 0.3s ease;
-                z-index: 999;
+                background: #0a0e1a;
+                transition: left 0.3s;
+                z-index: 200;
                 padding: 30px;
             }
-            
+
             nav.active {
                 left: 0;
             }
-            
+
             nav ul {
                 flex-direction: column;
-                align-items: flex-start;
                 gap: 20px;
             }
-            
-            nav a {
-                font-size: 1.2rem;
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 15px;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+
+            .cars-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="header-content">
-                <div class="logo">
-                    <div class="logo-img">
-                        <svg viewBox="0 0 100 100">
-                            <rect x="10" y="10" width="80" height="80" rx="10" fill="white"/>
-                            <text x="50" y="45" text-anchor="middle" font-family="Arial" font-size="22" font-weight="bold" fill="#dc2626">AH</text>
-                        </svg>
-                    </div>
-                    <div class="logo-text">Autohus <span>Import-Export</span></div>
-                </div>
-                <div class="menu-toggle" id="menuToggle">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
-                <nav id="mainNav">
-                    <ul>
-                        <li><a href="#">Accueil</a></li>
-                        <li><a href="#catalogue">Nos véhicules</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </nav>
+
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">AH</div>
+                <div class="logo-text">Autohus <span>Import-Export</span></div>
             </div>
+            <div class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#catalogue">Véhicules</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
         </div>
-    </header>
-    
-    <!-- Bouton admin secret (apparaît au survol ou accessible par Ctrl+Alt+A) -->
-    <div id="secretAdminBtn" class="secret-admin-btn" title="Accès Admin (Ctrl+Alt+A)">
-        <i class="fas fa-user-shield"></i>
     </div>
+</header>
 
-    <section class="hero">
-        <div class="container">
-            <h1>Import / Export <span style="color:#dc2626;">Premium</span></h1>
-            <p>Autohus Import-Export — élégance, confiance et performance dans le transport de véhicules d'exception.</p>
-            <a href="#catalogue" class="btn">Explorer nos véhicules</a>
-        </div>
-    </section>
+<section class="hero" id="home">
+    <div class="container">
+        <h1>Import / Export <span>Premium</span></h1>
+        <p>Autohus Import-Export — élégance, confiance et performance dans le transport de véhicules d'exception.</p>
+        <a href="#catalogue" class="btn">Explorer nos véhicules</a>
+    </div>
+</section>
 
-    <section id="admin" class="admin-panel">
-        <div class="container">
-            <div class="admin-header">
-                <h2 class="section-title">Espace Gestionnaire</h2>
-                <div id="adminStatus"></div>
-            </div>
-            <div id="adminContent" style="display: none;">
-                <div class="admin-form">
-                    <h3 style="margin-bottom: 20px;"><i class="fas fa-plus-circle" style="color:#dc2626;"></i> Ajouter une nouvelle voiture</h3>
-                    <form id="carForm">
-                        <div class="form-group">
-                            <input type="text" id="carName" placeholder="Modèle ex: Porsche Taycan" required style="width:100%; padding:12px 14px; border-radius:20px; border:1px solid #ccc; font-size:14px;">
-                        </div>
-                        <div class="form-group">
-                            <input type="text" id="carPrice" placeholder="Prix ex: 95 000 €" required style="width:100%; padding:12px 14px; margin-top:12px; border-radius:20px; border:1px solid #ccc; font-size:14px;">
-                        </div>
-                        <div class="form-group">
-                            <textarea id="carDescription" placeholder="Description détaillée (moteur, options...)" required style="width:100%; padding:12px 14px; margin-top:12px; border-radius:20px; border:1px solid #ccc; min-height: 80px; font-size:14px;"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label style="font-weight:600;">Galerie multimédia (Images HD)</label>
-                            <div class="image-upload-area" id="imageUploadArea" style="margin-top:10px; padding:25px; text-align:center;">
-                                <i class="fas fa-cloud-upload-alt fa-2x" style="color:#94a3b8;"></i>
-                                <p style="font-size:13px;">Cliquez ou glissez-déposez plusieurs images</p>
-                                <input type="file" id="imageFileInput" accept="image/*" multiple style="display: none;">
-                            </div>
-                            <div id="galleryPreview" style="display: none; margin-top: 15px;">
-                                <div id="thumbnailsContainer" style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 15px;"></div>
-                                <div style="text-align: center;">
-                                    <img id="mainDisplayImage" style="max-height: 180px; border-radius: 16px;">
-                                </div>
-                                <div style="text-align: center; margin-top: 10px;">
-                                    <button type="button" id="prevImageBtn" style="background:#dc2626; color:white; border:none; padding:5px 15px; border-radius:20px;">◀</button>
-                                    <button type="button" id="nextImageBtn" style="background:#dc2626; color:white; border:none; padding:5px 15px; border-radius:20px;">▶</button>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="submit" class="btn" style="margin-top: 20px; width: 100%; background:#1e293b; border-color:#1e293b;">Ajouter le véhicule</button>
-                    </form>
-                </div>
-            </div>
-            <div id="adminBlocked" style="display: none; text-align: center; padding: 40px; background: #f1f5f9; border-radius: 32px;">
-                <i class="fas fa-lock fa-3x" style="color:#dc2626;"></i>
-                <h3 style="margin-top: 15px;">Zone sécurisée</h3>
-                <button id="unlockBtn" class="btn" style="margin-top: 20px;">Accès Administrateur</button>
-            </div>
-        </div>
-    </section>
+<section id="catalogue" style="padding: 70px 0;">
+    <div class="container">
+        <h2 class="section-title">Nos <span>véhicules</span> d'exception</h2>
+        <div id="carsContainer" class="cars-grid"></div>
+    </div>
+</section>
 
-    <section id="catalogue" class="catalogue" style="padding: 50px 0;">
-        <div class="container">
-            <h2 class="section-title" style="text-align:center;">Nos véhicules d'exception</h2>
-            <div id="carsContainer" class="cars-grid"></div>
-        </div>
-    </section>
-
-    <section id="services" class="services" style="padding: 50px 0; background:#fff;">
-        <div class="container">
-            <h2 class="section-title" style="text-align:center;">Services premium</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <i class="fas fa-globe-americas fa-3x" style="color:#dc2626;"></i>
-                    <h3 style="margin: 15px 0 10px;">Import global</h3>
-                    <p>USA, Dubaï, Allemagne, Japon</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-ship fa-3x" style="color:#dc2626;"></i>
-                    <h3 style="margin: 15px 0 10px;">Logistique clé en main</h3>
-                    <p>Douane, transport, assurances</p>
-                </div>
-                <div class="service-card">
-                    <i class="fas fa-headset fa-3x" style="color:#dc2626;"></i>
-                    <h3 style="margin: 15px 0 10px;">Support 24/7</h3>
-                    <p>Assistance personnalisée</p>
-                </div>
+<section id="services" style="padding: 60px 0; background: #fff;">
+    <div class="container">
+        <h2 class="section-title">Services <span>premium</span></h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-globe-americas"></i>
+                <h3>Import global</h3>
+                <p>USA, Dubaï, Allemagne, Japon</p>
             </div>
-        </div>
-    </section>
-    
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-content">
-                <div>
-                    <h3>Autohus Import-Export</h3>
-                    <p>L'excellence automobile</p>
-                </div>
-                <div>
-                    <i class="fas fa-envelope"></i><br>
-                    autohus@outlook.fr<br>
-                    contact@autohus-import.com
-                </div>
-                <div>
-                    <i class="fas fa-phone-alt"></i><br>
-                    +229 01 XX XX XX<br>
-                    +229 97 XX XX XX
-                </div>
+            <div class="service-card">
+                <i class="fas fa-ship"></i>
+                <h3>Logistique clé en main</h3>
+                <p>Douane, transport, assurances</p>
             </div>
-            <div class="copyright" style="text-align:center; margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
-                &copy; 2025 Autohus Import-Export — Premium car import & export
-            </div>
-        </div>
-    </footer>
-
-    <div id="detailModal" class="modal-detail">
-        <div class="modal-card">
-            <div class="modal-gallery">
-                <span class="close-modal" id="closeModalBtn">&times;</span>
-                <img id="modalMainImg" class="modal-main-img" src="">
-            </div>
-            <div id="modalThumbsContainer" class="modal-thumbs"></div>
-            <div class="modal-content-detail">
-                <h2 id="modalCarName" style="font-size: 22px;"></h2>
-                <p id="modalCarPrice" style="font-size: 20px; color:#dc2626; font-weight:bold;"></p>
-                <p id="modalCarDescription" style="margin-top: 10px; line-height: 1.5;"></p>
+            <div class="service-card">
+                <i class="fas fa-headset"></i>
+                <h3>Support 24/7</h3>
+                <p>Assistance personnalisée</p>
             </div>
         </div>
     </div>
+</section>
 
-    <script>
-        // DONNÉES INITIALES
-        let cars = [
-            { id: 1, name: "Porsche Taycan Turbo", price: "148 500 €", images: ["https://images.unsplash.com/photo-1614204424926-5c8281d2f3ae?w=800"], description: "Sportive électrique, 761ch, luxe ultime." },
-            { id: 2, name: "Mercedes-AMG GT 63", price: "125 900 €", images: ["https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800"], description: "V8 biturbo, 639ch, élégance radicale." }
-        ];
+<footer id="contact">
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-col">
+                <h3>Autohus Import-Export</h3>
+                <p>L'excellence automobile</p>
+            </div>
+            <div class="footer-col">
+                <p><i class="fas fa-envelope"></i> autohus@outlook.fr</p>
+                <p><i class="fas fa-envelope"></i> contact@autohus-import.com</p>
+            </div>
+            <div class="footer-col">
+                <p><i class="fas fa-phone-alt"></i> +229 01 XX XX XX</p>
+                <p><i class="fas fa-phone-alt"></i> +229 97 XX XX XX</p>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Autohus Import-Export — Premium car import & export
+        </div>
+        <!-- Bouton admin SECRET complètement en bas et discret -->
+        <div class="secret-admin-trigger">
+            <button id="secretAdminBtn">v1.0</button>
+        </div>
+    </div>
+</footer>
+
+<!-- Modal détail -->
+<div id="detailModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-gallery">
+            <span class="modal-close" id="closeModalBtn">&times;</span>
+            <img id="modalMainImg" src="">
+        </div>
+        <div id="modalThumbsContainer" class="modal-thumbs"></div>
+        <div class="modal-info">
+            <h2 id="modalCarName"></h2>
+            <div class="price" id="modalCarPrice"></div>
+            <p id="modalCarDescription"></p>
+        </div>
+    </div>
+</div>
+
+<!-- Admin Panel caché -->
+<div id="adminPanel" class="admin-panel">
+    <div class="container">
+        <h3>Admin - Ajouter un véhicule</h3>
+        <form id="carForm">
+            <input type="text" id="carName" placeholder="Modèle" required>
+            <input type="text" id="carPrice" placeholder="Prix" required>
+            <textarea id="carDescription" placeholder="Description" required></textarea>
+            <input type="file" id="imageInput" accept="image/*" multiple>
+            <button type="submit">Ajouter</button>
+        </form>
+        <div id="adminCarsList"></div>
+    </div>
+</div>
+
+<script>
+    // DONNÉES
+    let cars = [
+        { id: 1, name: "Porsche Taycan Turbo", price: "148 500 €", images: ["https://images.unsplash.com/photo-1614204424926-5c8281d2f3ae?w=800"], description: "Sportive électrique, 761ch, luxe ultime." },
+        { id: 2, name: "Mercedes-AMG GT 63", price: "125 900 €", images: ["https://images.unsplash.com/photo-1605559424843-9e4c228bf1c2?w=800"], description: "V8 biturbo, 639ch, élégance radicale." }
+    ];
+    
+    let isAdmin = false;
+    let currentImages = [];
+
+    // Helper
+    function escapeHtml(str) {
+        if (!str) return '';
+        return str.replace(/[&<>]/g, m => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[m]));
+    }
+
+    // Sauvegarde / chargement
+    function saveToLocal() {
+        localStorage.setItem('autohus_cars', JSON.stringify(cars));
+    }
+
+    function loadFromLocal() {
+        const stored = localStorage.getItem('autohus_cars');
+        if (stored) {
+            try {
+                const parsed = JSON.parse(stored);
+                if (Array.isArray(parsed)) cars = parsed;
+            } catch(e) {}
+        }
+        renderCars();
+    }
+
+    // Affichage des voitures
+    function renderCars() {
+        const container = document.getElementById('carsContainer');
+        if (!container) return;
         
-        let isAdminLoggedIn = false;
-        let currentImages = [];
-        let currentIndexPreview = 0;
-
-        function escapeHtml(str) { 
-            if(!str) return ''; 
-            return str.replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m])); 
-        }
-
-        function saveToLocalStorage() { 
-            localStorage.setItem('autohusPremium', JSON.stringify(cars)); 
+        if (cars.length === 0) {
+            container.innerHTML = '<div style="text-align:center; padding:60px;">Aucun véhicule disponible</div>';
+            return;
         }
         
-        function loadFromLocalStorage() { 
-            const stored = localStorage.getItem('autohusPremium'); 
-            if(stored) { 
-                try{ 
-                    let p = JSON.parse(stored); 
-                    if(Array.isArray(p)) cars = p; 
-                } catch(e){} 
-            } 
-            renderCars(); 
-        }
-
-        function renderCars() {
-            const container = document.getElementById('carsContainer');
-            if(!container) return;
-            if(cars.length === 0) {
-                container.innerHTML = '<div style="text-align:center; padding:60px;">Aucun véhicule pour l\'instant</div>';
-                return;
-            }
-            container.innerHTML = cars.map(car => {
-                const cover = (car.images && car.images[0]) ? car.images[0] : 'https://placehold.co/800x500?text=Premium';
-                return `
-                <div class="car-card" data-id="${car.id}">
-                    <div class="car-image-gallery" onclick="openCarDetail(${car.id})">
+        container.innerHTML = cars.map(car => {
+            const cover = car.images && car.images[0] ? car.images[0] : 'https://placehold.co/800x500/e2e8f0/64748b?text=No+Image';
+            return `
+                <div class="car-card" onclick="openDetail(${car.id})">
+                    <div class="car-image">
                         <img src="${cover}" alt="${escapeHtml(car.name)}">
                     </div>
                     <div class="car-info">
-                        <div class="car-title">${escapeHtml(car.name)}</div>
+                        <div class="car-name">${escapeHtml(car.name)}</div>
                         <div class="car-price">${escapeHtml(car.price)}</div>
-                        <div class="car-description" style="color:#475569;">${escapeHtml(car.description.substring(0,80))}...</div>
-                        ${isAdminLoggedIn ? `<div style="display:flex; gap:10px; margin-top:15px;">
-                            <button class="btn-edit" onclick="event.stopPropagation(); editCar(${car.id})" style="background:#fbbf24; border:none; padding:6px 14px; border-radius:40px; cursor:pointer; font-size:13px;">Modifier</button>
-                            <button class="btn-delete" onclick="event.stopPropagation(); deleteCar(${car.id})" style="background:#ef4444; border:none; padding:6px 14px; border-radius:40px; color:white; cursor:pointer; font-size:13px;">Supprimer</button>
-                        </div>` : ''}
-                        <button onclick="event.stopPropagation(); openCarDetail(${car.id})" style="margin-top:15px; background:transparent; border:1px solid #dc2626; border-radius:40px; padding:8px; width:100%; cursor:pointer;">Détails <i class="fas fa-arrow-right"></i></button>
+                        <div class="car-desc">${escapeHtml(car.description.substring(0, 80))}...</div>
+                        <button class="btn-detail">Détails <i class="fas fa-arrow-right"></i></button>
                     </div>
-                </div>`;
-            }).join('');
-        }
-
-        window.openCarDetail = function(carId) {
-            const car = cars.find(c => c.id === carId);
-            if(!car) return;
-            const modal = document.getElementById('detailModal');
-            const modalMainImg = document.getElementById('modalMainImg');
-            const modalCarName = document.getElementById('modalCarName');
-            const modalCarPrice = document.getElementById('modalCarPrice');
-            const modalCarDesc = document.getElementById('modalCarDescription');
-            const thumbsContainer = document.getElementById('modalThumbsContainer');
-            
-            modalCarName.innerText = car.name;
-            modalCarPrice.innerText = car.price;
-            modalCarDesc.innerText = car.description;
-            const imagesList = (car.images && car.images.length) ? car.images : ['https://placehold.co/800x500?text=Image'];
-            let currentImgIdx = 0;
-            
-            const updateModalImage = (idx) => {
-                modalMainImg.src = imagesList[idx];
-                document.querySelectorAll('.modal-thumb').forEach((thumb, i) => {
-                    if(i === idx) thumb.classList.add('active-thumb');
-                    else thumb.classList.remove('active-thumb');
-                });
-            };
-            
-            thumbsContainer.innerHTML = imagesList.map((img, idx) => `<img class="modal-thumb ${idx===0?'active-thumb':''}" src="${img}" data-idx="${idx}" style="cursor:pointer;">`).join('');
-            modalMainImg.src = imagesList[0];
-            
-            document.querySelectorAll('.modal-thumb').forEach(el => {
-                el.addEventListener('click', (e) => {
-                    const idx = parseInt(el.getAttribute('data-idx'));
-                    currentImgIdx = idx;
-                    updateModalImage(idx);
-                });
-            });
-            
-            modal.classList.add('active');
-            const closeBtn = document.getElementById('closeModalBtn');
-            const closeModalHandler = () => modal.classList.remove('active');
-            closeBtn.onclick = closeModalHandler;
-            modal.onclick = (e) => { if(e.target === modal) closeModalHandler(); };
-        };
-
-        // AUTHENTIFICATION ADMIN (bouton secret)
-        function showAdminAuthModal() {
-            const modalDiv = document.createElement('div');
-            modalDiv.className = 'auth-modal';
-            modalDiv.innerHTML = `
-                <div class="auth-card">
-                    <i class="fas fa-user-lock fa-3x" style="color:#dc2626;"></i>
-                    <h2 style="margin:15px 0;">Accès Administrateur</h2>
-                    <input type="text" id="adminUsername" placeholder="Nom d'utilisateur" autocomplete="off">
-                    <input type="password" id="adminPassword" placeholder="Mot de passe">
-                    <div id="authError" style="color:red; font-size:13px;"></div>
-                    <button id="submitAuthBtn" class="btn" style="width:100%; margin-top:10px;">Se connecter</button>
-                    <button id="closeAuthBtn" style="margin-top:15px; background:none; border:none; cursor:pointer; color:#666;">Annuler</button>
                 </div>
             `;
-            document.body.appendChild(modalDiv);
-            const submitBtn = modalDiv.querySelector('#submitAuthBtn');
-            const closeBtn = modalDiv.querySelector('#closeAuthBtn');
-            const usernameInput = modalDiv.querySelector('#adminUsername');
-            const passInput = modalDiv.querySelector('#adminPassword');
-            const errorSpan = modalDiv.querySelector('#authError');
-            
-            const attemptLogin = () => {
-                const user = usernameInput.value.trim();
-                const pwd = passInput.value.trim();
-                if(user === "admin" && pwd === "admin123") {
-                    isAdminLoggedIn = true;
-                    localStorage.setItem('autohusAdminLogged', 'true');
-                    updateAdminUI();
-                    modalDiv.remove();
-                    alert("Bienvenue dans l'espace administrateur");
-                } else {
-                    errorSpan.innerText = "Identifiants incorrects";
-                }
+        }).join('');
+    }
+
+    // Détail modal
+    window.openDetail = function(id) {
+        const car = cars.find(c => c.id === id);
+        if (!car) return;
+        
+        const modal = document.getElementById('detailModal');
+        const modalImg = document.getElementById('modalMainImg');
+        const modalName = document.getElementById('modalCarName');
+        const modalPrice = document.getElementById('modalCarPrice');
+        const modalDesc = document.getElementById('modalCarDescription');
+        const thumbsContainer = document.getElementById('modalThumbsContainer');
+        
+        modalName.innerText = car.name;
+        modalPrice.innerText = car.price;
+        modalDesc.innerText = car.description;
+        
+        const images = car.images && car.images.length ? car.images : ['https://placehold.co/800x500/e2e8f0/64748b?text=Image'];
+        let currentIdx = 0;
+        
+        const updateImage = (idx) => {
+            modalImg.src = images[idx];
+            document.querySelectorAll('.modal-thumb').forEach((thumb, i) => {
+                thumb.classList.toggle('active', i === idx);
+            });
+        };
+        
+        thumbsContainer.innerHTML = images.map((img, idx) => `
+            <img class="modal-thumb ${idx === 0 ? 'active' : ''}" src="${img}" data-idx="${idx}">
+        `).join('');
+        
+        modalImg.src = images[0];
+        
+        document.querySelectorAll('.modal-thumb').forEach(thumb => {
+            thumb.onclick = (e) => {
+                e.stopPropagation();
+                const idx = parseInt(thumb.dataset.idx);
+                currentIdx = idx;
+                updateImage(idx);
             };
-            submitBtn.onclick = attemptLogin;
-            closeBtn.onclick = () => modalDiv.remove();
-            usernameInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') attemptLogin(); });
-            passInput.addEventListener('keypress', (e) => { if(e.key === 'Enter') attemptLogin(); });
-        }
+        });
         
-        function logoutAdmin() { 
-            isAdminLoggedIn = false; 
-            localStorage.removeItem('autohusAdminLogged'); 
-            updateAdminUI(); 
-            alert("Déconnexion réussie"); 
+        modal.classList.add('active');
+    };
+    
+    // Fermeture modal
+    document.getElementById('closeModalBtn')?.addEventListener('click', () => {
+        document.getElementById('detailModal').classList.remove('active');
+    });
+    document.getElementById('detailModal')?.addEventListener('click', (e) => {
+        if (e.target === document.getElementById('detailModal')) {
+            document.getElementById('detailModal').classList.remove('active');
         }
+    });
+
+    // AUTH ADMIN (popup)
+    function showAuthModal() {
+        const modalDiv = document.createElement('div');
+        modalDiv.className = 'auth-modal';
+        modalDiv.innerHTML = `
+            <div class="auth-card">
+                <i class="fas fa-shield-alt" style="font-size: 48px; color:#dc2626;"></i>
+                <h2>Accès Administrateur</h2>
+                <input type="text" id="authUser" placeholder="Nom d'utilisateur">
+                <input type="password" id="authPass" placeholder="Mot de passe">
+                <div class="error" id="authError"></div>
+                <button class="btn" id="authSubmit" style="width:100%; margin-top:10px;">Se connecter</button>
+                <button id="authClose" style="margin-top:15px; background:none; border:none; cursor:pointer; color:#94a3b8;">Annuler</button>
+            </div>
+        `;
+        document.body.appendChild(modalDiv);
         
-        function updateAdminUI() {
-            const adminContentDiv = document.getElementById('adminContent');
-            const adminBlockedDiv = document.getElementById('adminBlocked');
-            const adminStatusSpan = document.getElementById('adminStatus');
-            if(isAdminLoggedIn) {
-                adminContentDiv.style.display = 'block';
-                adminBlockedDiv.style.display = 'none';
-                adminStatusSpan.innerHTML = `<span class="admin-badge"><i class="fas fa-user-check"></i> Connecté <button id="logoutAdminBtn" style="background:#334155; border:none; border-radius:30px; padding:5px 12px; margin-left:10px; cursor:pointer; color:white;">Déconnexion</button></span>`;
-                document.getElementById('logoutAdminBtn')?.addEventListener('click', logoutAdmin);
+        const submit = () => {
+            const user = document.getElementById('authUser').value;
+            const pass = document.getElementById('authPass').value;
+            if (user === 'admin' && pass === 'admin123') {
+                isAdmin = true;
+                localStorage.setItem('autohus_admin', 'true');
+                modalDiv.remove();
+                showAdminPanel();
             } else {
-                adminContentDiv.style.display = 'none';
-                adminBlockedDiv.style.display = 'block';
-                adminStatusSpan.innerHTML = `<span class="admin-badge" style="background:#475569;"><i class="fas fa-lock"></i> Non connecté</span>`;
+                document.getElementById('authError').innerText = 'Identifiants incorrects';
             }
-            renderCars();
-        }
-        
-        function checkStoredAdmin() { 
-            if(localStorage.getItem('autohusAdminLogged') === 'true') isAdminLoggedIn = true; 
-            updateAdminUI(); 
-        }
-        
-        // CRUD
-        function addCar(name, price, desc, imagesArr) {
-            const newId = cars.length ? Math.max(...cars.map(c => c.id)) + 1 : 3;
-            cars.push({ 
-                id: newId, 
-                name: name.trim(), 
-                price: price.trim(), 
-                description: desc.trim(), 
-                images: imagesArr.length ? imagesArr : ['https://placehold.co/800x500?text=New+Car']
-            });
-            renderCars(); 
-            saveToLocalStorage();
-        }
-        
-        function updateCarById(id, name, price, desc, imagesArr) {
-            const car = cars.find(c => c.id === id);
-            if(car) { 
-                car.name = name; 
-                car.price = price; 
-                car.description = desc; 
-                if(imagesArr && imagesArr.length) car.images = imagesArr; 
-                renderCars(); 
-                saveToLocalStorage(); 
-            }
-        }
-        
-        window.editCar = function(id) {
-            if(!isAdminLoggedIn) { 
-                alert("Connectez-vous en tant qu'admin"); 
-                showAdminAuthModal(); 
-                return; 
-            }
-            const car = cars.find(c => c.id === id);
-            const newName = prompt("Modèle:", car.name); 
-            if(!newName) return;
-            const newPrice = prompt("Prix:", car.price); 
-            if(!newPrice) return;
-            const newDesc = prompt("Description:", car.description); 
-            if(newDesc === null) return;
-            const changeImg = confirm("Changer les images ? (OK pour sélectionner)");
-            if(changeImg) {
-                const fileInput = document.createElement('input'); 
-                fileInput.type = 'file'; 
-                fileInput.multiple = true; 
-                fileInput.accept = 'image/*';
-                fileInput.onchange = (e) => {
-                    const files = Array.from(e.target.files);
-                    if(files.length) {
-                        Promise.all(files.map(f => new Promise(resolve => { 
-                            const rd = new FileReader(); 
-                            rd.onload = () => resolve(rd.result); 
-                            rd.readAsDataURL(f); 
-                        }))).then(imgs => { 
-                            updateCarById(id, newName, newPrice, newDesc, imgs); 
-                            alert("Véhicule mis à jour !"); 
-                        });
-                    } else updateCarById(id, newName, newPrice, newDesc, car.images);
-                };
-                fileInput.click();
-            } else updateCarById(id, newName, newPrice, newDesc, car.images);
         };
         
-        window.deleteCar = function(id) { 
-            if(confirm("Supprimer ce véhicule définitivement ?")) { 
-                cars = cars.filter(c => c.id !== id); 
-                renderCars(); 
-                saveToLocalStorage(); 
-            } 
-        };
-        
-        // GESTION UPLOAD IMAGES
-        function setupImageUpload() {
-            const uploadArea = document.getElementById('imageUploadArea');
-            const fileInput = document.getElementById('imageFileInput');
-            if(!uploadArea) return;
-            
-            uploadArea.onclick = () => fileInput.click();
-            uploadArea.ondragover = (e) => { 
-                e.preventDefault(); 
-                uploadArea.style.borderColor = '#dc2626'; 
-            };
-            uploadArea.ondragleave = () => uploadArea.style.borderColor = '#cbd5e1';
-            uploadArea.ondrop = (e) => { 
-                e.preventDefault(); 
-                uploadArea.style.borderColor = '#cbd5e1'; 
-                const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/')); 
-                if(files.length) processImages(files); 
-            };
-            fileInput.onchange = (e) => { 
-                if(e.target.files.length) processImages(Array.from(e.target.files)); 
-            };
-        }
-        
-        function processImages(files) {
-            files.forEach(file => { 
-                if(file.size > 6 * 1024 * 1024) { 
-                    alert(`L'image ${file.name} dépasse 6Mo`); 
-                    return; 
-                } 
-                const r = new FileReader(); 
-                r.onload = (ev) => { 
-                    currentImages.push(ev.target.result); 
-                    updatePreviewGallery(); 
-                }; 
-                r.readAsDataURL(file); 
-            });
-        }
-        
-        function updatePreviewGallery() {
-            const previewDiv = document.getElementById('galleryPreview');
-            const thumbContainer = document.getElementById('thumbnailsContainer');
-            const mainImg = document.getElementById('mainDisplayImage');
-            
-            if(currentImages.length === 0) { 
-                previewDiv.style.display = 'none'; 
-                return; 
-            }
-            
-            previewDiv.style.display = 'block';
-            thumbContainer.innerHTML = currentImages.map((img, idx) => `
-                <div style="position:relative; width:70px; height:70px; border-radius:12px; overflow:hidden;">
-                    <img src="${img}" style="width:100%; height:100%; object-fit:cover;">
-                    <button type="button" onclick="event.stopPropagation(); removePreviewImage(${idx})" style="position:absolute; top:0; right:0; background:#dc2626; border:none; border-radius:15px; color:white; width:20px; height:20px; font-size:12px; cursor:pointer;">✕</button>
+        document.getElementById('authSubmit').onclick = submit;
+        document.getElementById('authClose').onclick = () => modalDiv.remove();
+        document.getElementById('authPass').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') submit();
+        });
+    }
+    
+    function showAdminPanel() {
+        const adminDiv = document.getElementById('adminPanel');
+        adminDiv.style.display = 'block';
+        adminDiv.scrollIntoView({ behavior: 'smooth' });
+        renderAdminList();
+    }
+    
+    function renderAdminList() {
+        const container = document.getElementById('adminCarsList');
+        if (!container) return;
+        container.innerHTML = '<h4 style="margin-top:30px;">Gérer les véhicules</h4>';
+        cars.forEach(car => {
+            container.innerHTML += `
+                <div style="display:flex; justify-content:space-between; align-items:center; padding:10px; border-bottom:1px solid #e2e8f0;">
+                    <span><strong>${escapeHtml(car.name)}</strong> - ${escapeHtml(car.price)}</span>
+                    <div>
+                        <button onclick="editCar(${car.id})" style="background:#f59e0b; color:white; border:none; padding:5px 12px; border-radius:20px; margin-right:5px;">Modifier</button>
+                        <button onclick="deleteCar(${car.id})" style="background:#dc2626; color:white; border:none; padding:5px 12px; border-radius:20px;">Supprimer</button>
+                    </div>
                 </div>
-            `).join('');
-            mainImg.src = currentImages[0] || '';
-            
-            document.getElementById('prevImageBtn').onclick = () => { 
-                if(currentImages.length) { 
-                    currentIndexPreview = (currentIndexPreview - 1 + currentImages.length) % currentImages.length; 
-                    mainImg.src = currentImages[currentIndexPreview]; 
-                } 
-            };
-            document.getElementById('nextImageBtn').onclick = () => { 
-                if(currentImages.length) { 
-                    currentIndexPreview = (currentIndexPreview + 1) % currentImages.length; 
-                    mainImg.src = currentImages[currentIndexPreview]; 
-                } 
-            };
+            `;
+        });
+    }
+    
+    // CRUD Admin
+    function addCar(name, price, desc, imagesArr) {
+        const newId = cars.length ? Math.max(...cars.map(c => c.id)) + 1 : 3;
+        cars.push({
+            id: newId,
+            name: name.trim(),
+            price: price.trim(),
+            description: desc.trim(),
+            images: imagesArr.length ? imagesArr : ['https://placehold.co/800x500/e2e8f0/64748b?text=New+Car']
+        });
+        renderCars();
+        saveToLocal();
+        renderAdminList();
+    }
+    
+    window.editCar = function(id) {
+        if (!isAdmin) return;
+        const car = cars.find(c => c.id === id);
+        const newName = prompt("Nouveau modèle:", car.name);
+        if (!newName) return;
+        const newPrice = prompt("Nouveau prix:", car.price);
+        if (!newPrice) return;
+        const newDesc = prompt("Nouvelle description:", car.description);
+        if (newDesc === null) return;
+        
+        car.name = newName;
+        car.price = newPrice;
+        car.description = newDesc;
+        renderCars();
+        saveToLocal();
+        renderAdminList();
+        alert("Véhicule modifié !");
+    };
+    
+    window.deleteCar = function(id) {
+        if (!isAdmin) return;
+        if (confirm("Supprimer ce véhicule ?")) {
+            cars = cars.filter(c => c.id !== id);
+            renderCars();
+            saveToLocal();
+            renderAdminList();
+        }
+    };
+    
+    // Formulaire ajout
+    document.getElementById('carForm')?.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!isAdmin) {
+            alert("Vous n'êtes pas connecté en tant qu'admin");
+            return;
+        }
+        const name = document.getElementById('carName').value;
+        const price = document.getElementById('carPrice').value;
+        const desc = document.getElementById('carDescription').value;
+        const files = document.getElementById('imageInput').files;
+        
+        if (!name || !price || !desc) {
+            alert("Veuillez remplir tous les champs");
+            return;
+        }
+        if (files.length === 0) {
+            alert("Veuillez sélectionner au moins une image");
+            return;
         }
         
-        window.removePreviewImage = (idx) => { 
-            currentImages.splice(idx, 1); 
-            if(currentIndexPreview >= currentImages.length) currentIndexPreview = Math.max(0, currentImages.length - 1); 
-            updatePreviewGallery(); 
-        };
+        const readers = [];
+        for (let i = 0; i < files.length; i++) {
+            readers.push(new Promise(resolve => {
+                const reader = new FileReader();
+                reader.onload = () => resolve(reader.result);
+                reader.readAsDataURL(files[i]);
+            }));
+        }
         
-        // FORMULAIRE AJOUT
-        document.getElementById('carForm')?.addEventListener('submit', (e) => {
+        Promise.all(readers).then(images => {
+            addCar(name, price, desc, images);
+            document.getElementById('carForm').reset();
+            alert("Véhicule ajouté !");
+        });
+    });
+    
+    // Bouton admin secret (en bas)
+    document.getElementById('secretAdminBtn')?.addEventListener('click', () => {
+        if (!isAdmin) {
+            showAuthModal();
+        } else {
+            showAdminPanel();
+        }
+    });
+    
+    // Vérifier session existante
+    if (localStorage.getItem('autohus_admin') === 'true') {
+        isAdmin = true;
+    }
+    
+    // Menu burger
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+    menuToggle?.addEventListener('click', () => {
+        mainNav.classList.toggle('active');
+    });
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            mainNav.classList.remove('active');
+        });
+    });
+    
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            if(!isAdminLoggedIn) { 
-                alert("Authentification requise"); 
-                showAdminAuthModal(); 
-                return; 
-            }
-            const name = document.getElementById('carName').value;
-            const price = document.getElementById('carPrice').value;
-            const desc = document.getElementById('carDescription').value;
-            if(!name || !price || !desc) return alert("Veuillez remplir tous les champs");
-            if(currentImages.length === 0) return alert("Ajoutez au moins une image");
-            
-            addCar(name, price, desc, [...currentImages]);
-            document.getElementById('carForm').reset(); 
-            currentImages = []; 
-            currentIndexPreview = 0; 
-            updatePreviewGallery(); 
-            alert("Véhicule premium ajouté !");
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
         });
-        
-        // BOUTON ADMIN SECRET
-        const secretBtn = document.getElementById('secretAdminBtn');
-        secretBtn?.addEventListener('click', () => {
-            if(!isAdminLoggedIn) showAdminAuthModal();
-            else document.getElementById('admin').scrollIntoView({ behavior: 'smooth' });
-        });
-        
-        // RACCOURCI CLAVIER Ctrl+Alt+A
-        document.addEventListener('keydown', (e) => {
-            if(e.ctrlKey && e.altKey && e.key === 'a') {
-                e.preventDefault();
-                if(!isAdminLoggedIn) showAdminAuthModal();
-                else document.getElementById('admin').scrollIntoView({ behavior: 'smooth' });
-            }
-        });
-        
-        // Afficher le bouton secret au survol de la zone du footer ou au scroll
-        let secretTimeout;
-        document.addEventListener('mousemove', (e) => {
-            if(e.clientY > window.innerHeight - 100) {
-                secretBtn.style.opacity = '0.6';
-                clearTimeout(secretTimeout);
-                secretTimeout = setTimeout(() => {
-                    secretBtn.style.opacity = '0';
-                }, 2000);
-            }
-        });
-        
-        document.getElementById('unlockBtn')?.addEventListener('click', showAdminAuthModal);
-        
-        // MENU BURGER
-        const menuToggle = document.getElementById('menuToggle');
-        const mainNav = document.getElementById('mainNav');
-        menuToggle?.addEventListener('click', () => {
-            mainNav.classList.toggle('active');
-        });
-        
-        // Fermer menu au clic sur un lien
-        document.querySelectorAll('nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('active');
-            });
-        });
-        
-        loadFromLocalStorage(); 
-        checkStoredAdmin(); 
-        setupImageUpload();
-    </script>
+    });
+    
+    loadFromLocal();
+</script>
 </body>
 </html>
