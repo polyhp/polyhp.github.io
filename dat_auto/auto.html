@@ -336,6 +336,40 @@
             transform: scale(1.8);
         }
 
+        /* Boutons navigation précédent/suivant */
+        .nav-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            cursor: pointer;
+            font-size: 24px;
+            transition: all 0.2s;
+            z-index: 10;
+            border: none;
+        }
+
+        .nav-arrow:hover {
+            background: #dc2626;
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        .nav-prev {
+            left: 20px;
+        }
+
+        .nav-next {
+            right: 20px;
+        }
+
         .modal-close {
             position: absolute;
             top: 20px;
@@ -384,6 +418,21 @@
             background: #dc2626;
         }
 
+        /* Indicateur de position dans la galerie */
+        .image-counter {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            padding: 6px 14px;
+            border-radius: 30px;
+            font-size: 14px;
+            color: white;
+            font-weight: 500;
+            z-index: 10;
+        }
+
         .modal-thumbs {
             display: flex;
             gap: 12px;
@@ -401,6 +450,7 @@
             cursor: pointer;
             border: 2px solid transparent;
             transition: all 0.2s;
+            flex-shrink: 0;
         }
 
         .modal-thumb:hover {
@@ -510,7 +560,6 @@
             resize: vertical;
         }
 
-        /* Zone upload premium */
         .upload-zone {
             border: 2px dashed #cbd5e1;
             background: #f8fafc;
@@ -537,7 +586,6 @@
             font-size: 14px;
         }
 
-        /* Prévisualisation images premium */
         .preview-grid {
             display: flex;
             flex-wrap: wrap;
@@ -598,7 +646,6 @@
             box-shadow: 0 10px 20px rgba(220,38,38,0.3);
         }
 
-        /* Liste des véhicules admin */
         .admin-cars-list {
             margin-top: 40px;
             background: white;
@@ -619,6 +666,8 @@
             padding: 15px;
             border-bottom: 1px solid #e2e8f0;
             transition: background 0.2s;
+            flex-wrap: wrap;
+            gap: 10px;
         }
 
         .admin-car-item:hover {
@@ -664,7 +713,6 @@
             background: #b91c1c;
         }
 
-        /* Bouton admin secret */
         .secret-admin-trigger {
             text-align: center;
             padding: 15px 0 5px;
@@ -684,7 +732,6 @@
             cursor: pointer;
         }
 
-        /* Auth Modal */
         .auth-modal {
             position: fixed;
             inset: 0;
@@ -737,7 +784,6 @@
             margin: 8px 0;
         }
 
-        /* Footer */
         footer {
             background: #0a0e1a;
             color: #94a3b8;
@@ -776,7 +822,6 @@
             font-size: 13px;
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: flex;
@@ -832,6 +877,26 @@
             .footer-content {
                 flex-direction: column;
                 text-align: center;
+            }
+
+            .nav-arrow {
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
+            }
+
+            .nav-prev {
+                left: 10px;
+            }
+
+            .nav-next {
+                right: 10px;
+            }
+
+            .zoom-controls button {
+                width: 32px;
+                height: 32px;
+                font-size: 14px;
             }
         }
     </style>
@@ -925,12 +990,15 @@
     </div>
 </footer>
 
-<!-- Modal détail premium avec zoom -->
+<!-- Modal détail premium avec zoom et navigation -->
 <div id="detailModal" class="modal">
     <div class="modal-content">
         <div class="modal-gallery">
             <span class="modal-close" id="closeModalBtn">&times;</span>
+            <button class="nav-arrow nav-prev" id="prevImageBtn"><i class="fas fa-chevron-left"></i></button>
+            <button class="nav-arrow nav-next" id="nextImageBtn"><i class="fas fa-chevron-right"></i></button>
             <img id="modalMainImg" src="" alt="Image véhicule">
+            <div class="image-counter" id="imageCounter">1 / 1</div>
             <div class="zoom-controls">
                 <button id="zoomInBtn"><i class="fas fa-search-plus"></i></button>
                 <button id="zoomOutBtn"><i class="fas fa-search-minus"></i></button>
@@ -1001,6 +1069,8 @@
     let isAdmin = false;
     let currentImages = [];
     let currentZoom = 1;
+    let currentImageIndex = 0;
+    let currentImagesList = [];
 
     // Helper
     function escapeHtml(str) {
@@ -1066,7 +1136,35 @@
         applyZoom(1);
     }
 
-    // Détail modal avec zoom
+    // Mise à jour de l'image dans le modal
+    function updateModalImage(index) {
+        if (!currentImagesList.length) return;
+        currentImageIndex = (index + currentImagesList.length) % currentImagesList.length;
+        const modalImg = document.getElementById('modalMainImg');
+        modalImg.src = currentImagesList[currentImageIndex];
+        resetZoom();
+        
+        // Mettre à jour le compteur
+        const counter = document.getElementById('imageCounter');
+        if (counter) {
+            counter.innerText = `${currentImageIndex + 1} / ${currentImagesList.length}`;
+        }
+        
+        // Mettre à jour la classe active sur les miniatures
+        document.querySelectorAll('.modal-thumb').forEach((thumb, i) => {
+            thumb.classList.toggle('active', i === currentImageIndex);
+        });
+    }
+
+    function nextImage() {
+        updateModalImage(currentImageIndex + 1);
+    }
+
+    function prevImage() {
+        updateModalImage(currentImageIndex - 1);
+    }
+
+    // Détail modal avec zoom et navigation
     window.openDetail = function(id) {
         const car = cars.find(c => c.id === id);
         if (!car) return;
@@ -1082,36 +1180,35 @@
         modalPrice.innerText = car.price;
         modalDesc.innerText = car.description;
         
-        const images = car.images && car.images.length ? car.images : ['https://placehold.co/800x500/e2e8f0/64748b?text=Image'];
-        let currentIdx = 0;
+        currentImagesList = car.images && car.images.length ? car.images : ['https://placehold.co/800x500/e2e8f0/64748b?text=Image'];
+        currentImageIndex = 0;
         
-        const updateImage = (idx) => {
-            modalImg.src = images[idx];
-            resetZoom();
-            document.querySelectorAll('.modal-thumb').forEach((thumb, i) => {
-                thumb.classList.toggle('active', i === idx);
-            });
-        };
-        
-        thumbsContainer.innerHTML = images.map((img, idx) => `
+        // Générer les miniatures
+        thumbsContainer.innerHTML = currentImagesList.map((img, idx) => `
             <img class="modal-thumb ${idx === 0 ? 'active' : ''}" src="${img}" data-idx="${idx}">
         `).join('');
         
-        modalImg.src = images[0];
+        modalImg.src = currentImagesList[0];
         resetZoom();
+        
+        // Mettre à jour le compteur
+        const counter = document.getElementById('imageCounter');
+        if (counter) {
+            counter.innerText = `1 / ${currentImagesList.length}`;
+        }
         
         // Gestionnaires de zoom
         const zoomInBtn = document.getElementById('zoomInBtn');
         const zoomOutBtn = document.getElementById('zoomOutBtn');
         const resetZoomBtn = document.getElementById('resetZoomBtn');
+        const prevBtn = document.getElementById('prevImageBtn');
+        const nextBtn = document.getElementById('nextImageBtn');
         
-        const newZoomIn = () => applyZoom(currentZoom + 0.25);
-        const newZoomOut = () => applyZoom(currentZoom - 0.25);
-        const newResetZoom = () => resetZoom();
-        
-        zoomInBtn.onclick = newZoomIn;
-        zoomOutBtn.onclick = newZoomOut;
-        resetZoomBtn.onclick = newResetZoom;
+        zoomInBtn.onclick = () => applyZoom(currentZoom + 0.25);
+        zoomOutBtn.onclick = () => applyZoom(currentZoom - 0.25);
+        resetZoomBtn.onclick = () => resetZoom();
+        prevBtn.onclick = () => prevImage();
+        nextBtn.onclick = () => nextImage();
         
         modalImg.onclick = () => {
             if (currentZoom > 1) {
@@ -1121,12 +1218,12 @@
             }
         };
         
+        // Gestionnaires des miniatures
         document.querySelectorAll('.modal-thumb').forEach(thumb => {
             thumb.onclick = (e) => {
                 e.stopPropagation();
                 const idx = parseInt(thumb.dataset.idx);
-                currentIdx = idx;
-                updateImage(idx);
+                updateModalImage(idx);
             };
         });
         
